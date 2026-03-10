@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Globe, Star, BookOpen } from "lucide-react";
 
-const TEACHER_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/teacher-section-FbPjBodW7FBZgE6zEEyGh4.webp";
+const TEACHER_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/carol-real-photo_f469be8e.jpg";
 
 const credentials = [
   { icon: <GraduationCap className="w-5 h-5" />, text: "Estudiante de Astrofísica en el Reino Unido" },

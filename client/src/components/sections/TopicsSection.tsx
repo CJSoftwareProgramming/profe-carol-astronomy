@@ -1,50 +1,36 @@
-/* TopicsSection — Profe Carol Astrophysics Academy
-   Design: Cosmic Academy — animated topic cards with telescope background */
+/* TopicsSection v2 — Deep Field Observatory design */
 import { motion } from "framer-motion";
 
 const TELESCOPE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/telescope-night-hoUkjW6xnKyPGeUHvc3NRT.webp";
 
 const topics = [
-  { name: "Agujeros Negros", emoji: "🕳️", category: "Astrofísica" },
-  { name: "Sistema Solar", emoji: "🪐", category: "Astronomía" },
-  { name: "Estrellas de Neutrones", emoji: "⭐", category: "Astrofísica" },
-  { name: "Galaxias", emoji: "🌌", category: "Astronomía" },
-  { name: "Exoplanetas", emoji: "🌍", category: "Astronomía" },
-  { name: "Auroras Boreales", emoji: "🌠", category: "Física Espacial" },
-  { name: "Agujeros de Gusano", emoji: "🔮", category: "Relatividad" },
-  { name: "Ecuación de Drake", emoji: "👽", category: "Astrobiología" },
-  { name: "Señal Wow!", emoji: "📡", category: "SETI" },
-  { name: "Robots Espaciales", emoji: "🤖", category: "Exploración" },
-  { name: "Supernovas", emoji: "💥", category: "Astroquímica" },
-  { name: "Tabla Periódica Cósmica", emoji: "⚗️", category: "Astroquímica" },
-  { name: "Cohetes Espaciales", emoji: "🚀", category: "Ingeniería" },
-  { name: "Vida Extraterrestre", emoji: "🛸", category: "Astrobiología" },
-  { name: "Luz y Gravedad (Einstein)", emoji: "💡", category: "Relatividad" },
-  { name: "Aritmética Astronómica", emoji: "🔢", category: "Astromatemáticas" },
+  { name: "Agujeros Negros", emoji: "🕳️", category: "Astrofísica", color: "#00D4FF" },
+  { name: "Sistema Solar", emoji: "🪐", category: "Astronomía", color: "#7B2FBE" },
+  { name: "Estrellas de Neutrones", emoji: "⭐", category: "Astrofísica", color: "#00D4FF" },
+  { name: "Galaxias", emoji: "🌌", category: "Astronomía", color: "#7B2FBE" },
+  { name: "Exoplanetas", emoji: "🌍", category: "Astronomía", color: "#7B2FBE" },
+  { name: "Auroras Boreales", emoji: "🌠", category: "Física Espacial", color: "#FF9A3C" },
+  { name: "Agujeros de Gusano", emoji: "🔮", category: "Relatividad", color: "#FFD166" },
+  { name: "Ecuación de Drake", emoji: "👽", category: "Astrobiología", color: "#00FFB3" },
+  { name: "Señal Wow!", emoji: "📡", category: "SETI", color: "#9B4DDE" },
+  { name: "Robots Espaciales", emoji: "🤖", category: "Exploración", color: "#FF6B9D" },
+  { name: "Supernovas", emoji: "💥", category: "Astroquímica", color: "#FFD166" },
+  { name: "Tabla Periódica Cósmica", emoji: "⚗️", category: "Astroquímica", color: "#FFD166" },
+  { name: "Cohetes Espaciales", emoji: "🚀", category: "Ingeniería", color: "#00D4FF" },
+  { name: "Vida Extraterrestre", emoji: "🛸", category: "Astrobiología", color: "#00FFB3" },
+  { name: "Luz y Gravedad (Einstein)", emoji: "💡", category: "Relatividad", color: "#FFD166" },
+  { name: "Aritmética Astronómica", emoji: "🔢", category: "Astromatemáticas", color: "#FF9A3C" },
 ];
-
-const categoryColors: Record<string, string> = {
-  "Astrofísica": "#4CC9F0",
-  "Astronomía": "#90E0EF",
-  "Física Espacial": "#F4A261",
-  "Relatividad": "#FFB347",
-  "Astrobiología": "#80B918",
-  "SETI": "#9B5DE5",
-  "Exploración": "#F15BB5",
-  "Astroquímica": "#FEE440",
-  "Ingeniería": "#00BBF9",
-  "Astromatemáticas": "#F4A261",
-};
 
 export default function TopicsSection() {
   return (
-    <section className="relative bg-[#050D1E] py-24 overflow-hidden">
+    <section className="relative py-28 overflow-hidden" style={{ background: "var(--cosmos-deep)" }}>
       {/* Background image with overlay */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-15"
-        style={{ backgroundImage: `url(${TELESCOPE_IMG})` }}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${TELESCOPE_IMG})`, opacity: 0.08 }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050D1E] via-transparent to-[#050D1E]" />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, var(--cosmos-deep), transparent 30%, transparent 70%, var(--cosmos-deep))" }} />
 
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
         {/* Header */}
@@ -55,17 +41,13 @@ export default function TopicsSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-14"
         >
-          <p className="section-label mb-3">Temas de Clase</p>
-          <h2 className="font-['Outfit'] text-4xl md:text-5xl font-black text-white leading-tight mb-5" style={{ fontWeight: 900 }}>
-            Explora el universo
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4CC9F0] to-[#90E0EF]">
-              tema por tema
-            </span>
+          <p className="section-label mb-4 justify-center">Temas de Clase</p>
+          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: "clamp(2rem, 5vw, 3.2rem)", color: "white", lineHeight: 1.1, marginBottom: "1rem" }}>
+            Explora el universo{" "}
+            <span className="cosmic-shimmer">tema por tema</span>
           </h2>
-          <p className="font-['Crimson_Pro'] text-xl text-[#8BA3C7] max-w-xl mx-auto">
-            Cada semana los estudiantes pueden elegir entre más de 5 temas diferentes.
-            Los temas se renuevan constantemente.
+          <p style={{ fontFamily: "'Lora', serif", fontSize: "1.05rem", color: "#7A6B9A", maxWidth: "500px", margin: "0 auto" }}>
+            Cada semana los estudiantes pueden elegir entre más de 5 temas diferentes. Los temas se renuevan constantemente.
           </p>
         </motion.div>
 
@@ -78,18 +60,17 @@ export default function TopicsSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="group cursor-default"
             >
-              <div className="cosmic-card rounded-2xl px-4 py-3 flex items-center gap-2.5">
+              <div
+                className="rounded-2xl px-4 py-3 flex items-center gap-2.5 transition-all duration-300 hover:scale-105"
+                style={{ background: `${topic.color}08`, border: `1px solid ${topic.color}20` }}
+              >
                 <span className="text-xl">{topic.emoji}</span>
                 <div>
-                  <p className="font-['Outfit'] text-sm font-600 text-white leading-tight" style={{ fontWeight: 600 }}>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "0.85rem", color: "white", lineHeight: 1.2 }}>
                     {topic.name}
                   </p>
-                  <p
-                    className="font-['Outfit'] text-[10px] font-semibold uppercase tracking-wider leading-tight"
-                    style={{ color: categoryColors[topic.category] || "#4CC9F0" }}
-                  >
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.6rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: topic.color, lineHeight: 1.2 }}>
                     {topic.category}
                   </p>
                 </div>
@@ -104,7 +85,8 @@ export default function TopicsSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center font-['Outfit'] text-sm text-[#4CC9F0] font-medium"
+          className="text-center"
+          style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "0.85rem", color: "#7B2FBE", fontWeight: 500 }}
         >
           ✨ Nuevos temas se agregan cada semana. ¡El universo nunca se acaba!
         </motion.p>

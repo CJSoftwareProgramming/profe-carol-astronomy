@@ -1,10 +1,11 @@
-/* =============================================================
-   PROFE CAROL — ACADEMIA DE ASTRONOMÍA
-   Design Philosophy: "Cosmic Academy" — Premium Educational Editorial
-   Dark cosmos as the stage. Deep navy/black backgrounds with luminous accents.
-   Typography: Outfit (headers) + Crimson Pro (body)
-   Palette: Deep space navy, electric blue (#4CC9F0), warm amber (#F4A261)
-   ============================================================= */
+/* ============================================================
+   PROFE CAROL ASTROPHYSICS ACADEMY — COSMIC REDESIGN v2
+   Design Philosophy: "Deep Field Observatory"
+   - Palette: Void black (#05030A) + electric violet (#7B2FBE) + nebula cyan (#00D4FF) + stellar gold (#FFD166)
+   - Typography: Space Grotesk (display) + Lora (body) — scientific yet warm
+   - Aesthetic: Hubble-quality imagery, glowing nebula gradients, star-field textures
+   - Motion: Parallax depth, orbital animations, stellar pulse effects
+   ============================================================ */
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -40,79 +41,97 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root {
-  --radius: 0.5rem;
+  /* Deep Field Observatory palette */
+  --cosmos-void: #05030A;
+  --cosmos-deep: #0A0514;
+  --cosmos-mid: #110A1E;
+  --cosmos-surface: #160D26;
+  --cosmos-card: #1C1130;
 
-  /* Deep Space Dark Theme */
-  --background: oklch(0.09 0.02 250);
-  --foreground: oklch(0.95 0.01 220);
+  --nebula-violet: #7B2FBE;
+  --nebula-violet-bright: #9B4DDE;
+  --nebula-cyan: #00D4FF;
+  --nebula-cyan-dim: #0099CC;
+  --stellar-gold: #FFD166;
+  --stellar-amber: #FF9A3C;
+  --nebula-pink: #FF6B9D;
+  --nebula-green: #00FFB3;
 
-  --card: oklch(0.12 0.025 250);
-  --card-foreground: oklch(0.95 0.01 220);
+  --text-primary: #F0EAFF;
+  --text-secondary: #B8A9D9;
+  --text-muted: #7A6B9A;
 
-  --popover: oklch(0.12 0.025 250);
-  --popover-foreground: oklch(0.95 0.01 220);
+  --radius: 0.75rem;
 
-  /* Electric Blue primary */
-  --primary: oklch(0.72 0.18 210);
-  --primary-foreground: oklch(0.08 0.02 250);
-
-  --secondary: oklch(0.16 0.03 250);
-  --secondary-foreground: oklch(0.85 0.01 220);
-
-  --muted: oklch(0.15 0.025 250);
-  --muted-foreground: oklch(0.6 0.04 230);
-
-  /* Warm amber accent */
-  --accent: oklch(0.75 0.15 55);
-  --accent-foreground: oklch(0.08 0.02 250);
-
-  --destructive: oklch(0.65 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
-
-  --border: oklch(0.25 0.04 250);
-  --input: oklch(0.18 0.03 250);
-  --ring: oklch(0.72 0.18 210);
-
-  --chart-1: oklch(0.72 0.18 210);
-  --chart-2: oklch(0.75 0.15 55);
-  --chart-3: oklch(0.65 0.14 280);
-  --chart-4: oklch(0.7 0.16 170);
-  --chart-5: oklch(0.68 0.18 30);
-
-  /* Custom cosmic colors */
-  --cosmic-navy: #03071E;
-  --cosmic-deep: #0A1628;
-  --cosmic-blue: #4CC9F0;
-  --cosmic-amber: #F4A261;
-  --cosmic-gold: #FFB347;
-  --cosmic-glow: rgba(76, 201, 240, 0.15);
-  --cosmic-amber-glow: rgba(244, 162, 97, 0.15);
+  /* Tailwind semantic tokens */
+  --background: oklch(0.06 0.02 290);
+  --foreground: oklch(0.94 0.02 290);
+  --card: oklch(0.1 0.025 290);
+  --card-foreground: oklch(0.94 0.02 290);
+  --popover: oklch(0.1 0.025 290);
+  --popover-foreground: oklch(0.94 0.02 290);
+  --primary: oklch(0.55 0.22 290);
+  --primary-foreground: oklch(0.98 0.005 290);
+  --secondary: oklch(0.14 0.025 290);
+  --secondary-foreground: oklch(0.85 0.02 290);
+  --muted: oklch(0.14 0.025 290);
+  --muted-foreground: oklch(0.6 0.04 290);
+  --accent: oklch(0.14 0.025 290);
+  --accent-foreground: oklch(0.94 0.02 290);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.55 0.22 290);
+  --chart-1: oklch(0.55 0.22 290);
+  --chart-2: oklch(0.75 0.15 200);
+  --chart-3: oklch(0.8 0.18 80);
+  --chart-4: oklch(0.65 0.2 340);
+  --chart-5: oklch(0.6 0.18 160);
+  --sidebar: oklch(0.1 0.025 290);
+  --sidebar-foreground: oklch(0.94 0.02 290);
+  --sidebar-primary: oklch(0.55 0.22 290);
+  --sidebar-primary-foreground: oklch(0.98 0.005 290);
+  --sidebar-accent: oklch(0.14 0.025 290);
+  --sidebar-accent-foreground: oklch(0.94 0.02 290);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.55 0.22 290);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Crimson Pro', Georgia, serif;
-    background-color: #03071E;
-    color: #E8F4FD;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', system-ui, sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    background-color: var(--cosmos-void);
+    color: var(--text-primary);
+    font-family: 'Lora', Georgia, serif;
+    overflow-x: hidden;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
   [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
   a[href],
-  select:not(:disabled) {
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
     @apply cursor-pointer;
   }
 }
@@ -143,92 +162,147 @@
     }
   }
 
-  /* Cosmic glow button */
-  .btn-cosmic {
-    background: linear-gradient(135deg, #4CC9F0, #0077B6);
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    border: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(76, 201, 240, 0.3);
+  /* ── Nebula card — glassy cosmic surface ── */
+  .nebula-card {
+    background: linear-gradient(135deg, rgba(123,47,190,0.12) 0%, rgba(0,212,255,0.06) 100%);
+    border: 1px solid rgba(123,47,190,0.25);
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
   }
-  .btn-cosmic:hover {
-    box-shadow: 0 0 35px rgba(76, 201, 240, 0.55);
-    transform: translateY(-2px);
-  }
-
-  /* Amber CTA button */
-  .btn-amber {
-    background: linear-gradient(135deg, #F4A261, #E76F51);
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    border: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(244, 162, 97, 0.3);
-  }
-  .btn-amber:hover {
-    box-shadow: 0 0 35px rgba(244, 162, 97, 0.55);
-    transform: translateY(-2px);
+  .nebula-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top left, rgba(123,47,190,0.08) 0%, transparent 60%);
+    pointer-events: none;
   }
 
-  /* Section heading style */
+  /* ── Stellar card — gold accent ── */
+  .stellar-card {
+    background: linear-gradient(135deg, rgba(255,209,102,0.1) 0%, rgba(255,154,60,0.06) 100%);
+    border: 1px solid rgba(255,209,102,0.25);
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── Section label ── */
   .section-label {
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #4CC9F0;
+    color: var(--nebula-cyan);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--nebula-cyan);
   }
 
-  /* Card cosmic style */
-  .cosmic-card {
-    background: linear-gradient(135deg, rgba(10, 22, 40, 0.9), rgba(3, 7, 30, 0.95));
-    border: 1px solid rgba(76, 201, 240, 0.15);
-    backdrop-filter: blur(10px);
+  /* ── Violet CTA button ── */
+  .btn-violet {
+    background: linear-gradient(135deg, #7B2FBE 0%, #9B4DDE 100%);
+    box-shadow: 0 0 30px rgba(123,47,190,0.5), 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(155,77,222,0.4);
+  }
+  .btn-violet:hover {
+    box-shadow: 0 0 50px rgba(123,47,190,0.7), 0 8px 25px rgba(0,0,0,0.4);
+    transform: translateY(-2px);
+  }
+
+  /* ── Gold CTA button ── */
+  .btn-gold {
+    background: linear-gradient(135deg, #FFD166 0%, #FF9A3C 100%);
+    box-shadow: 0 0 30px rgba(255,209,102,0.4), 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    color: #0A0514;
+    border: none;
+  }
+  .btn-gold:hover {
+    box-shadow: 0 0 50px rgba(255,209,102,0.6), 0 8px 25px rgba(0,0,0,0.4);
+    transform: translateY(-2px);
+  }
+
+  /* ── Cyan ghost button ── */
+  .btn-ghost-cyan {
+    background: rgba(0,212,255,0.08);
+    border: 1px solid rgba(0,212,255,0.35);
+    color: var(--nebula-cyan);
     transition: all 0.3s ease;
   }
-  .cosmic-card:hover {
-    border-color: rgba(76, 201, 240, 0.4);
-    box-shadow: 0 8px 40px rgba(76, 201, 240, 0.12);
-    transform: translateY(-4px);
+  .btn-ghost-cyan:hover {
+    background: rgba(0,212,255,0.15);
+    border-color: rgba(0,212,255,0.6);
+    box-shadow: 0 0 20px rgba(0,212,255,0.2);
   }
 
-  /* Star field animation */
+  /* ── Nebula glow divider ── */
+  .nebula-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(123,47,190,0.5), rgba(0,212,255,0.5), transparent);
+  }
+
+  /* ── Twinkling star dot ── */
   @keyframes twinkle {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.2); }
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.6); }
   }
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
+  .star-dot {
+    animation: twinkle 2s ease-in-out infinite;
   }
-  @keyframes orbit {
-    from { transform: rotate(0deg) translateX(40px) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+
+  /* ── Orbital pulse ── */
+  @keyframes orbital-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(123,47,190,0.4); }
+    50% { box-shadow: 0 0 0 12px rgba(123,47,190,0); }
   }
-  @keyframes glow-pulse {
-    0%, 100% { box-shadow: 0 0 20px rgba(76, 201, 240, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(76, 201, 240, 0.6); }
+  .orbital-pulse {
+    animation: orbital-pulse 2.5s ease-in-out infinite;
   }
-  @keyframes shimmer {
+
+  /* ── Nebula float ── */
+  @keyframes nebula-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-12px) rotate(1deg); }
+    66% { transform: translateY(-6px) rotate(-1deg); }
+  }
+  .nebula-float {
+    animation: nebula-float 8s ease-in-out infinite;
+  }
+
+  /* ── Cosmic shimmer ── */
+  @keyframes cosmic-shimmer {
     0% { background-position: -200% center; }
     100% { background-position: 200% center; }
   }
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  .cosmic-shimmer {
+    background: linear-gradient(90deg, var(--nebula-violet) 0%, var(--nebula-cyan) 25%, var(--stellar-gold) 50%, var(--nebula-cyan) 75%, var(--nebula-violet) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: cosmic-shimmer 4s linear infinite;
   }
-  .animate-float-slow {
-    animation: float 9s ease-in-out infinite;
-  }
-  .animate-glow-pulse {
-    animation: glow-pulse 3s ease-in-out infinite;
-  }
-  .animate-twinkle {
-    animation: twinkle 3s ease-in-out infinite;
+
+  /* ── Per-class badge ── */
+  .per-class-badge {
+    background: linear-gradient(135deg, rgba(0,255,179,0.15) 0%, rgba(0,212,255,0.1) 100%);
+    border: 1px solid rgba(0,255,179,0.3);
+    border-radius: 0.5rem;
+    padding: 0.35rem 0.75rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #00FFB3;
+    letter-spacing: 0.05em;
   }
 }

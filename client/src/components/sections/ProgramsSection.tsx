@@ -204,7 +204,7 @@ export default function ProgramsSection() {
 
               {/* Download pensum */}
               <a
-                href="#inscripcion"
+                href="https://drive.google.com/file/d/1pTFvgswMWzCOYmfDGMJuIuJafvZsykHr/view?usp=sharing"
                 className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-[#F4A261]/40 text-[#F4A261] font-['Outfit'] text-sm font-600 hover:bg-[#F4A261]/10 transition-all duration-300 mb-4"
                 style={{ fontWeight: 600 }}
               >

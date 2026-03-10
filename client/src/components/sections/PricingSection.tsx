@@ -2,7 +2,7 @@
    Design: Cosmic Academy — pricing cards with featured plan highlighted
    Buttons link directly to Stripe payment pages */
 import { motion } from "framer-motion";
-import { CheckCircle2, Star, Rocket, Telescope, ExternalLink } from "lucide-react";
+import { CheckCircle2, Star, Telescope, ExternalLink } from "lucide-react";
 import { useState } from "react";
 
 interface Plan {
@@ -250,8 +250,7 @@ export default function PricingSection() {
                   boxShadow: plan.featured ? `0 0 20px ${plan.color}30` : "none",
                 }}
               >
-                <Rocket className="w-4 h-4" />
-                Inscribir a mi hijo
+                Pagar con Stripe
                 <ExternalLink className="w-3.5 h-3.5 opacity-70" />
               </a>
               <p className="text-center font-['Outfit'] text-[10px] text-[#4A6080] mt-2">

@@ -63,7 +63,7 @@ export default function Navbar() {
           {/* CTA Button */}
           <div className="hidden md:block">
             <a
-              href="#inscripcion"
+              href="#precios"
               className="btn-amber px-5 py-2.5 rounded-full text-sm font-['Outfit'] font-700 text-white inline-block"
               style={{ fontWeight: 700 }}
             >
@@ -98,7 +98,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#inscripcion"
+            href="#precios"
             onClick={() => setMenuOpen(false)}
             className="btn-amber px-5 py-3 rounded-full text-sm font-['Outfit'] font-700 text-white inline-block w-full text-center mt-2"
             style={{ fontWeight: 700 }}

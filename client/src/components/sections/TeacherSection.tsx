@@ -95,7 +95,7 @@ export default function TeacherSection() {
             </div>
 
             {/* Quote card */}
-            <div className="absolute -bottom-6 -left-6 max-w-xs bg-[#0A1628] border border-[#4CC9F0]/30 rounded-2xl p-5 shadow-[0_8px_40px_rgba(76,201,240,0.15)]">
+            <div className="absolute -top-6 -right-6 max-w-xs bg-[#0A1628] border border-[#4CC9F0]/30 rounded-2xl p-5 shadow-[0_8px_40px_rgba(76,201,240,0.15)]">
               <p className="font-['Crimson_Pro'] text-base text-[#B8D4E8] italic leading-relaxed mb-3">
                 "El universo es demasiado fascinante para esperar a ser adultos para descubrirlo."
               </p>

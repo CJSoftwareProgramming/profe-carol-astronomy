@@ -14,7 +14,7 @@ const highlights = [
 
 export default function AboutSection() {
   return (
-    <section id="sobre" className="relative py-28 overflow-hidden" style={{ background: "var(--cosmos-void)" }}>
+    <section id="sobre" className="relative py-28 overflow-hidden" style={{ background: "rgba(5,3,10,0.75)" }}>
       {/* Planets image as subtle background strip */}
       <div className="absolute top-0 left-0 right-0 h-72 overflow-hidden">
         <img src={PLANETS_IMG} alt="" className="w-full h-full object-cover object-center opacity-15" />

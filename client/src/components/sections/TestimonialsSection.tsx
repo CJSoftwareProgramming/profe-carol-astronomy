@@ -55,7 +55,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="relative py-28 overflow-hidden" style={{ background: "var(--cosmos-deep)" }}>
+    <section className="relative py-28 overflow-hidden" style={{ background: "rgba(10,5,20,0.78)" }}>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(123,47,190,0.08) 0%, transparent 70%)" }} />
 
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">

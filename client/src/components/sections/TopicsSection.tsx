@@ -24,7 +24,7 @@ const topics = [
 
 export default function TopicsSection() {
   return (
-    <section className="relative py-28 overflow-hidden" style={{ background: "var(--cosmos-deep)" }}>
+    <section className="relative py-28 overflow-hidden" style={{ background: "rgba(10,5,20,0.78)" }}>
       {/* Background image with overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center"

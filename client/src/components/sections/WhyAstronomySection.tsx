@@ -43,7 +43,7 @@ const benefits = [
 
 export default function WhyAstronomySection() {
   return (
-    <section className="relative py-28 overflow-hidden" style={{ background: "var(--cosmos-void)" }}>
+    <section className="relative py-28 overflow-hidden" style={{ background: "rgba(5,3,10,0.75)" }}>
       <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(255,154,60,0.06) 0%, transparent 70%)" }} />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(0,212,255,0.06) 0%, transparent 70%)" }} />
 

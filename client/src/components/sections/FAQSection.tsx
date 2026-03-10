@@ -46,7 +46,7 @@ export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="relative py-28 overflow-hidden" style={{ background: "var(--cosmos-deep)" }}>
+    <section id="faq" className="relative py-28 overflow-hidden" style={{ background: "rgba(10,5,20,0.78)" }}>
       <div className="absolute bottom-0 left-0 w-[500px] h-[400px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(0,212,255,0.06) 0%, transparent 70%)" }} />
 
       <div className="container mx-auto px-4 lg:px-8 max-w-3xl relative z-10">

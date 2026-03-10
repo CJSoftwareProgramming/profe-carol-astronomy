@@ -293,6 +293,46 @@
     animation: cosmic-shimmer 4s linear infinite;
   }
 
+  /* ── Floating nebula orbs (decorative, CSS-only) ── */
+  @keyframes nebula-drift {
+    0%   { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    33%  { transform: translate(30px, -20px) scale(1.05); opacity: 0.8; }
+    66%  { transform: translate(-20px, 15px) scale(0.95); opacity: 0.5; }
+    100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  }
+  .nebula-orb {
+    animation: nebula-drift 18s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .nebula-orb-2 {
+    animation: nebula-drift 24s ease-in-out infinite reverse;
+    pointer-events: none;
+  }
+  .nebula-orb-3 {
+    animation: nebula-drift 30s ease-in-out infinite 5s;
+    pointer-events: none;
+  }
+
+  /* ── Shooting star CSS (for decorative elements) ── */
+  @keyframes shoot {
+    0%   { transform: translateX(0) translateY(0); opacity: 0; }
+    5%   { opacity: 1; }
+    80%  { opacity: 0.8; }
+    100% { transform: translateX(300px) translateY(150px); opacity: 0; }
+  }
+
+  /* ── Cosmic section overlay — makes sections semi-transparent so stars show through ── */
+  .cosmic-section {
+    position: relative;
+    background: transparent !important;
+  }
+  .cosmic-section-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
   /* ── Per-class badge ── */
   .per-class-badge {
     background: linear-gradient(135deg, rgba(0,255,179,0.15) 0%, rgba(0,212,255,0.1) 100%);

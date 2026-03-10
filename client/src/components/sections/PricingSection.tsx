@@ -139,7 +139,7 @@ export default function PricingSection() {
   const plans = tab === "recreational" ? recreationalPlans : academicPlans;
 
   return (
-    <section id="precios" className="relative py-28 overflow-hidden" style={{ background: "var(--cosmos-deep)" }}>
+    <section id="precios" className="relative py-28 overflow-hidden" style={{ background: "rgba(10,5,20,0.78)" }}>
       {/* Background nebula glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(123,47,190,0.12) 0%, transparent 70%)" }} />
       <div className="absolute bottom-0 right-0 w-[500px] h-[300px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(0,212,255,0.07) 0%, transparent 70%)" }} />

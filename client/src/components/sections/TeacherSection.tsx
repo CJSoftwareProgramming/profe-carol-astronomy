@@ -13,7 +13,7 @@ const credentials = [
 
 export default function TeacherSection() {
   return (
-    <section id="profesora" className="relative py-28 overflow-hidden" style={{ background: "var(--cosmos-void)" }}>
+    <section id="profesora" className="relative py-28 overflow-hidden" style={{ background: "rgba(5,3,10,0.75)" }}>
       {/* Nebula background */}
       <div className="absolute inset-0">
         <img src={NEBULA_BG} alt="" className="w-full h-full object-cover opacity-8" style={{ opacity: 0.08 }} />

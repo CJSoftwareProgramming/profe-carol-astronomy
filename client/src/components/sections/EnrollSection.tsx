@@ -39,7 +39,7 @@ export default function EnrollSection() {
   const inputFocusStyle = "focus:border-[#7B2FBE] focus:ring-1 focus:ring-[#7B2FBE]/30";
 
   return (
-    <section id="inscripcion" className="relative py-28 overflow-hidden" style={{ background: "var(--cosmos-deep)" }}>
+    <section id="inscripcion" className="relative py-28 overflow-hidden" style={{ background: "rgba(10,5,20,0.78)" }}>
       {/* Galaxy background */}
       <div className="absolute inset-0">
         <img src={GALAXY_BG} alt="" className="w-full h-full object-cover opacity-8" style={{ opacity: 0.08 }} />

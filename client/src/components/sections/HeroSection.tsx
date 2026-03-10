@@ -1,7 +1,6 @@
 /* HeroSection v2 — Deep Field Observatory design
    New galaxy background, violet/cyan/gold palette, Space Grotesk typography */
 import { motion } from "framer-motion";
-import StarField from "../StarField";
 import { Rocket, Star, Users, Clock, MessageCircle, ChevronDown } from "lucide-react";
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/hero-galaxy-new-mfg3LtxrXAV6g9ysyMM4mV.webp";
@@ -22,7 +21,6 @@ export default function HeroSection() {
       {/* Violet nebula glow left */}
       <div className="absolute -left-40 top-1/3 w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(123,47,190,0.18) 0%, transparent 70%)" }} />
 
-      <StarField className="opacity-50" />
 
       <div className="relative z-10 container mx-auto px-4 lg:px-8 max-w-7xl pt-28 pb-20">
         <div className="max-w-3xl">

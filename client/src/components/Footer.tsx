@@ -3,7 +3,7 @@ import { Telescope, Instagram, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer style={{ background: "#03010A", borderTop: "1px solid rgba(123,47,190,0.15)" }} className="py-14">
+    <footer style={{ background: "rgba(3,1,10,0.82)", borderTop: "1px solid rgba(123,47,190,0.15)" }} className="py-14">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
         <div className="grid md:grid-cols-3 gap-10 mb-10">
           {/* Brand */}

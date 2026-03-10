@@ -18,7 +18,7 @@ const academicBlocks = [
 
 export default function ProgramsSection() {
   return (
-    <section id="programas" className="relative py-28 overflow-hidden" style={{ background: "var(--cosmos-deep)" }}>
+    <section id="programas" className="relative py-28 overflow-hidden" style={{ background: "rgba(10,5,20,0.78)" }}>
       {/* Dot grid texture */}
       <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "radial-gradient(rgba(123,47,190,0.15) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
 

@@ -39,7 +39,7 @@ const achievements = [
 
 export default function StudentsSection() {
   return (
-    <section className="relative py-28 overflow-hidden" style={{ background: "var(--cosmos-void)" }}>
+    <section className="relative py-28 overflow-hidden" style={{ background: "rgba(5,3,10,0.75)" }}>
       <div className="absolute top-0 right-0 w-[500px] h-[400px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(255,209,102,0.06) 0%, transparent 70%)" }} />
 
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">

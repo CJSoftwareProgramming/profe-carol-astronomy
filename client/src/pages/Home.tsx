@@ -1,11 +1,10 @@
 /* Home.tsx — Profe Carol Astrophysics Academy
-   Design Philosophy: "Cosmic Academy" — Premium Educational Editorial
-   Dark cosmos as the stage. Deep navy/black backgrounds with luminous accents.
-   Typography: Outfit (headers) + Crimson Pro (body)
-   Palette: Deep space navy, electric blue (#4CC9F0), warm amber (#F4A261)
-   Sections order: Hero → About → Why Astronomy → Programs → Pricing → Workshops → Topics → Students → Testimonials → Teacher → FAQ → Enroll → Footer
+   Design Philosophy: "Deep Field Observatory" — cosmic dark background with
+   animated shooting stars, twinkling particles, and nebula glows throughout.
+   StarField is rendered as a fixed full-page canvas behind all sections.
 */
 import Navbar from "@/components/Navbar";
+import StarField from "@/components/StarField";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import WhyAstronomySection from "@/components/sections/WhyAstronomySection";
@@ -22,21 +21,26 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#03071E" }}>
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <WhyAstronomySection />
-      <ProgramsSection />
-      <PricingSection />
-      <WorkshopsSection />
-      <TopicsSection />
-      <StudentsSection />
-      <TestimonialsSection />
-      <TeacherSection />
-      <FAQSection />
-      <EnrollSection />
-      <Footer />
+    <div className="min-h-screen relative" style={{ backgroundColor: "#03071E" }}>
+      {/* Global cosmic background — fixed behind all sections */}
+      <StarField className="opacity-90" />
+
+      <div className="relative" style={{ zIndex: 1 }}>
+        <Navbar />
+        <HeroSection />
+        <AboutSection />
+        <WhyAstronomySection />
+        <ProgramsSection />
+        <PricingSection />
+        <WorkshopsSection />
+        <TopicsSection />
+        <StudentsSection />
+        <TestimonialsSection />
+        <TeacherSection />
+        <FAQSection />
+        <EnrollSection />
+        <Footer />
+      </div>
     </div>
   );
 }

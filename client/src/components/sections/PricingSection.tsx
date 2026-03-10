@@ -1,7 +1,8 @@
 /* PricingSection — Profe Carol Astrophysics Academy
-   Design: Cosmic Academy — pricing cards with featured plan highlighted */
+   Design: Cosmic Academy — pricing cards with featured plan highlighted
+   Buttons link directly to Stripe payment pages */
 import { motion } from "framer-motion";
-import { CheckCircle2, Star, Rocket, Telescope } from "lucide-react";
+import { CheckCircle2, Star, Rocket, Telescope, ExternalLink } from "lucide-react";
 import { useState } from "react";
 
 interface Plan {
@@ -13,6 +14,7 @@ interface Plan {
   badge?: string;
   color: string;
   bonus?: string;
+  stripeUrl: string;
 }
 
 const recreationalPlans: Plan[] = [
@@ -24,6 +26,7 @@ const recreationalPlans: Plan[] = [
     featured: true,
     badge: "Más Popular",
     color: "#4CC9F0",
+    stripeUrl: "https://buy.stripe.com/5kQaEWbiM4O05L70824Rq03",
   },
   {
     name: "Explorador Recreacional",
@@ -32,6 +35,7 @@ const recreationalPlans: Plan[] = [
     features: ["2 clases recreacionales por semana", "Acceso a todos los temas", "Horarios Jue–Dom", "Máx. 15 estudiantes"],
     featured: false,
     color: "#4CC9F0",
+    stripeUrl: "https://buy.stripe.com/8x2cN4euYdkwflH2ga4Rq02",
   },
   {
     name: "Avanzado Recreacional",
@@ -40,6 +44,7 @@ const recreationalPlans: Plan[] = [
     features: ["3 clases recreacionales por semana", "Acceso a todos los temas", "Horarios Jue–Dom", "Máx. 15 estudiantes"],
     featured: false,
     color: "#4CC9F0",
+    stripeUrl: "https://buy.stripe.com/aFa6oG3QkeoA8XjaMG4Rq04",
   },
 ];
 
@@ -56,6 +61,7 @@ const academicPlans: Plan[] = [
     ],
     featured: false,
     color: "#F4A261",
+    stripeUrl: "https://buy.stripe.com/5kQfZg5Ys2FS7Tf3ke4Rq0b",
   },
   {
     name: "Plan Académico Completo",
@@ -71,6 +77,7 @@ const academicPlans: Plan[] = [
     badge: "Recomendado",
     color: "#F4A261",
     bonus: "🔭 Telescopio Celestron de viaje tras 2 meses consecutivos",
+    stripeUrl: "https://buy.stripe.com/cNidR80E894g8XjcUO4Rq0c",
   },
   {
     name: "Plan Homeschool",
@@ -88,6 +95,7 @@ const academicPlans: Plan[] = [
     color: "#F4A261",
     badge: "Homeschool",
     bonus: "🔭 Telescopio Celestron de viaje tras 2 meses consecutivos",
+    stripeUrl: "https://buy.stripe.com/4gMdR8dqUdkw5L70824Rq0d",
   },
 ];
 
@@ -164,14 +172,10 @@ export default function PricingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`relative rounded-3xl overflow-hidden border transition-all duration-300 ${
-                plan.featured
-                  ? `border-[${plan.color}]/60 shadow-[0_0_50px_${plan.color}25] scale-105`
-                  : `border-[${plan.color}]/15 hover:border-[${plan.color}]/35`
-              } bg-gradient-to-br from-[#0A1628] to-[#03071E] p-7`}
+              className="relative rounded-3xl overflow-hidden border transition-all duration-300 bg-gradient-to-br from-[#0A1628] to-[#03071E] p-7"
               style={
                 plan.featured
-                  ? { borderColor: `${plan.color}60`, boxShadow: `0 0 50px ${plan.color}25` }
+                  ? { borderColor: `${plan.color}60`, boxShadow: `0 0 50px ${plan.color}25`, transform: "scale(1.03)" }
                   : { borderColor: `${plan.color}20` }
               }
             >
@@ -230,9 +234,12 @@ export default function PricingSection() {
                 </div>
               )}
 
+              {/* Stripe CTA */}
               <a
-                href="#inscripcion"
-                className="w-full py-3.5 rounded-xl text-sm font-['Outfit'] text-white text-center block transition-all duration-300"
+                href={plan.stripeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3.5 rounded-xl text-sm font-['Outfit'] text-center flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                 style={{
                   fontWeight: 700,
                   background: plan.featured
@@ -243,11 +250,13 @@ export default function PricingSection() {
                   boxShadow: plan.featured ? `0 0 20px ${plan.color}30` : "none",
                 }}
               >
-                <span className="flex items-center justify-center gap-2">
-                  <Rocket className="w-4 h-4" />
-                  Inscribir a mi hijo
-                </span>
+                <Rocket className="w-4 h-4" />
+                Inscribir a mi hijo
+                <ExternalLink className="w-3.5 h-3.5 opacity-70" />
               </a>
+              <p className="text-center font-['Outfit'] text-[10px] text-[#4A6080] mt-2">
+                Pago seguro con Stripe 🔒
+              </p>
             </motion.div>
           ))}
         </div>

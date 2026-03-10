@@ -138,13 +138,16 @@ export default function WorkshopsSection() {
           className="text-center mt-10"
         >
           <a
-            href="#inscripcion"
+            href="https://wa.me/447462994908?text=Hola%20Profe%20Carol%2C%20me%20interesa%20inscribirme%20en%20un%20taller%20mensual%20%F0%9F%9A%80"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-amber px-8 py-4 rounded-full text-base font-['Outfit'] text-white inline-flex items-center gap-2"
             style={{ fontWeight: 700 }}
           >
             <Zap className="w-5 h-5" />
-            Inscribirme en un Taller
+            Inscribirme en un Taller — $30 USD
           </a>
+          <p className="mt-3 font-['Outfit'] text-xs text-[#4A6080]">Te contactaremos por WhatsApp para coordinar el pago</p>
         </motion.div>
       </div>
     </section>

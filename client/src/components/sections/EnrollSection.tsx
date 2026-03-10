@@ -88,7 +88,9 @@ export default function EnrollSection() {
               <Phone className="w-5 h-5 text-[#25D366]" />
               <div>
                 <p className="font-['Outfit'] text-sm font-700 text-white" style={{ fontWeight: 700 }}>WhatsApp directo</p>
-                <p className="font-['Outfit'] text-xs text-[#25D366]">+44 7462 994908</p>
+                <p className="font-['Outfit'] text-sm font-black text-[#25D366]" style={{ fontWeight: 900 }}>
+                  +44 7462 994908
+                </p>
               </div>
             </a>
           </motion.div>

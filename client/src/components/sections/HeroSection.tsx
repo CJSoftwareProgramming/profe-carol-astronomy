@@ -1,11 +1,15 @@
 /* HeroSection — Profe Carol Astrophysics Academy
    Design: Cosmic Academy — full-bleed dark nebula hero with animated stars
-   Key message: Astronomía para niños 4-12 años, clases en vivo, cupos limitados */
+   Key message: Astronomía para niños 4-12 años, clases en vivo, cupos limitados
+   WhatsApp number prominently displayed */
 import { motion } from "framer-motion";
 import StarField from "../StarField";
-import { Rocket, Star, Users, Clock } from "lucide-react";
+import { Rocket, Star, Users, Clock, MessageCircle } from "lucide-react";
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/hero-nebula-DgF7eKHNQqftZQqY85Rctg.webp";
+
+const WHATSAPP_NUMBER = "+44 7462 994908";
+const WHATSAPP_LINK = "https://wa.me/447462994908";
 
 export default function HeroSection() {
   return (
@@ -61,7 +65,7 @@ export default function HeroSection() {
             className="inline-flex items-center gap-2 bg-[#F4A261]/15 border border-[#F4A261]/40 rounded-lg px-4 py-2 mb-6"
           >
             <Users className="w-4 h-4 text-[#F4A261]" />
-            <span className="font-['Outfit'] text-[#F4A261] text-sm font-700" style={{ fontWeight: 700 }}>
+            <span className="font-['Outfit'] text-[#F4A261] text-sm" style={{ fontWeight: 700 }}>
               Diseñado para niños de 4 a 12 años
             </span>
           </motion.div>
@@ -102,10 +106,10 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-wrap gap-4 mb-8"
           >
             <a
-              href="#inscripcion"
+              href="#precios"
               className="btn-amber px-8 py-4 rounded-full text-base font-['Outfit'] text-white inline-flex items-center gap-2 shadow-lg"
               style={{ fontWeight: 700 }}
             >
@@ -114,10 +118,36 @@ export default function HeroSection() {
             </a>
             <a
               href="#programas"
-              className="px-8 py-4 rounded-full text-base font-['Outfit'] font-600 text-white border border-white/20 hover:border-[#4CC9F0]/50 hover:bg-[#4CC9F0]/10 transition-all duration-300 inline-flex items-center gap-2"
+              className="px-8 py-4 rounded-full text-base font-['Outfit'] text-white border border-white/20 hover:border-[#4CC9F0]/50 hover:bg-[#4CC9F0]/10 transition-all duration-300 inline-flex items-center gap-2"
               style={{ fontWeight: 600 }}
             >
               Ver Programas
+            </a>
+          </motion.div>
+
+          {/* WhatsApp — prominent display */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.65 }}
+          >
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 group"
+            >
+              <div className="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center shadow-[0_0_20px_rgba(37,211,102,0.4)] group-hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] transition-all duration-300">
+                <MessageCircle className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <p className="font-['Outfit'] text-[10px] text-[#8BA3C7] uppercase tracking-widest leading-tight">
+                  ¿Tienes dudas? Escríbenos
+                </p>
+                <p className="font-['Outfit'] text-xl font-black text-white group-hover:text-[#25D366] transition-colors duration-300 leading-tight" style={{ fontWeight: 900 }}>
+                  {WHATSAPP_NUMBER}
+                </p>
+              </div>
             </a>
           </motion.div>
         </div>

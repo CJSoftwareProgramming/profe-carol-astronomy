@@ -1,3 +1,11 @@
+/* =============================================================
+   PROFE CAROL — ACADEMIA DE ASTRONOMÍA
+   Design Philosophy: "Cosmic Academy" — Premium Educational Editorial
+   Dark cosmos as the stage. Deep navy/black backgrounds with luminous accents.
+   Typography: Outfit (headers) + Crimson Pro (body)
+   Palette: Deep space navy, electric blue (#4CC9F0), warm amber (#F4A261)
+   ============================================================= */
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -32,85 +40,56 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
-}
+  --radius: 0.5rem;
 
-.dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.85 0.005 65);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.85 0.005 65);
-  --secondary: oklch(0.24 0.006 286.033);
-  --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.85 0.005 65);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
+  /* Deep Space Dark Theme */
+  --background: oklch(0.09 0.02 250);
+  --foreground: oklch(0.95 0.01 220);
+
+  --card: oklch(0.12 0.025 250);
+  --card-foreground: oklch(0.95 0.01 220);
+
+  --popover: oklch(0.12 0.025 250);
+  --popover-foreground: oklch(0.95 0.01 220);
+
+  /* Electric Blue primary */
+  --primary: oklch(0.72 0.18 210);
+  --primary-foreground: oklch(0.08 0.02 250);
+
+  --secondary: oklch(0.16 0.03 250);
+  --secondary-foreground: oklch(0.85 0.01 220);
+
+  --muted: oklch(0.15 0.025 250);
+  --muted-foreground: oklch(0.6 0.04 230);
+
+  /* Warm amber accent */
+  --accent: oklch(0.75 0.15 55);
+  --accent-foreground: oklch(0.08 0.02 250);
+
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  --border: oklch(0.25 0.04 250);
+  --input: oklch(0.18 0.03 250);
+  --ring: oklch(0.72 0.18 210);
+
+  --chart-1: oklch(0.72 0.18 210);
+  --chart-2: oklch(0.75 0.15 55);
+  --chart-3: oklch(0.65 0.14 280);
+  --chart-4: oklch(0.7 0.16 170);
+  --chart-5: oklch(0.68 0.18 30);
+
+  /* Custom cosmic colors */
+  --cosmic-navy: #03071E;
+  --cosmic-deep: #0A1628;
+  --cosmic-blue: #4CC9F0;
+  --cosmic-amber: #F4A261;
+  --cosmic-gold: #FFB347;
+  --cosmic-glow: rgba(76, 201, 240, 0.15);
+  --cosmic-amber-glow: rgba(244, 162, 97, 0.15);
 }
 
 @layer base {
@@ -119,59 +98,137 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Crimson Pro', Georgia, serif;
+    background-color: #03071E;
+    color: #E8F4FD;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
   [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
   a[href],
-  select:not(:disabled),
-  input[type="checkbox"]:not(:disabled),
-  input[type="radio"]:not(:disabled) {
+  select:not(:disabled) {
     @apply cursor-pointer;
   }
 }
 
 @layer components {
-  /**
-   * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
-   */
   .container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
+    padding-left: 1rem;
     padding-right: 1rem;
   }
-
   .flex {
     min-height: 0;
     min-width: 0;
   }
-
   @media (min-width: 640px) {
     .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
   }
-
   @media (min-width: 1024px) {
     .container {
-      padding-left: 2rem; /* 32px - desktop padding */
+      padding-left: 2rem;
       padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
+      max-width: 1280px;
     }
+  }
+
+  /* Cosmic glow button */
+  .btn-cosmic {
+    background: linear-gradient(135deg, #4CC9F0, #0077B6);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(76, 201, 240, 0.3);
+  }
+  .btn-cosmic:hover {
+    box-shadow: 0 0 35px rgba(76, 201, 240, 0.55);
+    transform: translateY(-2px);
+  }
+
+  /* Amber CTA button */
+  .btn-amber {
+    background: linear-gradient(135deg, #F4A261, #E76F51);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(244, 162, 97, 0.3);
+  }
+  .btn-amber:hover {
+    box-shadow: 0 0 35px rgba(244, 162, 97, 0.55);
+    transform: translateY(-2px);
+  }
+
+  /* Section heading style */
+  .section-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #4CC9F0;
+  }
+
+  /* Card cosmic style */
+  .cosmic-card {
+    background: linear-gradient(135deg, rgba(10, 22, 40, 0.9), rgba(3, 7, 30, 0.95));
+    border: 1px solid rgba(76, 201, 240, 0.15);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+  .cosmic-card:hover {
+    border-color: rgba(76, 201, 240, 0.4);
+    box-shadow: 0 8px 40px rgba(76, 201, 240, 0.12);
+    transform: translateY(-4px);
+  }
+
+  /* Star field animation */
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes orbit {
+    from { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+  }
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(76, 201, 240, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(76, 201, 240, 0.6); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-float-slow {
+    animation: float 9s ease-in-out infinite;
+  }
+  .animate-glow-pulse {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+  .animate-twinkle {
+    animation: twinkle 3s ease-in-out infinite;
   }
 }

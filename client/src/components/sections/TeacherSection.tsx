@@ -36,7 +36,7 @@ export default function TeacherSection() {
             </h2>
 
             <p className="font-['Crimson_Pro'] text-xl text-[#B8D4E8] leading-relaxed mb-4">
-              Estudió Astrofísica en el Reino Unido y soy una apasionada por las ciencias y por enseñarlas.
+              Estudio Astrofísica en el Reino Unido y soy una apasionada por las ciencias y por enseñarlas.
               Me encanta trabajar con niños curiosos y demostrarles que el universo no es demasiado difícil para ellos.
               En mis clases exploramos temas fascinantes de astronomía y física —muchas veces considerados avanzados—
               de una forma clara, divertida y llena de curiosidad.

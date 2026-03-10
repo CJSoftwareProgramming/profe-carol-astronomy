@@ -39,7 +39,7 @@ const faqs = [
   },
   {
     q: "¿Cómo me inscribo?",
-    a: "Completa el formulario de inscripción en esta página o contáctanos directamente por WhatsApp. Te responderemos en menos de 24 horas para coordinar los detalles y confirmar tu cupo.",
+    a: "Al elegir un paquete y realizar el pago, te llegará un correo con el acceso a la plataforma de estudio y los horarios disponibles. Puedes iniciar ese mismo día si hay horarios abiertos.",
   },
 ];
 

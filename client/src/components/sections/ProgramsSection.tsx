@@ -82,7 +82,7 @@ export default function ProgramsSection() {
               <div className="bg-[#4CC9F0]/8 border border-[#4CC9F0]/15 rounded-xl p-4 mb-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Calendar className="w-4 h-4 text-[#4CC9F0]" />
-                  <span className="font-['Outfit'] text-sm font-700 text-white" style={{ fontWeight: 700 }}>Horario</span>
+                  <span className="font-['Outfit'] text-sm font-700 text-white" style={{ fontWeight: 700 }}>Horarios</span>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   {["Jueves", "Viernes", "Sábado", "Domingo"].map(d => (

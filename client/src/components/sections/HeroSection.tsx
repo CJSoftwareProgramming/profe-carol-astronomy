@@ -78,7 +78,7 @@ export default function HeroSection() {
             className="font-['Crimson_Pro'] text-xl md:text-2xl text-[#B8D4E8] leading-relaxed mb-8 max-w-2xl"
           >
             Explora el universo con clases en vivo, experimentos y misiones espaciales.
-            Una academia inspirada en la NASA para los científicos del futuro.
+            Una academia inspirada en la NASA para los científicos y astronautas del futuro.
           </motion.p>
 
           {/* Stats row */}
@@ -92,7 +92,7 @@ export default function HeroSection() {
               { icon: <Star className="w-4 h-4" />, text: "Clases en vivo" },
               { icon: <Rocket className="w-4 h-4" />, text: "Experimentos espaciales" },
               { icon: <Clock className="w-4 h-4" />, text: "Horarios flexibles" },
-              { icon: <Users className="w-4 h-4" />, text: "Máx. 15 estudiantes" },
+              { icon: <Users className="w-4 h-4" />, text: "Máx. 15 estudiantes Por Clase" },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-[#8BA3C7]">
                 <span className="text-[#4CC9F0]">{item.icon}</span>

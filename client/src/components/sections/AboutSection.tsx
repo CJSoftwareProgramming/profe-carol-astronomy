@@ -91,13 +91,11 @@ export default function AboutSection() {
                 para mentes curiosas
               </span>
             </h2>
-            <p className="font-['Crimson_Pro'] text-lg text-[#B8D4E8] leading-relaxed mb-8">
-              Profe Carol Astrophysics Academy es una academia internacional de astronomía para niños,
-              diseñada para despertar la curiosidad científica desde temprana edad. Nuestras clases combinan
-              rigor académico con exploración divertida, inspiradas en la metodología de la NASA y el
-              National Geographic.
+            <p className="font-['Crimson_Pro'] text-lg text-[#B8D4E8] leading-relaxed mb-6">
+              En Sophia Academy creemos que los niños pueden entender mucho más de lo que los adultos imaginan.
+              Somos una de las primeras academias en enseñar astronomía avanzada a niños pequeños y la primera en enseñar astrofísica a pequeñitos desde los 4 años, combinando experimentos, simulaciones, juegos y exploración científica para hacer de la ciencia una experiencia emocionante desde el primer día.
             </p>
-            <p className="font-['Crimson_Pro'] text-lg text-[#B8D4E8] leading-relaxed mb-10">
+            <p className="font-['Crimson_Pro'] text-lg text-[#4CC9F0] leading-relaxed mb-10 italic">
               Cada clase es una misión espacial. Cada niño, un explorador del cosmos.
             </p>
 

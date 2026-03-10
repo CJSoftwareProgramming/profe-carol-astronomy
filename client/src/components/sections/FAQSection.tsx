@@ -1,5 +1,6 @@
-/* FAQSection v2 — Deep Field Observatory design */
-import { motion, AnimatePresence } from "framer-motion";
+/* FAQSection — Profe Carol Astrophysics Academy
+   Design: Cosmic Academy — accordion FAQ for parents */
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
@@ -38,7 +39,7 @@ const faqs = [
   },
   {
     q: "¿Cómo me inscribo?",
-    a: "Completa el formulario de inscripción en esta página o contáctanos directamente por WhatsApp al +44 7462 994908. Te responderemos en menos de 24 horas para coordinar los detalles y confirmar tu cupo.",
+    a: "Completa el formulario de inscripción en esta página o contáctanos directamente por WhatsApp. Te responderemos en menos de 24 horas para coordinar los detalles y confirmar tu cupo.",
   },
 ];
 
@@ -46,10 +47,10 @@ export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="relative py-28 overflow-hidden" style={{ background: "rgba(10,5,20,0.78)" }}>
-      <div className="absolute bottom-0 left-0 w-[500px] h-[400px] pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(0,212,255,0.06) 0%, transparent 70%)" }} />
+    <section id="faq" className="relative bg-[#03071E] py-24 overflow-hidden">
+      <div className="absolute bottom-0 left-0 w-[500px] h-[400px] bg-[#4CC9F0]/4 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="container mx-auto px-4 lg:px-8 max-w-3xl relative z-10">
+      <div className="container mx-auto px-4 lg:px-8 max-w-4xl relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -58,10 +59,13 @@ export default function FAQSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-14"
         >
-          <p className="section-label mb-4 justify-center">Preguntas Frecuentes</p>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: "clamp(2rem, 5vw, 3.2rem)", color: "white", lineHeight: 1.1 }}>
-            Resolvemos tus{" "}
-            <span className="cosmic-shimmer">dudas</span>
+          <p className="section-label mb-3">Preguntas Frecuentes</p>
+          <h2 className="font-['Outfit'] text-4xl md:text-5xl font-black text-white leading-tight mb-5" style={{ fontWeight: 900 }}>
+            Resolvemos tus
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4CC9F0] to-[#90E0EF]">
+              dudas
+            </span>
           </h2>
         </motion.div>
 
@@ -74,43 +78,32 @@ export default function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="rounded-2xl overflow-hidden transition-all duration-300"
-              style={{
-                background: open === i ? "rgba(123,47,190,0.1)" : "rgba(22,13,38,0.8)",
-                border: open === i ? "1px solid rgba(123,47,190,0.35)" : "1px solid rgba(255,255,255,0.06)",
-              }}
+              className={`cosmic-card rounded-2xl overflow-hidden transition-all duration-300 ${
+                open === i ? "border-[#4CC9F0]/40" : ""
+              }`}
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full flex items-center justify-between gap-4 p-5 text-left"
               >
-                <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "0.95rem", color: "white", lineHeight: 1.4 }}>
+                <span className="font-['Outfit'] text-base font-600 text-white leading-snug" style={{ fontWeight: 600 }}>
                   {faq.q}
                 </span>
                 <ChevronDown
-                  className="flex-shrink-0 transition-transform duration-300"
-                  style={{ width: "1.1rem", height: "1.1rem", color: "#7B2FBE", transform: open === i ? "rotate(180deg)" : "rotate(0deg)" }}
+                  className={`w-5 h-5 text-[#4CC9F0] flex-shrink-0 transition-transform duration-300 ${
+                    open === i ? "rotate-180" : ""
+                  }`}
                 />
               </button>
-              <AnimatePresence>
-                {open === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-5 pb-5">
-                      <div className="pt-3" style={{ borderTop: "1px solid rgba(123,47,190,0.15)" }}>
-                        <p style={{ fontFamily: "'Lora', serif", fontSize: "0.95rem", color: "#C4B5E0", lineHeight: 1.8 }}>
-                          {faq.a}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {open === i && (
+                <div className="px-5 pb-5">
+                  <div className="border-t border-[#4CC9F0]/10 pt-4">
+                    <p className="font-['Crimson_Pro'] text-base text-[#B8D4E8] leading-relaxed">
+                      {faq.a}
+                    </p>
+                  </div>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>

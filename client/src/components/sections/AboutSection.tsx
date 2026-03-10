@@ -15,12 +15,12 @@ const pillars = [
   {
     icon: <Microscope className="w-5 h-5" />,
     title: "Ciencia Real",
-    desc: "Astrofísica, astroquímica y astromatemáticas con rigor científico.",
+    desc: "Astrofísica, Astroquímica y Astromatemáticas con rigor científico.",
   },
   {
     icon: <Award className="w-5 h-5" />,
     title: "Certificación",
-    desc: "Certificado oficial al completar el programa académico.",
+    desc: "Certificado oficial de participación al completar el programa académico.",
   },
   {
     icon: <BookOpen className="w-5 h-5" />,

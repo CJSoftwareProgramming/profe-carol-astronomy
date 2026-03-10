@@ -11,10 +11,10 @@ const recreationalTopics = [
 ];
 
 const academicBlocks = [
-  { name: "Astrofísica", desc: "Luz, gravedad, relatividad y fenómenos extremos del universo." },
-  { name: "Astroquímica", desc: "Composición química de estrellas, nebulosas y planetas." },
-  { name: "Astromatemáticas", desc: "Aritmética, geometría y física aplicadas al cosmos." },
-  { name: "Astronomía", desc: "Observación, historia y exploración del universo." },
+  { name: "Astrofísica", desc: "6 Semanas de Clases + Laboratorio + Examen Final (Luz, gravedad, relatividad y fenómenos extremos del universo)" },
+  { name: "Astroquímica", desc: "6 Semanas de Clases + Laboratorio + Examen Final (Composición química de estrellas, nebulosas y planetas)" },
+  { name: "Astromatemáticas", desc: "6 Semanas de Clases + Laboratorio + Examen Final (Aritmética, geometría y física aplicadas al cosmos)" },
+  { name: "Astronomía", desc: "6 Semanas de Clases + Laboratorio + Examen Final (Observación, historia y exploración del universo)" },
 ];
 
 export default function ProgramsSection() {

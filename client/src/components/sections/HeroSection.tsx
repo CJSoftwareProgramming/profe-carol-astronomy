@@ -38,7 +38,7 @@ export default function HeroSection() {
           >
             <span className="w-2 h-2 rounded-full bg-[#4CC9F0] animate-pulse" />
             <span className="font-['Outfit'] text-[#4CC9F0] text-xs font-semibold tracking-[0.15em] uppercase">
-              Academia Internacional · Cupos Limitados
+              Academia Internacional · Cupos Disponibles
             </span>
           </motion.div>
 
@@ -50,7 +50,7 @@ export default function HeroSection() {
             className="font-['Outfit'] text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-4"
             style={{ fontWeight: 900 }}
           >
-            Astronomía
+            Astronomía y Astrofísica
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4CC9F0] to-[#90E0EF]">
               para Niños

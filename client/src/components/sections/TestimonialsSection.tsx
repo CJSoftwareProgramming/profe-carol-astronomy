@@ -6,16 +6,16 @@ import { Star, Quote } from "lucide-react";
 const testimonials = [
   {
     name: "María González",
-    role: "Mamá de Sofía, 8 años — Colombia",
-    text: "Mi hija lleva 6 meses en la academia y su amor por la ciencia ha crecido enormemente. Ahora me explica qué son los agujeros negros y cómo se forman las estrellas. ¡Increíble!",
+    role: "Mamá de Sofía, 5 años — Colombia",
+    text: "Mi hija lleva 3 meses en la academia y su amor por la ciencia ha crecido enormemente. Ahora me explica qué son los agujeros negros y cómo se forman las estrellas. ¡Increíble!",
     rating: 5,
     initials: "MG",
     color: "#4CC9F0",
   },
   {
     name: "Carlos Rodríguez",
-    role: "Papá de Mateo, 10 años — México",
-    text: "La Profe Carol tiene un don especial para explicar conceptos complejos de forma que los niños los entiendan y disfruten. Mateo no se pierde ninguna clase.",
+    role: "Papá de Nicolas, 8 años — México",
+    text: "La Profe Carol tiene un don especial para explicar conceptos complejos de forma que los niños los entiendan y disfruten. Nicolas no se pierde ninguna clase.",
     rating: 5,
     initials: "CR",
     color: "#F4A261",
@@ -30,7 +30,7 @@ const testimonials = [
   },
   {
     name: "Roberto Silva",
-    role: "Papá de Valentina, 11 años — España",
+    role: "Papá de Valentina, 8 años — España",
     text: "El programa académico es excelente. Valentina ha mejorado en matemáticas y física gracias a la metodología de la Profe Carol. Totalmente recomendado.",
     rating: 5,
     initials: "RS",
@@ -38,8 +38,8 @@ const testimonials = [
   },
   {
     name: "Lucía Fernández",
-    role: "Mamá de Diego, 9 años — Venezuela",
-    text: "La calidad de las clases es comparable a academias internacionales. La Profe Carol es muy profesional y los niños la adoran. Vale cada centavo.",
+    role: "Mamá de Diego, 6 años — Venezuela",
+    text: "La calidad de las clases es comparable a academias internacionales. La Profe Carol es muy profesional y los niños la adoran. Vale mucho la pena.",
     rating: 5,
     initials: "LF",
     color: "#4CC9F0",
@@ -47,7 +47,7 @@ const testimonials = [
   {
     name: "Patricia Morales",
     role: "Mamá de Isabella, 6 años — Chile",
-    text: "Empezamos con el programa recreacional y mi hija de 6 años ya conoce todos los planetas, sus características y hasta habla de exoplanetas. ¡Asombroso!",
+    text: "Empezamos con el programa recreacional y mi hija de 6 años ya conoce todos los planetas, sus características y hasta habla de exoplanetas. Nos encanta su pasión por la astronomía",
     rating: 5,
     initials: "PM",
     color: "#F4A261",
@@ -77,7 +77,7 @@ export default function TestimonialsSection() {
             </span>
           </h2>
           <p className="font-['Crimson_Pro'] text-xl text-[#8BA3C7] max-w-xl mx-auto">
-            Familias de toda América Latina y España confían en la Profe Carol para la educación científica de sus hijos.
+            Familias de toda América Latina y España confían en la Sophia Academy para la educación científica de sus hijos.
           </p>
         </motion.div>
 

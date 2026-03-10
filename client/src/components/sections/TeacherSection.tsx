@@ -36,14 +36,17 @@ export default function TeacherSection() {
             </h2>
 
             <p className="font-['Crimson_Pro'] text-xl text-[#B8D4E8] leading-relaxed mb-4">
-              Carol Jiménez es una apasionada de la astrofísica, actualmente estudiante universitaria
-              en el Reino Unido, con una misión clara: hacer que la ciencia del universo sea accesible,
-              emocionante y transformadora para los niños.
+              Estudió Astrofísica en el Reino Unido y soy una apasionada por las ciencias y por enseñarlas.
+              Me encanta trabajar con niños curiosos y demostrarles que el universo no es demasiado difícil para ellos.
+              En mis clases exploramos temas fascinantes de astronomía y física —muchas veces considerados avanzados—
+              de una forma clara, divertida y llena de curiosidad.
             </p>
             <p className="font-['Crimson_Pro'] text-xl text-[#B8D4E8] leading-relaxed mb-8">
-              Su metodología combina el rigor académico de las mejores universidades del mundo con
-              una pedagogía diseñada especialmente para mentes jóvenes y curiosas. Cada clase es
-              una aventura científica real.
+              Para mí lo más importante es escuchar a cada estudiante, responder sus preguntas y conversar con ellos
+              mientras descubrimos juntos cómo funciona el universo. Mi mayor sueño es llegar a muchos chiquitines
+              que sienten una fascinación especial por la ciencia y el espacio, y acompañarlos desde pequeños para
+              que nunca pierdan esa curiosidad por entender el cosmos. Estoy segura de que mi academia es la cuna
+              de muchos futuros astronautas y científicos.
             </p>
 
             {/* Credentials */}

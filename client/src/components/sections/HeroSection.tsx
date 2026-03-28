@@ -31,7 +31,7 @@ export default function HeroSection() {
       }}
     >
       <div className="container">
-        <div style={{ maxWidth: "780px" }}>
+        <div style={{ maxWidth: "780px", margin: "0 auto", textAlign: "center" }}>
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -105,7 +105,7 @@ export default function HeroSection() {
               color: "rgba(255,248,240,0.65)",
               lineHeight: 1.7,
               maxWidth: "580px",
-              marginBottom: "32px",
+              margin: "0 auto 32px",
             }}
           >
             Explora el universo con clases en vivo, experimentos y misiones
@@ -162,7 +162,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginBottom: "52px" }}
+            style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginBottom: "52px", justifyContent: "center" }}
           >
             <a href="#precios" className="btn-solar">
               🌟 Ver Paquetes
@@ -182,6 +182,7 @@ export default function HeroSection() {
               gridTemplateColumns: "repeat(2, 1fr)",
               gap: "12px",
               maxWidth: "480px",
+              margin: "0 auto",
             }}
             className="sm:grid-cols-4"
           >

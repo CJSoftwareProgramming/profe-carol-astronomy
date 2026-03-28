@@ -15,7 +15,7 @@ export default function SolarSystemBackground() {
           right: 0,
           width: "65vw",
           height: "75vh",
-          backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/saturn-bg-H66MWvfjiJ3h4ju5vcrQzS.webp')`,
+          backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/bg-saturn-rings-TPCPewgcwYK7asY7JKFh7n.webp')`,
           backgroundSize: "cover",
           backgroundPosition: "top right",
           backgroundRepeat: "no-repeat",

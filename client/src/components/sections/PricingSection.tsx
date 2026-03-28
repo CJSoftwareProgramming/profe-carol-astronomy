@@ -4,7 +4,7 @@
    Cards: glass-card with color borders, transparent bg */
 
 import { motion } from "framer-motion";
-import { CheckCircle2, Star, Telescope, ExternalLink } from "lucide-react";
+import { CheckCircle2, Star } from "lucide-react";
 import { useState } from "react";
 
 interface Plan {
@@ -25,7 +25,7 @@ const recreationalPlans: Plan[] = [
     name: "Básico Recreacional",
     price: 28,
     perClass: "≈ $7 / clase",
-    period: "al mes",
+    period: "/ mes",
     features: ["1 clase recreacional por semana", "Acceso a todos los temas", "Horarios Jue–Dom", "Máx. 15 estudiantes"],
     featured: false,
     color: "#60A5FA",
@@ -35,7 +35,7 @@ const recreationalPlans: Plan[] = [
     name: "Explorador",
     price: 49,
     perClass: "≈ $6 / clase",
-    period: "al mes",
+    period: "/ mes",
     features: ["2 clases recreacionales por semana", "Acceso a todos los temas", "Horarios Jue–Dom", "Máx. 15 estudiantes"],
     featured: true,
     badge: "Más Popular",
@@ -46,7 +46,7 @@ const recreationalPlans: Plan[] = [
     name: "Avanzado",
     price: 59,
     perClass: "≈ $5 / clase",
-    period: "al mes",
+    period: "/ mes",
     features: ["3 clases recreacionales por semana", "Acceso a todos los temas", "Horarios Jue–Dom", "Máx. 15 estudiantes"],
     featured: false,
     color: "#34D399",
@@ -58,13 +58,14 @@ const academicPlans: Plan[] = [
   {
     name: "Académico Esencial",
     price: 60,
-    perClass: "≈ $5 / clase",
-    period: "al mes",
+    perClass: "Suscripción mensual · ~4 clases académicas",
+    period: "/ mes",
     features: [
-      "1 clase académica semanal",
-      "2 clases recreacionales",
+      "1 clase académica por semana",
+      "2 clases recreacionales incluidas",
       "50% descuento en talleres",
       "1 laboratorio al mes",
+      "Tareas + quices + evaluación",
     ],
     featured: false,
     color: "#FB923C",
@@ -73,13 +74,15 @@ const academicPlans: Plan[] = [
   {
     name: "Académico Completo",
     price: 80,
-    perClass: "≈ $10 / clase académica",
-    period: "al mes",
+    perClass: "Suscripción mensual · ~8 clases académicas",
+    period: "/ mes",
     features: [
-      "2 clases académicas semanales",
+      "2 clases académicas por semana",
       "Clases recreacionales ilimitadas",
       "1 taller gratis al mes",
       "2 laboratorios al mes",
+      "Tareas + quices + evaluación",
+      "Certificado al completar módulo",
     ],
     featured: true,
     badge: "Recomendado",
@@ -90,10 +93,10 @@ const academicPlans: Plan[] = [
   {
     name: "Homeschool",
     price: 100,
-    perClass: "≈ $10 / clase académica",
-    period: "al mes",
+    perClass: "Suscripción mensual · ~12 clases académicas",
+    period: "/ mes",
     features: [
-      "3 clases académicas semanales",
+      "3 clases académicas por semana",
       "Clases recreacionales ilimitadas",
       "Talleres ilimitados",
       "3 laboratorios al mes",
@@ -170,11 +173,11 @@ export default function PricingSection() {
             fontFamily: "'Nunito', sans-serif",
             fontSize: "16px",
             color: "rgba(255,248,240,0.55)",
-            maxWidth: "480px",
+            maxWidth: "520px",
             margin: "0 auto",
             lineHeight: 1.6,
           }}>
-            Pago mensual, sin contratos. Cancela cuando quieras.
+            Suscripción mensual, sin contratos. Cancela cuando quieras.
           </p>
         </motion.div>
 
@@ -220,6 +223,41 @@ export default function PricingSection() {
             ))}
           </div>
         </motion.div>
+
+        {/* Academic note */}
+        {tab === "academic" && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            style={{
+              background: "rgba(255,210,63,0.07)",
+              border: "1px solid rgba(255,210,63,0.22)",
+              borderRadius: "14px",
+              padding: "14px 20px",
+              marginBottom: "32px",
+              display: "flex",
+              alignItems: "flex-start",
+              gap: "12px",
+              maxWidth: "720px",
+              margin: "0 auto 32px auto",
+            }}
+          >
+            <span style={{ fontSize: "20px", flexShrink: 0 }}>📋</span>
+            <p style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "14px",
+              fontWeight: 600,
+              color: "rgba(255,248,240,0.75)",
+              lineHeight: 1.6,
+              margin: 0,
+            }}>
+              <strong style={{ color: "#FFD23F" }}>Programa Académico:</strong> Es una suscripción mensual con currículo progresivo.
+              Cada módulo dura 6 semanas e incluye laboratorio y examen final. Los módulos se cursan en secuencia
+              y el certificado se entrega al completar el programa completo.
+            </p>
+          </motion.div>
+        )}
 
         {/* Plans grid */}
         <div style={{
@@ -312,7 +350,7 @@ export default function PricingSection() {
                 </span>
               </div>
 
-              {/* Per class */}
+              {/* Per class / subscription label */}
               <div style={{
                 fontFamily: "'Nunito', sans-serif",
                 fontSize: "12px",
@@ -349,15 +387,15 @@ export default function PricingSection() {
               {/* Bonus */}
               {plan.bonus && (
                 <div style={{
-                  background: `${plan.color}0A`,
-                  borderLeft: `3px solid ${plan.color}`,
-                  borderRadius: "0 10px 10px 0",
-                  padding: "10px 14px",
+                  background: "rgba(255,210,63,0.07)",
+                  border: "1px solid rgba(255,210,63,0.20)",
+                  borderRadius: "10px",
+                  padding: "10px 12px",
                   marginBottom: "20px",
                   fontFamily: "'Nunito', sans-serif",
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  color: plan.color,
+                  fontSize: "12px",
+                  fontWeight: 700,
+                  color: "#FFD23F",
                   lineHeight: 1.5,
                 }}>
                   {plan.bonus}
@@ -373,31 +411,32 @@ export default function PricingSection() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  gap: "6px",
+                  gap: "8px",
                   width: "100%",
-                  padding: "13px",
+                  padding: "14px",
                   borderRadius: "12px",
+                  background: plan.featured
+                    ? `linear-gradient(135deg, ${plan.color}, ${plan.color}cc)`
+                    : "transparent",
+                  border: plan.featured ? "none" : `1px solid ${plan.color}55`,
+                  color: plan.featured ? "#020408" : plan.color,
                   fontFamily: "'Nunito', sans-serif",
-                  fontSize: "14px",
+                  fontSize: "15px",
                   fontWeight: 800,
                   textDecoration: "none",
+                  cursor: "pointer",
                   transition: "all 0.25s ease",
-                  background: plan.featured
-                    ? `linear-gradient(135deg, ${plan.color}, ${plan.color}CC)`
-                    : "transparent",
-                  border: plan.featured ? "none" : `1px solid ${plan.color}44`,
-                  color: plan.featured ? "#020408" : plan.color,
-                  boxShadow: plan.featured ? `0 8px 24px ${plan.color}30` : "none",
+                  boxShadow: plan.featured ? `0 8px 30px ${plan.color}35` : "none",
                 }}
               >
-                Pagar con Stripe
-                <ExternalLink size={13} style={{ opacity: 0.7 }} />
+                🚀 Suscribirme ahora
               </a>
               <p style={{
-                textAlign: "center",
                 fontFamily: "'Nunito', sans-serif",
-                fontSize: "10px",
+                fontSize: "11px",
+                fontWeight: 600,
                 color: "rgba(255,248,240,0.30)",
+                textAlign: "center",
                 marginTop: "8px",
               }}>
                 Pago seguro con Stripe 🔒

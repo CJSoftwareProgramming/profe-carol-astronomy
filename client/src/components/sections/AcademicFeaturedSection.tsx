@@ -236,36 +236,7 @@ export default function AcademicFeaturedSection() {
                 </span>
               </div>
 
-              {/* Price + CTA */}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "4px" }}>
-                <div>
-                  <div style={{
-                    fontFamily: "'Fredoka One', cursive",
-                    fontSize: "28px",
-                    color: "#FFD23F",
-                    lineHeight: 1,
-                  }}>
-                    {subject.price}
-                  </div>
-                  <div style={{
-                    fontFamily: "'Nunito', sans-serif",
-                    fontSize: "11px",
-                    color: "rgba(255,248,240,0.40)",
-                    fontWeight: 700,
-                  }}>
-                    ≈ $5–10 / clase
-                  </div>
-                </div>
-                <a
-                  href={subject.stripeLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-solar"
-                  style={{ padding: "10px 18px", fontSize: "13px" }}
-                >
-                  Inscribirse
-                </a>
-              </div>
+
             </motion.div>
           ))}
         </div>

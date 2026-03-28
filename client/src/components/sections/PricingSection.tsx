@@ -1,26 +1,13 @@
 /* PricingSection — Sophia Academy Brand
+   Layout: Two clearly separated blocks — Recreational (top) + Academic (bottom, highlighted)
    Font: Fredoka One (prices) + Nunito (body/labels)
    Colors: #FFD23F stellar yellow, #FB923C solar orange
    Cards: glass-card with color borders, transparent bg */
 
 import { motion } from "framer-motion";
 import { CheckCircle2, Star } from "lucide-react";
-import { useState } from "react";
 
-interface Plan {
-  name: string;
-  price: number;
-  perClass: string;
-  period: string;
-  features: string[];
-  featured: boolean;
-  badge?: string;
-  color: string;
-  bonus?: string;
-  stripeUrl: string;
-}
-
-const recreationalPlans: Plan[] = [
+const recreationalPlans = [
   {
     name: "Básico Recreacional",
     price: 28,
@@ -54,7 +41,7 @@ const recreationalPlans: Plan[] = [
   },
 ];
 
-const academicPlans: Plan[] = [
+const academicPlans = [
   {
     name: "Académico Esencial",
     price: 60,
@@ -111,10 +98,180 @@ const academicPlans: Plan[] = [
   },
 ];
 
-export default function PricingSection() {
-  const [tab, setTab] = useState<"recreational" | "academic">("recreational");
-  const plans: Plan[] = tab === "recreational" ? recreationalPlans : academicPlans;
+function PlanCard({ plan, i }: { plan: typeof recreationalPlans[0] & { bonus?: string; badge?: string }, i: number }) {
+  return (
+    <motion.div
+      key={plan.name}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: i * 0.1 }}
+      style={{
+        position: "relative",
+        background: "rgba(10,12,20,0.82)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        border: `1px solid ${plan.featured ? plan.color + "55" : plan.color + "22"}`,
+        borderRadius: "20px",
+        padding: "28px",
+        transform: plan.featured ? "scale(1.03)" : "scale(1)",
+        boxShadow: plan.featured ? `0 20px 60px ${plan.color}25` : "none",
+      }}
+    >
+      {plan.featured && (
+        <div style={{
+          position: "absolute",
+          top: 0, left: 0, right: 0,
+          height: "3px",
+          background: `linear-gradient(90deg, ${plan.color}, ${plan.color}88)`,
+          borderRadius: "20px 20px 0 0",
+        }} />
+      )}
 
+      {plan.badge && (
+        <div style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "5px",
+          fontFamily: "'Nunito', sans-serif",
+          fontSize: "11px",
+          fontWeight: 800,
+          letterSpacing: "0.06em",
+          textTransform: "uppercase",
+          color: plan.color,
+          background: `${plan.color}15`,
+          border: `1px solid ${plan.color}30`,
+          borderRadius: "20px",
+          padding: "3px 10px",
+          marginBottom: "14px",
+        }}>
+          <Star size={10} />
+          {plan.badge}
+        </div>
+      )}
+
+      <h3 style={{
+        fontFamily: "'Fredoka One', cursive",
+        fontSize: "20px",
+        color: "#FFF8F0",
+        marginBottom: "16px",
+        lineHeight: 1.2,
+      }}>
+        {plan.name}
+      </h3>
+
+      <div style={{ display: "flex", alignItems: "flex-end", gap: "6px", marginBottom: "4px" }}>
+        <span style={{
+          fontFamily: "'Fredoka One', cursive",
+          fontSize: "52px",
+          color: "#FFF8F0",
+          lineHeight: 1,
+        }}>
+          ${plan.price}
+        </span>
+        <span style={{
+          fontFamily: "'Nunito', sans-serif",
+          fontSize: "13px",
+          color: "rgba(255,248,240,0.45)",
+          fontWeight: 600,
+          marginBottom: "8px",
+        }}>
+          USD {plan.period}
+        </span>
+      </div>
+
+      <div style={{
+        fontFamily: "'Nunito', sans-serif",
+        fontSize: "12px",
+        fontWeight: 800,
+        color: plan.color,
+        background: `${plan.color}12`,
+        border: `1px solid ${plan.color}25`,
+        borderRadius: "8px",
+        padding: "4px 10px",
+        display: "inline-block",
+        marginBottom: "20px",
+      }}>
+        {plan.perClass}
+      </div>
+
+      <ul style={{ listStyle: "none", padding: 0, margin: "0 0 20px 0", display: "flex", flexDirection: "column", gap: "10px" }}>
+        {plan.features.map((f) => (
+          <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
+            <CheckCircle2 size={15} style={{ color: plan.color, flexShrink: 0, marginTop: "2px" }} />
+            <span style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "14px",
+              fontWeight: 400,
+              color: "rgba(255,248,240,0.70)",
+              lineHeight: 1.5,
+            }}>
+              {f}
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      {plan.bonus && (
+        <div style={{
+          background: "rgba(255,210,63,0.07)",
+          border: "1px solid rgba(255,210,63,0.20)",
+          borderRadius: "10px",
+          padding: "10px 12px",
+          marginBottom: "20px",
+          fontFamily: "'Nunito', sans-serif",
+          fontSize: "12px",
+          fontWeight: 700,
+          color: "#FFD23F",
+          lineHeight: 1.5,
+        }}>
+          {plan.bonus}
+        </div>
+      )}
+
+      <a
+        href={plan.stripeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "8px",
+          width: "100%",
+          padding: "14px",
+          borderRadius: "12px",
+          background: plan.featured
+            ? `linear-gradient(135deg, ${plan.color}, ${plan.color}cc)`
+            : "transparent",
+          border: plan.featured ? "none" : `1px solid ${plan.color}55`,
+          color: plan.featured ? "#020408" : plan.color,
+          fontFamily: "'Nunito', sans-serif",
+          fontSize: "15px",
+          fontWeight: 800,
+          textDecoration: "none",
+          cursor: "pointer",
+          transition: "all 0.25s ease",
+          boxShadow: plan.featured ? `0 8px 30px ${plan.color}35` : "none",
+        }}
+      >
+        🚀 Suscribirme ahora
+      </a>
+      <p style={{
+        fontFamily: "'Nunito', sans-serif",
+        fontSize: "11px",
+        fontWeight: 600,
+        color: "rgba(255,248,240,0.30)",
+        textAlign: "center",
+        marginTop: "8px",
+      }}>
+        Pago seguro con Stripe 🔒
+      </p>
+    </motion.div>
+  );
+}
+
+export default function PricingSection() {
   return (
     <section
       id="precios"
@@ -124,24 +281,96 @@ export default function PricingSection() {
         padding: "100px 0",
       }}
     >
-      {/* Subtle glow */}
       <div style={{
         position: "absolute",
         inset: 0,
-        background: "radial-gradient(ellipse at 50% 50%, rgba(255,210,63,0.04) 0%, transparent 60%)",
+        background: "radial-gradient(ellipse at 50% 50%, rgba(255,210,63,0.03) 0%, transparent 60%)",
         pointerEvents: "none",
       }} />
 
       <div className="container" style={{ position: "relative" }}>
-        {/* Header */}
+
+        {/* ── BLOQUE 1: RECREACIONAL ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: "48px" }}
+          style={{ textAlign: "center", marginBottom: "40px" }}
         >
-          <div style={{ marginBottom: "14px" }}>
+          <div style={{ marginBottom: "12px" }}>
+            <span style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "11px",
+              fontWeight: 800,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: "#FB923C",
+              background: "rgba(251,146,60,0.10)",
+              border: "1px solid rgba(251,146,60,0.25)",
+              borderRadius: "20px",
+              padding: "4px 14px",
+            }}>
+              ⭐ Programa Recreacional
+            </span>
+          </div>
+          <h2 style={{
+            fontFamily: "'Fredoka One', cursive",
+            fontSize: "clamp(26px, 4vw, 42px)",
+            fontWeight: 400,
+            color: "#FFF8F0",
+            lineHeight: 1.15,
+            marginBottom: "10px",
+          }}>
+            Explora el universo{" "}
+            <span style={{ color: "#FB923C" }}>con diversión</span>
+          </h2>
+          <p style={{
+            fontFamily: "'Nunito', sans-serif",
+            fontSize: "15px",
+            color: "rgba(255,248,240,0.50)",
+            maxWidth: "460px",
+            margin: "0 auto",
+            lineHeight: 1.6,
+          }}>
+            Clases en vivo, temas fascinantes, sin presión académica. Suscripción mensual, cancela cuando quieras.
+          </p>
+        </motion.div>
+
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "24px",
+          marginBottom: "80px",
+        }}>
+          {recreationalPlans.map((plan, i) => (
+            <PlanCard key={plan.name} plan={plan} i={i} />
+          ))}
+        </div>
+
+        {/* ── DIVIDER ── */}
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          style={{
+            height: "1px",
+            background: "linear-gradient(90deg, transparent, rgba(255,210,63,0.35), rgba(251,146,60,0.35), transparent)",
+            marginBottom: "80px",
+            borderRadius: "1px",
+          }}
+        />
+
+        {/* ── BLOQUE 2: ACADÉMICO ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: "center", marginBottom: "40px" }}
+        >
+          <div style={{ marginBottom: "12px" }}>
             <span style={{
               fontFamily: "'Nunito', sans-serif",
               fontSize: "11px",
@@ -149,299 +378,67 @@ export default function PricingSection() {
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               color: "#FFD23F",
-              background: "rgba(255,210,63,0.1)",
-              border: "1px solid rgba(255,210,63,0.25)",
+              background: "rgba(255,210,63,0.12)",
+              border: "1px solid rgba(255,210,63,0.35)",
               borderRadius: "20px",
               padding: "4px 14px",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
             }}>
-              💫 Paquetes de Clases
+              🔭 Programa Académico Certificado
             </span>
           </div>
           <h2 style={{
             fontFamily: "'Fredoka One', cursive",
-            fontSize: "clamp(30px, 5vw, 50px)",
+            fontSize: "clamp(26px, 4vw, 42px)",
             fontWeight: 400,
             color: "#FFF8F0",
             lineHeight: 1.15,
-            marginBottom: "12px",
+            marginBottom: "10px",
           }}>
-            Elige tu plan y{" "}
-            <span style={{ color: "#FFD23F" }}>comienza</span>{" "}
-            <span style={{ color: "#FB923C" }}>tu misión</span>
+            Astrofísica real,{" "}
+            <span style={{ color: "#FFD23F" }}>con certificado</span>
           </h2>
           <p style={{
             fontFamily: "'Nunito', sans-serif",
-            fontSize: "16px",
-            color: "rgba(255,248,240,0.55)",
+            fontSize: "15px",
+            color: "rgba(255,248,240,0.50)",
             maxWidth: "520px",
-            margin: "0 auto",
+            margin: "0 auto 20px",
             lineHeight: 1.6,
           }}>
-            Suscripción mensual, sin contratos. Cancela cuando quieras.
+            Suscripción mensual con currículo progresivo. Módulos de 6 semanas con laboratorio y examen final.
           </p>
-        </motion.div>
-
-        {/* Tab switcher */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          style={{ display: "flex", justifyContent: "center", marginBottom: "48px" }}
-        >
+          {/* Academic info pill */}
           <div style={{
             display: "inline-flex",
-            background: "rgba(10,12,20,0.80)",
-            border: "1px solid rgba(255,255,255,0.08)",
-            borderRadius: "40px",
-            padding: "4px",
-            gap: "4px",
+            alignItems: "center",
+            gap: "10px",
+            background: "rgba(255,210,63,0.07)",
+            border: "1px solid rgba(255,210,63,0.22)",
+            borderRadius: "12px",
+            padding: "10px 20px",
           }}>
-            {[
-              { key: "recreational", label: "⭐ Recreacional", activeColor: "#FB923C" },
-              { key: "academic", label: "🔭 Académico", activeColor: "#FFD23F" },
-            ].map((t) => (
-              <button
-                key={t.key}
-                onClick={() => setTab(t.key as "recreational" | "academic")}
-                style={{
-                  fontFamily: "'Nunito', sans-serif",
-                  fontSize: "14px",
-                  fontWeight: 800,
-                  padding: "10px 24px",
-                  borderRadius: "36px",
-                  border: "none",
-                  cursor: "pointer",
-                  transition: "all 0.25s ease",
-                  background: tab === t.key ? t.activeColor : "transparent",
-                  color: tab === t.key ? "#020408" : "rgba(255,248,240,0.55)",
-                  boxShadow: tab === t.key ? `0 0 20px ${t.activeColor}40` : "none",
-                }}
-              >
-                {t.label}
-              </button>
-            ))}
+            <span style={{ fontSize: "18px" }}>🎓</span>
+            <span style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "13px",
+              fontWeight: 700,
+              color: "rgba(255,248,240,0.70)",
+            }}>
+              Certificado oficial al completar el programa completo
+            </span>
           </div>
         </motion.div>
 
-        {/* Academic note */}
-        {tab === "academic" && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            style={{
-              background: "rgba(255,210,63,0.07)",
-              border: "1px solid rgba(255,210,63,0.22)",
-              borderRadius: "14px",
-              padding: "14px 20px",
-              marginBottom: "32px",
-              display: "flex",
-              alignItems: "flex-start",
-              gap: "12px",
-              maxWidth: "720px",
-              margin: "0 auto 32px auto",
-            }}
-          >
-            <span style={{ fontSize: "20px", flexShrink: 0 }}>📋</span>
-            <p style={{
-              fontFamily: "'Nunito', sans-serif",
-              fontSize: "14px",
-              fontWeight: 600,
-              color: "rgba(255,248,240,0.75)",
-              lineHeight: 1.6,
-              margin: 0,
-            }}>
-              <strong style={{ color: "#FFD23F" }}>Programa Académico:</strong> Es una suscripción mensual con currículo progresivo.
-              Cada módulo dura 6 semanas e incluye laboratorio y examen final. Los módulos se cursan en secuencia
-              y el certificado se entrega al completar el programa completo.
-            </p>
-          </motion.div>
-        )}
-
-        {/* Plans grid */}
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
           gap: "24px",
-          alignItems: "start",
         }}>
-          {plans.map((plan, i) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              style={{
-                position: "relative",
-                background: "rgba(10,12,20,0.80)",
-                backdropFilter: "blur(20px)",
-                WebkitBackdropFilter: "blur(20px)",
-                border: `1px solid ${plan.featured ? plan.color + "55" : plan.color + "22"}`,
-                borderRadius: "20px",
-                padding: "28px",
-                transform: plan.featured ? "scale(1.03)" : "scale(1)",
-                boxShadow: plan.featured ? `0 20px 60px ${plan.color}20` : "none",
-              }}
-            >
-              {/* Featured top bar */}
-              {plan.featured && (
-                <div style={{
-                  position: "absolute",
-                  top: 0, left: 0, right: 0,
-                  height: "3px",
-                  background: `linear-gradient(90deg, ${plan.color}, ${plan.color}88)`,
-                  borderRadius: "20px 20px 0 0",
-                }} />
-              )}
-
-              {/* Badge */}
-              {plan.badge && (
-                <div style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "5px",
-                  fontFamily: "'Nunito', sans-serif",
-                  fontSize: "11px",
-                  fontWeight: 800,
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
-                  color: plan.color,
-                  background: `${plan.color}15`,
-                  border: `1px solid ${plan.color}30`,
-                  borderRadius: "20px",
-                  padding: "3px 10px",
-                  marginBottom: "14px",
-                }}>
-                  <Star size={10} />
-                  {plan.badge}
-                </div>
-              )}
-
-              <h3 style={{
-                fontFamily: "'Fredoka One', cursive",
-                fontSize: "20px",
-                color: "#FFF8F0",
-                marginBottom: "16px",
-                lineHeight: 1.2,
-              }}>
-                {plan.name}
-              </h3>
-
-              {/* Price */}
-              <div style={{ display: "flex", alignItems: "flex-end", gap: "6px", marginBottom: "4px" }}>
-                <span style={{
-                  fontFamily: "'Fredoka One', cursive",
-                  fontSize: "52px",
-                  color: "#FFF8F0",
-                  lineHeight: 1,
-                }}>
-                  ${plan.price}
-                </span>
-                <span style={{
-                  fontFamily: "'Nunito', sans-serif",
-                  fontSize: "13px",
-                  color: "rgba(255,248,240,0.45)",
-                  fontWeight: 600,
-                  marginBottom: "8px",
-                }}>
-                  USD {plan.period}
-                </span>
-              </div>
-
-              {/* Per class / subscription label */}
-              <div style={{
-                fontFamily: "'Nunito', sans-serif",
-                fontSize: "12px",
-                fontWeight: 800,
-                color: plan.color,
-                background: `${plan.color}12`,
-                border: `1px solid ${plan.color}25`,
-                borderRadius: "8px",
-                padding: "4px 10px",
-                display: "inline-block",
-                marginBottom: "20px",
-              }}>
-                {plan.perClass}
-              </div>
-
-              {/* Features */}
-              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 20px 0", display: "flex", flexDirection: "column", gap: "10px" }}>
-                {plan.features.map((f) => (
-                  <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
-                    <CheckCircle2 size={15} style={{ color: plan.color, flexShrink: 0, marginTop: "2px" }} />
-                    <span style={{
-                      fontFamily: "'Nunito', sans-serif",
-                      fontSize: "14px",
-                      fontWeight: 400,
-                      color: "rgba(255,248,240,0.70)",
-                      lineHeight: 1.5,
-                    }}>
-                      {f}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Bonus */}
-              {plan.bonus && (
-                <div style={{
-                  background: "rgba(255,210,63,0.07)",
-                  border: "1px solid rgba(255,210,63,0.20)",
-                  borderRadius: "10px",
-                  padding: "10px 12px",
-                  marginBottom: "20px",
-                  fontFamily: "'Nunito', sans-serif",
-                  fontSize: "12px",
-                  fontWeight: 700,
-                  color: "#FFD23F",
-                  lineHeight: 1.5,
-                }}>
-                  {plan.bonus}
-                </div>
-              )}
-
-              {/* CTA */}
-              <a
-                href={plan.stripeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "8px",
-                  width: "100%",
-                  padding: "14px",
-                  borderRadius: "12px",
-                  background: plan.featured
-                    ? `linear-gradient(135deg, ${plan.color}, ${plan.color}cc)`
-                    : "transparent",
-                  border: plan.featured ? "none" : `1px solid ${plan.color}55`,
-                  color: plan.featured ? "#020408" : plan.color,
-                  fontFamily: "'Nunito', sans-serif",
-                  fontSize: "15px",
-                  fontWeight: 800,
-                  textDecoration: "none",
-                  cursor: "pointer",
-                  transition: "all 0.25s ease",
-                  boxShadow: plan.featured ? `0 8px 30px ${plan.color}35` : "none",
-                }}
-              >
-                🚀 Suscribirme ahora
-              </a>
-              <p style={{
-                fontFamily: "'Nunito', sans-serif",
-                fontSize: "11px",
-                fontWeight: 600,
-                color: "rgba(255,248,240,0.30)",
-                textAlign: "center",
-                marginTop: "8px",
-              }}>
-                Pago seguro con Stripe 🔒
-              </p>
-            </motion.div>
+          {academicPlans.map((plan, i) => (
+            <PlanCard key={plan.name} plan={plan} i={i} />
           ))}
         </div>
       </div>

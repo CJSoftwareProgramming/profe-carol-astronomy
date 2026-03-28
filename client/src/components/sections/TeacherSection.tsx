@@ -1,105 +1,186 @@
-/* TeacherSection — Profe Carol Astrophysics Academy
-   Design: Cosmic Academy — editorial teacher profile with credentials */
+/* TeacherSection — Sophia Academy Brand
+   Font: Fredoka One (titles) + Nunito (body/labels)
+   Colors: #FB923C solar, #FFD23F stellar, transparent bg */
+
 import { motion } from "framer-motion";
-import { GraduationCap, Globe, Star, BookOpen } from "lucide-react";
 
 const TEACHER_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/carol-real-photo_f469be8e.jpg";
 
 const credentials = [
-  { icon: <GraduationCap className="w-5 h-5" />, text: "Estudiante de Astrofísica en el Reino Unido" },
-  { icon: <Globe className="w-5 h-5" />, text: "Profesora internacional con estudiantes en +10 países" },
-  { icon: <Star className="w-5 h-5" />, text: "+200 estudiantes activos en la academia" },
-  { icon: <BookOpen className="w-5 h-5" />, text: "Currículo diseñado con rigor científico y pedagógico" },
+  { emoji: "🎓", text: "Estudiante de Astrofísica en el Reino Unido", color: "#FFD23F" },
+  { emoji: "🌍", text: "Profesora internacional con estudiantes en +10 países", color: "#FB923C" },
+  { emoji: "⭐", text: "+200 estudiantes activos en la academia", color: "#F87171" },
+  { emoji: "📚", text: "Currículo diseñado con rigor científico y pedagógico", color: "#34D399" },
 ];
 
 export default function TeacherSection() {
   return (
-    <section id="profesora" className="relative bg-[#03071E] py-24 overflow-hidden">
-      <div className="absolute top-0 left-0 w-[600px] h-[400px] bg-[#4CC9F0]/5 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section
+      id="profesora"
+      style={{
+        position: "relative",
+        zIndex: 2,
+        padding: "100px 0",
+      }}
+    >
+      <div className="container">
+        <div
+          style={{ display: "grid", gap: "64px", alignItems: "center" }}
+          className="grid grid-cols-1 lg:grid-cols-2"
+        >
           {/* Left: content */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7 }}
           >
-            <p className="section-label mb-3">Sobre la Profesora</p>
-            <h2 className="font-['Outfit'] text-4xl md:text-5xl font-black text-white leading-tight mb-6" style={{ fontWeight: 900 }}>
-              Profe Carol
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4CC9F0] to-[#90E0EF]">
-                Jiménez
+            <div style={{ marginBottom: "16px" }}>
+              <span style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontSize: "11px",
+                fontWeight: 800,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: "#FB923C",
+                background: "rgba(251,146,60,0.1)",
+                border: "1px solid rgba(251,146,60,0.25)",
+                borderRadius: "20px",
+                padding: "4px 14px",
+              }}>
+                👩‍🚀 Sobre la Profesora
               </span>
+            </div>
+
+            <h2 style={{
+              fontFamily: "'Fredoka One', cursive",
+              fontSize: "clamp(30px, 5vw, 50px)",
+              fontWeight: 400,
+              color: "#FFF8F0",
+              lineHeight: 1.15,
+              marginBottom: "24px",
+            }}>
+              Profe Carol{" "}
+              <span style={{ color: "#FFD23F" }}>Jiménez</span>
             </h2>
 
-            <p className="font-['Crimson_Pro'] text-xl text-[#B8D4E8] leading-relaxed mb-4">
+            <p style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "16px",
+              fontWeight: 400,
+              color: "rgba(255,248,240,0.65)",
+              lineHeight: 1.75,
+              marginBottom: "16px",
+            }}>
               Estudio Astrofísica en el Reino Unido y soy una apasionada por las ciencias y por enseñarlas.
               Me encanta trabajar con niños curiosos y demostrarles que el universo no es demasiado difícil para ellos.
               En mis clases exploramos temas fascinantes de astronomía y física —muchas veces considerados avanzados—
               de una forma clara, divertida y llena de curiosidad.
             </p>
-            <p className="font-['Crimson_Pro'] text-xl text-[#B8D4E8] leading-relaxed mb-8">
+            <p style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "16px",
+              fontWeight: 400,
+              color: "rgba(255,248,240,0.65)",
+              lineHeight: 1.75,
+              marginBottom: "32px",
+            }}>
               Para mí lo más importante es escuchar a cada estudiante, responder sus preguntas y conversar con ellos
               mientras descubrimos juntos cómo funciona el universo. Mi mayor sueño es llegar a muchos chiquitines
-              que sienten una fascinación especial por la ciencia y el espacio, y acompañarlos desde pequeños para
-              que nunca pierdan esa curiosidad por entender el cosmos. Estoy segura de que mi academia es la cuna
-              de muchos futuros astronautas y científicos.
+              que sienten una fascinación especial por la ciencia y el espacio. Estoy segura de que mi academia es
+              la cuna de muchos futuros astronautas y científicos.
             </p>
 
             {/* Credentials */}
-            <div className="space-y-4 mb-8">
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "32px" }}>
               {credentials.map((c, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="flex items-center gap-3"
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                  style={{ display: "flex", alignItems: "center", gap: "12px" }}
                 >
-                  <div className="w-9 h-9 rounded-xl bg-[#4CC9F0]/10 flex items-center justify-center text-[#4CC9F0] flex-shrink-0">
-                    {c.icon}
+                  <div style={{
+                    width: "36px", height: "36px", borderRadius: "10px",
+                    background: `${c.color}15`,
+                    border: `1px solid ${c.color}35`,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: "16px",
+                    flexShrink: 0,
+                  }}>
+                    {c.emoji}
                   </div>
-                  <span className="font-['Outfit'] text-sm text-[#B8D4E8] font-medium">{c.text}</span>
+                  <span style={{
+                    fontFamily: "'Nunito', sans-serif",
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    color: "rgba(255,248,240,0.70)",
+                  }}>
+                    {c.text}
+                  </span>
                 </motion.div>
               ))}
             </div>
 
-            <a
-              href="#precios"
-              className="btn-cosmic px-8 py-4 rounded-full text-base font-['Outfit'] text-white inline-flex items-center gap-2"
-              style={{ fontWeight: 700 }}
-            >
-              Comenzar Clases con Carol
+            <a href="#precios" className="btn-solar">
+              🚀 Comenzar Clases con Carol
             </a>
           </motion.div>
 
           {/* Right: image */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative"
+            transition={{ duration: 0.7, delay: 0.15 }}
+            style={{ position: "relative" }}
           >
-            <div className="relative rounded-3xl overflow-hidden border border-[#4CC9F0]/15 shadow-[0_0_80px_rgba(76,201,240,0.12)]">
+            <div style={{
+              borderRadius: "24px",
+              overflow: "hidden",
+              border: "1px solid rgba(251,146,60,0.18)",
+              boxShadow: "0 0 80px rgba(251,146,60,0.10)",
+            }}>
               <img
                 src={TEACHER_IMG}
                 alt="Profe Carol — Astrofísica y educadora"
-                className="w-full h-[500px] object-cover object-top"
+                style={{ width: "100%", height: "520px", objectFit: "cover", objectPosition: "top", display: "block" }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#03071E]/50 to-transparent" />
+              <div style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(to top, rgba(2,4,8,0.45) 0%, transparent 60%)",
+              }} />
             </div>
 
-            {/* Quote card */}
-            <div className="absolute -top-6 -right-6 max-w-xs bg-[#0A1628] border border-[#4CC9F0]/30 rounded-2xl p-5 shadow-[0_8px_40px_rgba(76,201,240,0.15)]">
-              <p className="font-['Crimson_Pro'] text-base text-[#B8D4E8] italic leading-relaxed mb-3">
+            {/* Quote card — top right */}
+            <div className="glass-card-warm" style={{
+              position: "absolute",
+              top: "-20px",
+              right: "-20px",
+              maxWidth: "260px",
+              padding: "18px 20px",
+            }}>
+              <p style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontSize: "14px",
+                fontWeight: 400,
+                color: "rgba(255,248,240,0.80)",
+                fontStyle: "italic",
+                lineHeight: 1.6,
+                marginBottom: "10px",
+              }}>
                 "El universo es demasiado fascinante para esperar a ser adultos para descubrirlo."
               </p>
-              <p className="font-['Outfit'] text-xs text-[#4CC9F0] font-semibold">— Profe Carol Jiménez</p>
+              <p style={{
+                fontFamily: "'Fredoka One', cursive",
+                fontSize: "13px",
+                color: "#FB923C",
+              }}>
+                — Profe Carol Jiménez
+              </p>
             </div>
           </motion.div>
         </div>

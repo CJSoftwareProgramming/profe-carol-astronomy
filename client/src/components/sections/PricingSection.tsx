@@ -1,6 +1,8 @@
-/* PricingSection — Profe Carol Astrophysics Academy
-   Design: Cosmic Academy — pricing cards with featured plan highlighted
-   Buttons link directly to Stripe payment pages */
+/* PricingSection — Sophia Academy Brand
+   Font: Fredoka One (prices) + Nunito (body/labels)
+   Colors: #FFD23F stellar yellow, #FB923C solar orange
+   Cards: glass-card with color borders, transparent bg */
+
 import { motion } from "framer-motion";
 import { CheckCircle2, Star, Telescope, ExternalLink } from "lucide-react";
 import { useState } from "react";
@@ -8,6 +10,7 @@ import { useState } from "react";
 interface Plan {
   name: string;
   price: number;
+  perClass: string;
   period: string;
   features: string[];
   featured: boolean;
@@ -21,37 +24,41 @@ const recreationalPlans: Plan[] = [
   {
     name: "Básico Recreacional",
     price: 28,
+    perClass: "≈ $7 / clase",
     period: "al mes",
     features: ["1 clase recreacional por semana", "Acceso a todos los temas", "Horarios Jue–Dom", "Máx. 15 estudiantes"],
-    featured: true,
-    badge: "Más Popular",
-    color: "#4CC9F0",
+    featured: false,
+    color: "#60A5FA",
     stripeUrl: "https://buy.stripe.com/5kQaEWbiM4O05L70824Rq03",
   },
   {
-    name: "Explorador Recreacional",
+    name: "Explorador",
     price: 49,
+    perClass: "≈ $6 / clase",
     period: "al mes",
     features: ["2 clases recreacionales por semana", "Acceso a todos los temas", "Horarios Jue–Dom", "Máx. 15 estudiantes"],
-    featured: false,
-    color: "#4CC9F0",
+    featured: true,
+    badge: "Más Popular",
+    color: "#FB923C",
     stripeUrl: "https://buy.stripe.com/8x2cN4euYdkwflH2ga4Rq02",
   },
   {
-    name: "Avanzado Recreacional",
+    name: "Avanzado",
     price: 59,
+    perClass: "≈ $5 / clase",
     period: "al mes",
     features: ["3 clases recreacionales por semana", "Acceso a todos los temas", "Horarios Jue–Dom", "Máx. 15 estudiantes"],
     featured: false,
-    color: "#4CC9F0",
+    color: "#34D399",
     stripeUrl: "https://buy.stripe.com/aFa6oG3QkeoA8XjaMG4Rq04",
   },
 ];
 
 const academicPlans: Plan[] = [
   {
-    name: "Plan Académico Esencial",
+    name: "Académico Esencial",
     price: 60,
+    perClass: "≈ $5 / clase",
     period: "al mes",
     features: [
       "1 clase académica semanal",
@@ -60,12 +67,13 @@ const academicPlans: Plan[] = [
       "1 laboratorio al mes",
     ],
     featured: false,
-    color: "#F4A261",
+    color: "#FB923C",
     stripeUrl: "https://buy.stripe.com/5kQfZg5Ys2FS7Tf3ke4Rq0b",
   },
   {
-    name: "Plan Académico Completo",
+    name: "Académico Completo",
     price: 80,
+    perClass: "≈ $10 / clase académica",
     period: "al mes",
     features: [
       "2 clases académicas semanales",
@@ -75,13 +83,14 @@ const academicPlans: Plan[] = [
     ],
     featured: true,
     badge: "Recomendado",
-    color: "#F4A261",
+    color: "#FFD23F",
     bonus: "🔭 Telescopio Celestron de viaje tras 2 meses consecutivos",
     stripeUrl: "https://buy.stripe.com/cNidR80E894g8XjcUO4Rq0c",
   },
   {
-    name: "Plan Homeschool",
+    name: "Homeschool",
     price: 100,
+    perClass: "≈ $10 / clase académica",
     period: "al mes",
     features: [
       "3 clases académicas semanales",
@@ -92,7 +101,7 @@ const academicPlans: Plan[] = [
       "Reportes académicos mensuales",
     ],
     featured: false,
-    color: "#F4A261",
+    color: "#F87171",
     badge: "Homeschool",
     bonus: "🔭 Telescopio Celestron de viaje tras 2 meses consecutivos",
     stripeUrl: "https://buy.stripe.com/4gMdR8dqUdkw5L70824Rq0d",
@@ -101,30 +110,72 @@ const academicPlans: Plan[] = [
 
 export default function PricingSection() {
   const [tab, setTab] = useState<"recreational" | "academic">("recreational");
-
   const plans: Plan[] = tab === "recreational" ? recreationalPlans : academicPlans;
 
   return (
-    <section id="precios" className="relative bg-[#050D1E] py-24 overflow-hidden">
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-[#4CC9F0]/4 rounded-full blur-[120px] pointer-events-none" />
+    <section
+      id="precios"
+      style={{
+        position: "relative",
+        zIndex: 2,
+        padding: "100px 0",
+      }}
+    >
+      {/* Subtle glow */}
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        background: "radial-gradient(ellipse at 50% 50%, rgba(255,210,63,0.04) 0%, transparent 60%)",
+        pointerEvents: "none",
+      }} />
 
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
+      <div className="container" style={{ position: "relative" }}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: "center", marginBottom: "48px" }}
         >
-          <p className="section-label mb-3">Paquetes de Clases</p>
-          <h2 className="font-['Outfit'] text-4xl md:text-5xl font-black text-white leading-tight mb-5" style={{ fontWeight: 900 }}>
-            Elige tu plan y
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4CC9F0] to-[#F4A261]">
-              comienza tu misión
+          <div style={{ marginBottom: "14px" }}>
+            <span style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "11px",
+              fontWeight: 800,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: "#FFD23F",
+              background: "rgba(255,210,63,0.1)",
+              border: "1px solid rgba(255,210,63,0.25)",
+              borderRadius: "20px",
+              padding: "4px 14px",
+            }}>
+              💫 Paquetes de Clases
             </span>
+          </div>
+          <h2 style={{
+            fontFamily: "'Fredoka One', cursive",
+            fontSize: "clamp(30px, 5vw, 50px)",
+            fontWeight: 400,
+            color: "#FFF8F0",
+            lineHeight: 1.15,
+            marginBottom: "12px",
+          }}>
+            Elige tu plan y{" "}
+            <span style={{ color: "#FFD23F" }}>comienza</span>{" "}
+            <span style={{ color: "#FB923C" }}>tu misión</span>
           </h2>
+          <p style={{
+            fontFamily: "'Nunito', sans-serif",
+            fontSize: "16px",
+            color: "rgba(255,248,240,0.55)",
+            maxWidth: "480px",
+            margin: "0 auto",
+            lineHeight: 1.6,
+          }}>
+            Pago mensual, sin contratos. Cancela cuando quieras.
+          </p>
         </motion.div>
 
         {/* Tab switcher */}
@@ -132,39 +183,51 @@ export default function PricingSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex justify-center mb-12"
+          transition={{ duration: 0.5 }}
+          style={{ display: "flex", justifyContent: "center", marginBottom: "48px" }}
         >
-          <div className="inline-flex bg-[#0A1628] border border-[#4CC9F0]/20 rounded-full p-1">
-            <button
-              onClick={() => setTab("recreational")}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-['Outfit'] text-sm font-600 transition-all duration-300 ${
-                tab === "recreational"
-                  ? "bg-[#4CC9F0] text-[#03071E] shadow-[0_0_20px_rgba(76,201,240,0.4)]"
-                  : "text-[#8BA3C7] hover:text-white"
-              }`}
-              style={{ fontWeight: 600 }}
-            >
-              <Star className="w-4 h-4" />
-              Recreacional
-            </button>
-            <button
-              onClick={() => setTab("academic")}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-['Outfit'] text-sm font-600 transition-all duration-300 ${
-                tab === "academic"
-                  ? "bg-[#F4A261] text-[#03071E] shadow-[0_0_20px_rgba(244,162,97,0.4)]"
-                  : "text-[#8BA3C7] hover:text-white"
-              }`}
-              style={{ fontWeight: 600 }}
-            >
-              <Telescope className="w-4 h-4" />
-              Académico
-            </button>
+          <div style={{
+            display: "inline-flex",
+            background: "rgba(10,12,20,0.80)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            borderRadius: "40px",
+            padding: "4px",
+            gap: "4px",
+          }}>
+            {[
+              { key: "recreational", label: "⭐ Recreacional", activeColor: "#FB923C" },
+              { key: "academic", label: "🔭 Académico", activeColor: "#FFD23F" },
+            ].map((t) => (
+              <button
+                key={t.key}
+                onClick={() => setTab(t.key as "recreational" | "academic")}
+                style={{
+                  fontFamily: "'Nunito', sans-serif",
+                  fontSize: "14px",
+                  fontWeight: 800,
+                  padding: "10px 24px",
+                  borderRadius: "36px",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "all 0.25s ease",
+                  background: tab === t.key ? t.activeColor : "transparent",
+                  color: tab === t.key ? "#020408" : "rgba(255,248,240,0.55)",
+                  boxShadow: tab === t.key ? `0 0 20px ${t.activeColor}40` : "none",
+                }}
+              >
+                {t.label}
+              </button>
+            ))}
           </div>
         </motion.div>
 
         {/* Plans grid */}
-        <div className="grid md:grid-cols-3 gap-6 items-start">
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "24px",
+          alignItems: "start",
+        }}>
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
@@ -172,88 +235,171 @@ export default function PricingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative rounded-3xl overflow-hidden border transition-all duration-300 bg-gradient-to-br from-[#0A1628] to-[#03071E] p-7"
-              style={
-                plan.featured
-                  ? { borderColor: `${plan.color}60`, boxShadow: `0 0 50px ${plan.color}25`, transform: "scale(1.03)" }
-                  : { borderColor: `${plan.color}20` }
-              }
+              style={{
+                position: "relative",
+                background: "rgba(10,12,20,0.80)",
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+                border: `1px solid ${plan.featured ? plan.color + "55" : plan.color + "22"}`,
+                borderRadius: "20px",
+                padding: "28px",
+                transform: plan.featured ? "scale(1.03)" : "scale(1)",
+                boxShadow: plan.featured ? `0 20px 60px ${plan.color}20` : "none",
+              }}
             >
               {/* Featured top bar */}
               {plan.featured && (
-                <div
-                  className="absolute top-0 left-0 right-0 h-1"
-                  style={{ background: `linear-gradient(90deg, ${plan.color}, ${plan.color}99)` }}
-                />
+                <div style={{
+                  position: "absolute",
+                  top: 0, left: 0, right: 0,
+                  height: "3px",
+                  background: `linear-gradient(90deg, ${plan.color}, ${plan.color}88)`,
+                  borderRadius: "20px 20px 0 0",
+                }} />
               )}
 
               {/* Badge */}
               {plan.badge && (
-                <div
-                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-['Outfit'] font-700 mb-4"
-                  style={{
-                    backgroundColor: `${plan.color}20`,
-                    color: plan.color,
-                    fontWeight: 700,
-                  }}
-                >
-                  <Star className="w-3 h-3" />
+                <div style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  fontFamily: "'Nunito', sans-serif",
+                  fontSize: "11px",
+                  fontWeight: 800,
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  color: plan.color,
+                  background: `${plan.color}15`,
+                  border: `1px solid ${plan.color}30`,
+                  borderRadius: "20px",
+                  padding: "3px 10px",
+                  marginBottom: "14px",
+                }}>
+                  <Star size={10} />
                   {plan.badge}
                 </div>
               )}
 
-              <h3 className="font-['Outfit'] text-lg font-black text-white mb-4" style={{ fontWeight: 900 }}>
+              <h3 style={{
+                fontFamily: "'Fredoka One', cursive",
+                fontSize: "20px",
+                color: "#FFF8F0",
+                marginBottom: "16px",
+                lineHeight: 1.2,
+              }}>
                 {plan.name}
               </h3>
 
               {/* Price */}
-              <div className="flex items-end gap-1 mb-6">
-                <span className="font-['Outfit'] text-5xl font-black text-white" style={{ fontWeight: 900 }}>
+              <div style={{ display: "flex", alignItems: "flex-end", gap: "6px", marginBottom: "4px" }}>
+                <span style={{
+                  fontFamily: "'Fredoka One', cursive",
+                  fontSize: "52px",
+                  color: "#FFF8F0",
+                  lineHeight: 1,
+                }}>
                   ${plan.price}
                 </span>
-                <span className="font-['Outfit'] text-sm text-[#8BA3C7] mb-2">USD {plan.period}</span>
+                <span style={{
+                  fontFamily: "'Nunito', sans-serif",
+                  fontSize: "13px",
+                  color: "rgba(255,248,240,0.45)",
+                  fontWeight: 600,
+                  marginBottom: "8px",
+                }}>
+                  USD {plan.period}
+                </span>
+              </div>
+
+              {/* Per class */}
+              <div style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontSize: "12px",
+                fontWeight: 800,
+                color: plan.color,
+                background: `${plan.color}12`,
+                border: `1px solid ${plan.color}25`,
+                borderRadius: "8px",
+                padding: "4px 10px",
+                display: "inline-block",
+                marginBottom: "20px",
+              }}>
+                {plan.perClass}
               </div>
 
               {/* Features */}
-              <ul className="space-y-3 mb-6">
+              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 20px 0", display: "flex", flexDirection: "column", gap: "10px" }}>
                 {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: plan.color }} />
-                    <span className="font-['Crimson_Pro'] text-base text-[#B8D4E8]">{f}</span>
+                  <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
+                    <CheckCircle2 size={15} style={{ color: plan.color, flexShrink: 0, marginTop: "2px" }} />
+                    <span style={{
+                      fontFamily: "'Nunito', sans-serif",
+                      fontSize: "14px",
+                      fontWeight: 400,
+                      color: "rgba(255,248,240,0.70)",
+                      lineHeight: 1.5,
+                    }}>
+                      {f}
+                    </span>
                   </li>
                 ))}
               </ul>
 
               {/* Bonus */}
               {plan.bonus && (
-                <div
-                  className="rounded-xl p-3 mb-6 text-sm font-['Crimson_Pro']"
-                  style={{ backgroundColor: `${plan.color}10`, borderLeft: `3px solid ${plan.color}` }}
-                >
-                  <span style={{ color: plan.color }}>{plan.bonus}</span>
+                <div style={{
+                  background: `${plan.color}0A`,
+                  borderLeft: `3px solid ${plan.color}`,
+                  borderRadius: "0 10px 10px 0",
+                  padding: "10px 14px",
+                  marginBottom: "20px",
+                  fontFamily: "'Nunito', sans-serif",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  color: plan.color,
+                  lineHeight: 1.5,
+                }}>
+                  {plan.bonus}
                 </div>
               )}
 
-              {/* Stripe CTA */}
+              {/* CTA */}
               <a
                 href={plan.stripeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3.5 rounded-xl text-sm font-['Outfit'] text-center flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                 style={{
-                  fontWeight: 700,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "6px",
+                  width: "100%",
+                  padding: "13px",
+                  borderRadius: "12px",
+                  fontFamily: "'Nunito', sans-serif",
+                  fontSize: "14px",
+                  fontWeight: 800,
+                  textDecoration: "none",
+                  transition: "all 0.25s ease",
                   background: plan.featured
-                    ? `linear-gradient(135deg, ${plan.color}, ${plan.color}BB)`
+                    ? `linear-gradient(135deg, ${plan.color}, ${plan.color}CC)`
                     : "transparent",
-                  border: plan.featured ? "none" : `1px solid ${plan.color}40`,
-                  color: plan.featured ? (plan.color === "#4CC9F0" ? "#03071E" : "#fff") : plan.color,
-                  boxShadow: plan.featured ? `0 0 20px ${plan.color}30` : "none",
+                  border: plan.featured ? "none" : `1px solid ${plan.color}44`,
+                  color: plan.featured ? "#020408" : plan.color,
+                  boxShadow: plan.featured ? `0 8px 24px ${plan.color}30` : "none",
                 }}
               >
                 Pagar con Stripe
-                <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+                <ExternalLink size={13} style={{ opacity: 0.7 }} />
               </a>
-              <p className="text-center font-['Outfit'] text-[10px] text-[#4A6080] mt-2">
+              <p style={{
+                textAlign: "center",
+                fontFamily: "'Nunito', sans-serif",
+                fontSize: "10px",
+                color: "rgba(255,248,240,0.30)",
+                marginTop: "8px",
+              }}>
                 Pago seguro con Stripe 🔒
               </p>
             </motion.div>

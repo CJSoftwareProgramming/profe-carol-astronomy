@@ -1,132 +1,150 @@
-/* StudentsSection — Profe Carol Astrophysics Academy
-   Design: Cosmic Academy — featured student achievements */
+/* StudentsSection — Sophia Academy Brand
+   Font: Fredoka One (titles) + Nunito (body)
+   Colors: #FB923C solar, #FFD23F stellar, transparent bg */
+
 import { motion } from "framer-motion";
-import { Trophy, Star, Rocket } from "lucide-react";
 
 const achievements = [
-  {
-    name: "Sofía M.",
-    age: 5,
-    country: "🇨🇴 Colombia",
-    achievement: "Presentó su proyecto sobre agujeros negros en la feria de ciencias de su colegio y obtuvo el primer lugar.",
-    badge: "🏆 Científica Destacada",
-    color: "#FFB347",
-  },
-  {
-    name: "Mateo R.",
-    age: 6,
-    country: "🇲🇽 México",
-    achievement: "Ha completado más de 20 clases en la academia, actualmente enseña astronomía básica a sus compañeros de escuela y tiene su propio canal científico.",
-    badge: "🎓 Prodigio Astronómico",
-    color: "#4CC9F0",
-  },
-  {
-    name: "Diego C.",
-    age: 4,
-    country: "🇦🇷 Argentina",
-    achievement: "Fue uno de los estudiantes más pequeños en presentar una exposición sobre el sistema solar y los tipos de estrellas en una feria de ciencias, la cual fue destacada en las noticias de su ciudad.",
-    badge: "⭐ Prodigio Científico",
-    color: "#F4A261",
-  },
-  {
-    name: "Lucas P.",
-    age: 8,
-    country: "🇪🇸 España",
-    achievement: "Diseñó y presentó su propio modelo de robot espacial como proyecto escolar, recibiendo un reconocimiento por su creatividad e iniciativa en el campo de la ingeniería espacial.",
-    badge: "🚀 Explorador Creativo",
-    color: "#90E0EF",
-  },
+  { name: "Sofía M.", age: 5, country: "🇨🇴 Colombia", achievement: "Presentó su proyecto sobre agujeros negros en la feria de ciencias de su colegio y obtuvo el primer lugar.", badge: "🏆 Científica Destacada", color: "#FFD23F" },
+  { name: "Mateo R.", age: 6, country: "🇲🇽 México", achievement: "Ha completado más de 20 clases en la academia, actualmente enseña astronomía básica a sus compañeros de escuela y tiene su propio canal científico.", badge: "🎓 Prodigio Astronómico", color: "#60A5FA" },
+  { name: "Diego C.", age: 4, country: "🇦🇷 Argentina", achievement: "Fue uno de los estudiantes más pequeños en presentar una exposición sobre el sistema solar y los tipos de estrellas en una feria de ciencias, la cual fue destacada en las noticias de su ciudad.", badge: "⭐ Prodigio Científico", color: "#FB923C" },
+  { name: "Lucas P.", age: 8, country: "🇪🇸 España", achievement: "Diseñó y presentó su propio modelo de robot espacial como proyecto escolar, recibiendo un reconocimiento por su creatividad e iniciativa en el campo de la ingeniería espacial.", badge: "🚀 Explorador Creativo", color: "#34D399" },
+];
+
+const stats = [
+  { value: "+200", label: "Estudiantes activos", emoji: "👨‍🚀" },
+  { value: "+10", label: "Países representados", emoji: "🌍" },
+  { value: "+50", label: "Temas de clase", emoji: "🔭" },
+  { value: "100%", label: "Clases en vivo", emoji: "⭐" },
 ];
 
 export default function StudentsSection() {
   return (
-    <section className="relative bg-[#03071E] py-24 overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[400px] bg-[#FFB347]/5 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
+    <section
+      style={{ position: "relative", zIndex: 2, padding: "100px 0" }}
+    >
+      <div className="container">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-14"
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: "center", marginBottom: "48px" }}
         >
-          <p className="section-label mb-3">Logros de Estudiantes</p>
-          <h2 className="font-['Outfit'] text-4xl md:text-5xl font-black text-white leading-tight mb-5" style={{ fontWeight: 900 }}>
-            Nuestros exploradores
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFB347] to-[#F4A261]">
-              del universo
+          <div style={{ marginBottom: "14px" }}>
+            <span style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "11px",
+              fontWeight: 800,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: "#FFD23F",
+              background: "rgba(255,210,63,0.1)",
+              border: "1px solid rgba(255,210,63,0.25)",
+              borderRadius: "20px",
+              padding: "4px 14px",
+            }}>
+              🏆 Logros de Estudiantes
             </span>
+          </div>
+          <h2 style={{
+            fontFamily: "'Fredoka One', cursive",
+            fontSize: "clamp(28px, 5vw, 48px)",
+            fontWeight: 400,
+            color: "#FFF8F0",
+            lineHeight: 1.2,
+            marginBottom: "12px",
+          }}>
+            Nuestros exploradores{" "}
+            <span style={{ color: "#FB923C" }}>del universo</span>
           </h2>
-          <p className="font-['Crimson_Pro'] text-xl text-[#8BA3C7] max-w-xl mx-auto">
+          <p style={{
+            fontFamily: "'Nunito', sans-serif",
+            fontSize: "16px",
+            color: "rgba(255,248,240,0.55)",
+            maxWidth: "480px",
+            margin: "0 auto",
+            lineHeight: 1.6,
+          }}>
             Cada semana, nuestros estudiantes logran cosas increíbles dentro y fuera del aula.
           </p>
         </motion.div>
 
-        {/* Stats row */}
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14"
+          transition={{ duration: 0.5 }}
+          style={{ display: "grid", gap: "16px", marginBottom: "48px" }}
+          className="grid grid-cols-2 md:grid-cols-4"
         >
-          {[
-            { value: "+200", label: "Estudiantes activos", icon: <Star className="w-5 h-5" /> },
-            { value: "+10", label: "Países representados", icon: <Rocket className="w-5 h-5" /> },
-            { value: "+50", label: "Temas de clase", icon: <Trophy className="w-5 h-5" /> },
-            { value: "100%", label: "Clases en vivo", icon: <Star className="w-5 h-5" /> },
-          ].map((stat, i) => (
-            <div key={i} className="cosmic-card rounded-2xl p-5 text-center">
-              <div className="w-10 h-10 rounded-xl bg-[#4CC9F0]/10 flex items-center justify-center text-[#4CC9F0] mx-auto mb-3">
-                {stat.icon}
-              </div>
-              <div className="font-['Outfit'] text-3xl font-black text-white mb-1" style={{ fontWeight: 900 }}>
-                {stat.value}
-              </div>
-              <div className="font-['Outfit'] text-xs text-[#8BA3C7] font-medium">{stat.label}</div>
+          {stats.map((s, i) => (
+            <div key={i} className="glass-card-warm" style={{ padding: "20px", textAlign: "center" }}>
+              <div style={{ fontSize: "28px", marginBottom: "8px" }}>{s.emoji}</div>
+              <div style={{ fontFamily: "'Fredoka One', cursive", fontSize: "32px", color: "#FB923C", lineHeight: 1 }}>{s.value}</div>
+              <div style={{ fontFamily: "'Nunito', sans-serif", fontSize: "12px", fontWeight: 600, color: "rgba(255,248,240,0.50)", marginTop: "4px" }}>{s.label}</div>
             </div>
           ))}
         </motion.div>
 
         {/* Achievement cards */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div
+          style={{ display: "grid", gap: "20px" }}
+          className="grid grid-cols-1 md:grid-cols-2"
+        >
           {achievements.map((a, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="cosmic-card rounded-2xl p-6"
+              transition={{ duration: 0.45, delay: i * 0.08 }}
+              className="glass-card-warm"
+              style={{ padding: "24px", display: "flex", gap: "16px", alignItems: "flex-start" }}
             >
-              <div className="flex items-start gap-4">
-                <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center font-['Outfit'] text-xl font-black flex-shrink-0"
-                  style={{ backgroundColor: `${a.color}15`, color: a.color, fontWeight: 900 }}
-                >
-                  {a.name.charAt(0)}
+              <div style={{
+                width: "52px", height: "52px", borderRadius: "14px",
+                background: `${a.color}18`,
+                border: `1px solid ${a.color}35`,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontFamily: "'Fredoka One', cursive",
+                fontSize: "22px",
+                color: a.color,
+                flexShrink: 0,
+              }}>
+                {a.name.charAt(0)}
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
+                  <span style={{ fontFamily: "'Fredoka One', cursive", fontSize: "17px", color: "#FFF8F0" }}>{a.name}</span>
+                  <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: "11px", fontWeight: 700, color: "rgba(255,248,240,0.45)" }}>{a.age} años</span>
+                  <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: "11px", fontWeight: 700, color: "rgba(255,248,240,0.45)" }}>{a.country}</span>
                 </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 flex-wrap mb-2">
-                    <span className="font-['Outfit'] text-base font-700 text-white" style={{ fontWeight: 700 }}>
-                      {a.name}
-                    </span>
-                    <span className="font-['Outfit'] text-xs text-[#8BA3C7]">{a.age} años</span>
-                    <span className="font-['Outfit'] text-xs text-[#8BA3C7]">{a.country}</span>
-                  </div>
-                  <div
-                    className="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-['Outfit'] font-semibold mb-3"
-                    style={{ backgroundColor: `${a.color}15`, color: a.color }}
-                  >
-                    {a.badge}
-                  </div>
-                  <p className="font-['Crimson_Pro'] text-base text-[#B8D4E8] leading-relaxed">
-                    {a.achievement}
-                  </p>
-                </div>
+                <span style={{
+                  display: "inline-block",
+                  fontFamily: "'Nunito', sans-serif",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  color: a.color,
+                  background: `${a.color}15`,
+                  border: `1px solid ${a.color}30`,
+                  borderRadius: "20px",
+                  padding: "2px 10px",
+                  marginBottom: "10px",
+                }}>
+                  {a.badge}
+                </span>
+                <p style={{
+                  fontFamily: "'Nunito', sans-serif",
+                  fontSize: "14px",
+                  fontWeight: 400,
+                  color: "rgba(255,248,240,0.65)",
+                  lineHeight: 1.65,
+                }}>
+                  {a.achievement}
+                </p>
               </div>
             </motion.div>
           ))}

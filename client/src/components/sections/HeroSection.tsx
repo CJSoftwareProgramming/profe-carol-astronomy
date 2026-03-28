@@ -1,160 +1,231 @@
-/* HeroSection — Profe Carol Astrophysics Academy
-   Design: Cosmic Academy — full-bleed dark nebula hero with animated stars
-   Key message: Astronomía para niños 4-12 años, clases en vivo, cupos limitados
-   WhatsApp number prominently displayed */
-import { motion } from "framer-motion";
-import StarField from "../StarField";
-import { Rocket, Star, Users, Clock, MessageCircle } from "lucide-react";
+/* HeroSection — Sophia Academy Brand
+   Font: Fredoka One (h1, stats) + Nunito (body, labels)
+   Colors: #FFF8F0 titles, #FFD23F highlight, #FB923C solar accent
+   Background: transparent — SolarSystemBackground is global */
 
-const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/hero-nebula-DgF7eKHNQqftZQqY85Rctg.webp";
+import { motion } from "framer-motion";
 
 const WHATSAPP_NUMBER = "+44 7462 994908";
 const WHATSAPP_LINK = "https://wa.me/447462994908";
 
+const stats = [
+  { value: "4–12", label: "años de edad" },
+  { value: "+50", label: "temas espaciales" },
+  { value: "15", label: "máx. por clase" },
+  { value: "100%", label: "en vivo" },
+];
+
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${HERO_BG})` }}
-      />
-      {/* Dark overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#03071E]/95 via-[#03071E]/80 to-[#03071E]/40" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#03071E] via-transparent to-[#03071E]/30" />
-
-      {/* Animated star field overlay */}
-      <StarField className="opacity-60" />
-
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 lg:px-8 max-w-7xl pt-24 pb-16">
-        <div className="max-w-3xl">
+    <section
+      id="inicio"
+      style={{
+        position: "relative",
+        zIndex: 2,
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        paddingTop: "88px",
+        paddingBottom: "60px",
+      }}
+    >
+      <div className="container">
+        <div style={{ maxWidth: "780px" }}>
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 bg-[#4CC9F0]/10 border border-[#4CC9F0]/30 rounded-full px-4 py-1.5 mb-6"
+            transition={{ duration: 0.5 }}
+            style={{ marginBottom: "24px" }}
           >
-            <span className="w-2 h-2 rounded-full bg-[#4CC9F0] animate-pulse" />
-            <span className="font-['Outfit'] text-[#4CC9F0] text-xs font-semibold tracking-[0.15em] uppercase">
-              Academia Internacional · Cupos Disponibles
+            <span
+              style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontSize: "11px",
+                fontWeight: 800,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: "#FB923C",
+                background: "rgba(251,146,60,0.1)",
+                border: "1px solid rgba(251,146,60,0.3)",
+                borderRadius: "20px",
+                padding: "5px 14px",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+              }}
+            >
+              🚀 Academia Internacional · Cupos Disponibles
             </span>
           </motion.div>
 
-          {/* Main headline */}
-          <motion.h1
+          {/* H1 */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-['Outfit'] text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-4"
-            style={{ fontWeight: 900 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Astronomía y Astrofísica
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4CC9F0] to-[#90E0EF]">
-              para Niños
-            </span>
-          </motion.h1>
-
-          {/* Age badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 bg-[#F4A261]/15 border border-[#F4A261]/40 rounded-lg px-4 py-2 mb-6"
-          >
-            <Users className="w-4 h-4 text-[#F4A261]" />
-            <span className="font-['Outfit'] text-[#F4A261] text-sm" style={{ fontWeight: 700 }}>
-              Diseñado para niños de 4 a 12 años
-            </span>
+            <h1
+              style={{
+                fontFamily: "'Fredoka One', cursive",
+                fontSize: "clamp(44px, 7vw, 82px)",
+                fontWeight: 400,
+                color: "#FFF8F0",
+                lineHeight: 1.1,
+                marginBottom: "8px",
+              }}
+            >
+              Astronomía y{" "}
+              <span style={{ color: "#FFD23F" }}>Astrofísica</span>
+            </h1>
+            <h1
+              style={{
+                fontFamily: "'Fredoka One', cursive",
+                fontSize: "clamp(44px, 7vw, 82px)",
+                fontWeight: 400,
+                color: "#FFF8F0",
+                lineHeight: 1.1,
+                marginBottom: "28px",
+              }}
+            >
+              para <span style={{ color: "#FB923C" }}>Niños</span>
+            </h1>
           </motion.div>
 
           {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="font-['Crimson_Pro'] text-xl md:text-2xl text-[#B8D4E8] leading-relaxed mb-8 max-w-2xl"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "18px",
+              fontWeight: 400,
+              color: "rgba(255,248,240,0.65)",
+              lineHeight: 1.7,
+              maxWidth: "580px",
+              marginBottom: "32px",
+            }}
           >
-            Explora el universo con clases en vivo, experimentos y misiones espaciales.
-            Una academia inspirada en la NASA para los científicos y astronautas del futuro.
+            Explora el universo con clases en vivo, experimentos y misiones
+            espaciales. Una academia inspirada en la NASA para los científicos
+            y astronautas del futuro.
           </motion.p>
 
-          {/* Stats row */}
+          {/* WhatsApp number */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap gap-6 mb-10"
+            transition={{ duration: 0.6, delay: 0.28 }}
+            style={{ marginBottom: "32px" }}
           >
-            {[
-              { icon: <Star className="w-4 h-4" />, text: "Clases en vivo" },
-              { icon: <Rocket className="w-4 h-4" />, text: "Experimentos espaciales" },
-              { icon: <Clock className="w-4 h-4" />, text: "Horarios flexibles" },
-              { icon: <Users className="w-4 h-4" />, text: "Máx. 15 estudiantes Por Clase" },
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-2 text-[#8BA3C7]">
-                <span className="text-[#4CC9F0]">{item.icon}</span>
-                <span className="font-['Outfit'] text-sm font-medium">{item.text}</span>
-              </div>
-            ))}
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "10px",
+                background: "rgba(37,211,102,0.10)",
+                border: "1px solid rgba(37,211,102,0.28)",
+                borderRadius: "40px",
+                padding: "10px 22px",
+                textDecoration: "none",
+              }}
+            >
+              <span style={{ fontSize: "20px" }}>📱</span>
+              <span style={{
+                fontFamily: "'Fredoka One', cursive",
+                fontSize: "22px",
+                color: "#25D366",
+                letterSpacing: "0.02em",
+              }}>
+                {WHATSAPP_NUMBER}
+              </span>
+              <span style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontSize: "11px",
+                fontWeight: 800,
+                color: "rgba(37,211,102,0.75)",
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+              }}>
+                WhatsApp
+              </span>
+            </a>
           </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap gap-4 mb-8"
+            transition={{ duration: 0.6, delay: 0.35 }}
+            style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginBottom: "52px" }}
           >
-            <a
-              href="#precios"
-              className="btn-amber px-8 py-4 rounded-full text-base font-['Outfit'] text-white inline-flex items-center gap-2 shadow-lg"
-              style={{ fontWeight: 700 }}
-            >
-              <Rocket className="w-5 h-5" />
-              Reservar Cupo Ahora
+            <a href="#precios" className="btn-solar">
+              🌟 Ver Paquetes
             </a>
-            <a
-              href="#programas"
-              className="px-8 py-4 rounded-full text-base font-['Outfit'] text-white border border-white/20 hover:border-[#4CC9F0]/50 hover:bg-[#4CC9F0]/10 transition-all duration-300 inline-flex items-center gap-2"
-              style={{ fontWeight: 600 }}
-            >
-              Ver Programas
+            <a href="#programas" className="btn-outline-solar">
+              Explorar Programas
             </a>
           </motion.div>
 
-          {/* WhatsApp — prominent display */}
+          {/* Stats */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.65 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 1fr)",
+              gap: "12px",
+              maxWidth: "480px",
+            }}
+            className="sm:grid-cols-4"
           >
-            <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 group"
-            >
-              <div className="w-11 h-11 rounded-full bg-[#25D366] flex items-center justify-center shadow-[0_0_20px_rgba(37,211,102,0.4)] group-hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] transition-all duration-300">
-                <MessageCircle className="w-5 h-5 text-white" />
+            {stats.map((s) => (
+              <div
+                key={s.label}
+                className="glass-card-warm"
+                style={{ padding: "16px 12px", textAlign: "center" }}
+              >
+                <div style={{
+                  fontFamily: "'Fredoka One', cursive",
+                  fontSize: "28px",
+                  color: "#FFD23F",
+                  lineHeight: 1,
+                  marginBottom: "4px",
+                }}>
+                  {s.value}
+                </div>
+                <div style={{
+                  fontFamily: "'Nunito', sans-serif",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  color: "rgba(255,248,240,0.55)",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                }}>
+                  {s.label}
+                </div>
               </div>
-              <div>
-                <p className="font-['Outfit'] text-[10px] text-[#8BA3C7] uppercase tracking-widest leading-tight">
-                  ¿Tienes dudas? Escríbenos
-                </p>
-                <p className="font-['Outfit'] text-xl font-black text-white group-hover:text-[#25D366] transition-colors duration-300 leading-tight" style={{ fontWeight: 900 }}>
-                  {WHATSAPP_NUMBER}
-                </p>
-              </div>
-            </a>
+            ))}
           </motion.div>
         </div>
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#03071E] to-transparent" />
+      <div style={{
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: "100px",
+        background: "linear-gradient(to bottom, transparent, rgba(2,4,8,0.5))",
+        pointerEvents: "none",
+      }} />
     </section>
   );
 }

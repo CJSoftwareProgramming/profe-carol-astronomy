@@ -1,123 +1,123 @@
-/* TestimonialsSection — Profe Carol Astrophysics Academy
-   Design: Cosmic Academy — testimonial cards with star ratings */
+/* TestimonialsSection — Sophia Academy Brand
+   Font: Fredoka One (titles) + Nunito (body)
+   Colors: #FB923C solar, #FFD23F stellar, transparent bg */
+
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
 
 const testimonials = [
-  {
-    name: "María González",
-    role: "Mamá de Sofía, 5 años — Colombia",
-    text: "Mi hija lleva 3 meses en la academia y su amor por la ciencia ha crecido enormemente. Ahora me explica qué son los agujeros negros y cómo se forman las estrellas. ¡Increíble!",
-    rating: 5,
-    initials: "MG",
-    color: "#4CC9F0",
-  },
-  {
-    name: "Carlos Rodríguez",
-    role: "Papá de Nicolas, 8 años — México",
-    text: "La Profe Carol tiene un don especial para explicar conceptos complejos de forma que los niños los entiendan y disfruten. Nicolas no se pierde ninguna clase.",
-    rating: 5,
-    initials: "CR",
-    color: "#F4A261",
-  },
-  {
-    name: "Ana Martínez",
-    role: "Mamá de Lucas, 7 años — Argentina",
-    text: "Lo que más me gusta es que no es una clase aburrida. Es una aventura espacial cada semana. Lucas ya quiere ser astrónomo cuando sea grande.",
-    rating: 5,
-    initials: "AM",
-    color: "#90E0EF",
-  },
-  {
-    name: "Roberto Silva",
-    role: "Papá de Valentina, 8 años — España",
-    text: "El programa académico es excelente. Valentina ha mejorado en matemáticas y física gracias a la metodología de la Profe Carol. Totalmente recomendado.",
-    rating: 5,
-    initials: "RS",
-    color: "#FFB347",
-  },
-  {
-    name: "Lucía Fernández",
-    role: "Mamá de Diego, 6 años — Venezuela",
-    text: "La calidad de las clases es comparable a academias internacionales. La Profe Carol es muy profesional y los niños la adoran. Vale mucho la pena.",
-    rating: 5,
-    initials: "LF",
-    color: "#4CC9F0",
-  },
-  {
-    name: "Patricia Morales",
-    role: "Mamá de Isabella, 6 años — Chile",
-    text: "Empezamos con el programa recreacional y mi hija de 6 años ya conoce todos los planetas, sus características y hasta habla de exoplanetas. Nos encanta su pasión por la astronomía",
-    rating: 5,
-    initials: "PM",
-    color: "#F4A261",
-  },
+  { name: "María González", role: "Mamá de Sofía, 5 años — Colombia", text: "Mi hija lleva 3 meses en la academia y su amor por la ciencia ha crecido enormemente. Ahora me explica qué son los agujeros negros y cómo se forman las estrellas. ¡Increíble!", initials: "MG", color: "#60A5FA" },
+  { name: "Carlos Rodríguez", role: "Papá de Nicolas, 8 años — México", text: "La Profe Carol tiene un don especial para explicar conceptos complejos de forma que los niños los entiendan y disfruten. Nicolas no se pierde ninguna clase.", initials: "CR", color: "#FB923C" },
+  { name: "Ana Martínez", role: "Mamá de Lucas, 7 años — Argentina", text: "Lo que más me gusta es que no es una clase aburrida. Es una aventura espacial cada semana. Lucas ya quiere ser astrónomo cuando sea grande.", initials: "AM", color: "#34D399" },
+  { name: "Roberto Silva", role: "Papá de Valentina, 8 años — España", text: "El programa académico es excelente. Valentina ha mejorado en matemáticas y física gracias a la metodología de la Profe Carol. Totalmente recomendado.", initials: "RS", color: "#FFD23F" },
+  { name: "Lucía Fernández", role: "Mamá de Diego, 6 años — Venezuela", text: "La calidad de las clases es comparable a academias internacionales. La Profe Carol es muy profesional y los niños la adoran. Vale mucho la pena.", initials: "LF", color: "#A78BFA" },
+  { name: "Patricia Morales", role: "Mamá de Isabella, 6 años — Chile", text: "Empezamos con el programa recreacional y mi hija de 6 años ya conoce todos los planetas, sus características y hasta habla de exoplanetas. Nos encanta su pasión por la astronomía.", initials: "PM", color: "#F87171" },
 ];
 
 export default function TestimonialsSection() {
   return (
-    <section className="relative bg-[#050D1E] py-24 overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#4CC9F0]/4 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
+    <section
+      style={{ position: "relative", zIndex: 2, padding: "100px 0" }}
+    >
+      <div className="container">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-14"
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: "center", marginBottom: "52px" }}
         >
-          <p className="section-label mb-3">Testimonios</p>
-          <h2 className="font-['Outfit'] text-4xl md:text-5xl font-black text-white leading-tight mb-5" style={{ fontWeight: 900 }}>
-            Lo que dicen
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4CC9F0] to-[#F4A261]">
-              los padres
+          <div style={{ marginBottom: "14px" }}>
+            <span style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "11px",
+              fontWeight: 800,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: "#FFD23F",
+              background: "rgba(255,210,63,0.1)",
+              border: "1px solid rgba(255,210,63,0.25)",
+              borderRadius: "20px",
+              padding: "4px 14px",
+            }}>
+              ⭐ Testimonios
             </span>
+          </div>
+          <h2 style={{
+            fontFamily: "'Fredoka One', cursive",
+            fontSize: "clamp(28px, 5vw, 48px)",
+            fontWeight: 400,
+            color: "#FFF8F0",
+            lineHeight: 1.2,
+            marginBottom: "12px",
+          }}>
+            Lo que dicen{" "}
+            <span style={{ color: "#FB923C" }}>los padres</span>
           </h2>
-          <p className="font-['Crimson_Pro'] text-xl text-[#8BA3C7] max-w-xl mx-auto">
+          <p style={{
+            fontFamily: "'Nunito', sans-serif",
+            fontSize: "16px",
+            color: "rgba(255,248,240,0.55)",
+            maxWidth: "480px",
+            margin: "0 auto",
+            lineHeight: 1.6,
+          }}>
             Familias de toda América Latina y España confían en la Sophia Academy para la educación científica de sus hijos.
           </p>
         </motion.div>
 
-        {/* Testimonials grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Grid */}
+        <div
+          style={{ display: "grid", gap: "20px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        >
           {testimonials.map((t, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="cosmic-card rounded-2xl p-6 relative"
+              transition={{ duration: 0.45, delay: i * 0.07 }}
+              className="glass-card-warm"
+              style={{ padding: "24px", position: "relative" }}
             >
-              {/* Quote icon */}
-              <Quote className="w-8 h-8 text-[#4CC9F0]/20 absolute top-4 right-4" />
-
               {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: t.rating }).map((_, j) => (
-                  <Star key={j} className="w-4 h-4 fill-[#FFB347] text-[#FFB347]" />
+              <div style={{ display: "flex", gap: "3px", marginBottom: "14px" }}>
+                {[...Array(5)].map((_, j) => (
+                  <span key={j} style={{ color: "#FFD23F", fontSize: "14px" }}>★</span>
                 ))}
               </div>
 
-              {/* Text */}
-              <p className="font-['Crimson_Pro'] text-base text-[#B8D4E8] leading-relaxed mb-5 italic">
+              {/* Quote */}
+              <p style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontSize: "14px",
+                fontWeight: 400,
+                color: "rgba(255,248,240,0.70)",
+                lineHeight: 1.75,
+                fontStyle: "italic",
+                marginBottom: "20px",
+              }}>
                 "{t.text}"
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-3">
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center font-['Outfit'] text-sm font-black flex-shrink-0"
-                  style={{ backgroundColor: `${t.color}20`, color: t.color, fontWeight: 900 }}
-                >
+              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                <div style={{
+                  width: "40px", height: "40px", borderRadius: "50%",
+                  background: `${t.color}20`,
+                  border: `1px solid ${t.color}40`,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  fontFamily: "'Fredoka One', cursive",
+                  fontSize: "14px",
+                  color: t.color,
+                  flexShrink: 0,
+                }}>
                   {t.initials}
                 </div>
                 <div>
-                  <p className="font-['Outfit'] text-sm font-700 text-white" style={{ fontWeight: 700 }}>{t.name}</p>
-                  <p className="font-['Outfit'] text-xs text-[#8BA3C7]">{t.role}</p>
+                  <p style={{ fontFamily: "'Fredoka One', cursive", fontSize: "15px", color: "#FFF8F0" }}>{t.name}</p>
+                  <p style={{ fontFamily: "'Nunito', sans-serif", fontSize: "12px", fontWeight: 600, color: "rgba(255,248,240,0.45)" }}>{t.role}</p>
                 </div>
               </div>
             </motion.div>

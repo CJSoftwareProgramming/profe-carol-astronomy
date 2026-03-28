@@ -1,10 +1,10 @@
-/* =============================================================
-   PROFE CAROL — ACADEMIA DE ASTRONOMÍA
-   Design Philosophy: "Cosmic Academy" — Premium Educational Editorial
-   Dark cosmos as the stage. Deep navy/black backgrounds with luminous accents.
-   Typography: Outfit (headers) + Crimson Pro (body)
-   Palette: Deep space navy, electric blue (#4CC9F0), warm amber (#F4A261)
-   ============================================================= */
+/* ============================================================
+   SOPHIA ACADEMY — Global Design System
+   Brand: "El universo como aula"
+   Colors: #020408 bg, #FB923C solar orange, #FFD23F stellar yellow
+   Fonts: Fredoka One (display) + Nunito (body/UI)
+   References: NASA Kids + Discovery Kids + National Geographic
+   ============================================================ */
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -40,56 +40,59 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 1rem;
+  /* Sophia Brand Colors */
+  --solar-orange: #FB923C;
+  --stellar-yellow: #FFD23F;
+  --warm-white: #FFF8F0;
+  --space-deep: #020408;
+  --nebula-dark: #0A0C14;
+  --warm-layer: #0F0802;
 
-  /* Deep Space Dark Theme */
-  --background: oklch(0.09 0.02 250);
-  --foreground: oklch(0.95 0.01 220);
-
-  --card: oklch(0.12 0.025 250);
-  --card-foreground: oklch(0.95 0.01 220);
-
-  --popover: oklch(0.12 0.025 250);
-  --popover-foreground: oklch(0.95 0.01 220);
-
-  /* Electric Blue primary */
-  --primary: oklch(0.72 0.18 210);
-  --primary-foreground: oklch(0.08 0.02 250);
-
-  --secondary: oklch(0.16 0.03 250);
-  --secondary-foreground: oklch(0.85 0.01 220);
-
-  --muted: oklch(0.15 0.025 250);
-  --muted-foreground: oklch(0.6 0.04 230);
-
-  /* Warm amber accent */
-  --accent: oklch(0.75 0.15 55);
-  --accent-foreground: oklch(0.08 0.02 250);
-
+  /* Tailwind semantic tokens */
+  --background: oklch(0.04 0.005 260);
+  --foreground: oklch(0.97 0.01 60);
+  --card: oklch(0.09 0.008 260);
+  --card-foreground: oklch(0.97 0.01 60);
+  --popover: oklch(0.09 0.008 260);
+  --popover-foreground: oklch(0.97 0.01 60);
+  --primary: oklch(0.72 0.17 50);
+  --primary-foreground: oklch(0.04 0.005 260);
+  --secondary: oklch(0.12 0.01 260);
+  --secondary-foreground: oklch(0.85 0.01 60);
+  --muted: oklch(0.12 0.01 260);
+  --muted-foreground: oklch(0.65 0.01 60);
+  --accent: oklch(0.80 0.18 85);
+  --accent-foreground: oklch(0.04 0.005 260);
   --destructive: oklch(0.65 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
-
-  --border: oklch(0.25 0.04 250);
-  --input: oklch(0.18 0.03 250);
-  --ring: oklch(0.72 0.18 210);
-
-  --chart-1: oklch(0.72 0.18 210);
-  --chart-2: oklch(0.75 0.15 55);
-  --chart-3: oklch(0.65 0.14 280);
-  --chart-4: oklch(0.7 0.16 170);
-  --chart-5: oklch(0.68 0.18 30);
-
-  /* Custom cosmic colors */
-  --cosmic-navy: #03071E;
-  --cosmic-deep: #0A1628;
-  --cosmic-blue: #4CC9F0;
-  --cosmic-amber: #F4A261;
-  --cosmic-gold: #FFB347;
-  --cosmic-glow: rgba(76, 201, 240, 0.15);
-  --cosmic-amber-glow: rgba(244, 162, 97, 0.15);
+  --destructive-foreground: oklch(0.97 0 0);
+  --border: oklch(1 0 0 / 7%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.72 0.17 50);
+  --chart-1: oklch(0.72 0.17 50);
+  --chart-2: oklch(0.80 0.18 85);
+  --chart-3: oklch(0.65 0.22 25);
+  --chart-4: oklch(0.70 0.18 160);
+  --chart-5: oklch(0.68 0.20 280);
+  --sidebar: oklch(0.07 0.007 260);
+  --sidebar-foreground: oklch(0.97 0.01 60);
+  --sidebar-primary: oklch(0.72 0.17 50);
+  --sidebar-primary-foreground: oklch(0.04 0.005 260);
+  --sidebar-accent: oklch(0.12 0.01 260);
+  --sidebar-accent-foreground: oklch(0.97 0.01 60);
+  --sidebar-border: oklch(1 0 0 / 7%);
+  --sidebar-ring: oklch(0.72 0.17 50);
 }
 
 @layer base {
@@ -98,14 +101,14 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Crimson Pro', Georgia, serif;
-    background-color: #03071E;
-    color: #E8F4FD;
+    font-family: 'Nunito', sans-serif;
+    background-color: #020408;
+    color: #FFF8F0;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', system-ui, sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-family: 'Fredoka One', cursive;
+    font-weight: 400;
+    color: #FFF8F0;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -130,105 +133,171 @@
     min-width: 0;
   }
   @media (min-width: 640px) {
-    .container {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
+    .container { padding-left: 1.5rem; padding-right: 1.5rem; }
   }
   @media (min-width: 1024px) {
-    .container {
-      padding-left: 2rem;
-      padding-right: 2rem;
-      max-width: 1280px;
-    }
+    .container { padding-left: 2rem; padding-right: 2rem; max-width: 1280px; }
   }
 
-  /* Cosmic glow button */
-  .btn-cosmic {
-    background: linear-gradient(135deg, #4CC9F0, #0077B6);
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.02em;
+  /* ── Sophia Brand Buttons ── */
+  .btn-solar {
+    background: linear-gradient(135deg, #FB923C, #FFD23F);
     border: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(76, 201, 240, 0.3);
+    border-radius: 28px;
+    padding: 14px 28px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 16px;
+    color: #020408;
+    box-shadow: 0 4px 20px rgba(251,146,60,0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
   }
-  .btn-cosmic:hover {
-    box-shadow: 0 0 35px rgba(76, 201, 240, 0.55);
+  .btn-solar:hover {
     transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(251,146,60,0.6);
   }
 
-  /* Amber CTA button */
-  .btn-amber {
-    background: linear-gradient(135deg, #F4A261, #E76F51);
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    border: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(244, 162, 97, 0.3);
+  .btn-outline-solar {
+    background: transparent;
+    border: 2px solid rgba(251,146,60,0.5);
+    border-radius: 28px;
+    padding: 12px 26px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 16px;
+    color: #FB923C;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
   }
-  .btn-amber:hover {
-    box-shadow: 0 0 35px rgba(244, 162, 97, 0.55);
-    transform: translateY(-2px);
+  .btn-outline-solar:hover {
+    background: rgba(251,146,60,0.1);
+    border-color: rgba(251,146,60,0.8);
   }
 
-  /* Section heading style */
+  /* ── Sophia Glass Cards ── */
+  .glass-card {
+    background: rgba(10, 12, 20, 0.78);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  .glass-card-warm {
+    background: rgba(15, 8, 2, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(251,146,60,0.14);
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  /* ── Subject Label Tags ── */
+  .tag-astrofisica { color: #F87171; border-color: rgba(248,113,113,0.3); background: rgba(248,113,113,0.1); }
+  .tag-astronomia  { color: #FB923C; border-color: rgba(251,146,60,0.3);  background: rgba(251,146,60,0.1); }
+  .tag-astromate   { color: #60A5FA; border-color: rgba(96,165,250,0.3);  background: rgba(96,165,250,0.1); }
+  .tag-astroquimica{ color: #34D399; border-color: rgba(52,211,153,0.3);  background: rgba(52,211,153,0.1); }
+  .tag-ingenieria  { color: #F472B6; border-color: rgba(244,114,182,0.3); background: rgba(244,114,182,0.1); }
+  .tag-fisica      { color: #FFD23F; border-color: rgba(255,210,63,0.3);  background: rgba(255,210,63,0.1); }
+
+  /* ── Section Label ── */
   .section-label {
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #4CC9F0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid;
   }
 
-  /* Card cosmic style */
-  .cosmic-card {
-    background: linear-gradient(135deg, rgba(10, 22, 40, 0.9), rgba(3, 7, 30, 0.95));
-    border: 1px solid rgba(76, 201, 240, 0.15);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-  }
-  .cosmic-card:hover {
-    border-color: rgba(76, 201, 240, 0.4);
-    box-shadow: 0 8px 40px rgba(76, 201, 240, 0.12);
-    transform: translateY(-4px);
+  /* ── Section Title ── */
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 400;
+    color: #FFF8F0;
+    line-height: 1.15;
   }
 
-  /* Star field animation */
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.2); }
+  .section-title span.highlight {
+    color: #FFD23F;
   }
+
+  .section-title span.solar {
+    color: #FB923C;
+  }
+
+  /* ── Solar System Background ── */
+  .solar-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  /* ── Shooting Stars ── */
+  @keyframes shoot {
+    0%   { transform: translateX(-200px) translateY(0px); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateX(120vw) translateY(40vh); opacity: 0; }
+  }
+  @keyframes shoot2 {
+    0%   { transform: translateX(-200px) translateY(0px); opacity: 0; }
+    10%  { opacity: 0.8; }
+    90%  { opacity: 0.8; }
+    100% { transform: translateX(110vw) translateY(30vh); opacity: 0; }
+  }
+  @keyframes shoot3 {
+    0%   { transform: translateX(-200px) translateY(0px); opacity: 0; }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.6; }
+    100% { transform: translateX(115vw) translateY(50vh); opacity: 0; }
+  }
+
+  /* ── Sun Pulse ── */
+  @keyframes sun-pulse {
+    0%, 100% { box-shadow: 0 0 60px rgba(255,140,0,0.4), 0 0 130px rgba(255,140,0,0.2), 0 0 260px rgba(255,140,0,0.1), 0 0 420px rgba(255,140,0,0.05); }
+    50%       { box-shadow: 0 0 80px rgba(255,140,0,0.6), 0 0 160px rgba(255,140,0,0.35), 0 0 320px rgba(255,140,0,0.18), 0 0 500px rgba(255,140,0,0.08); }
+  }
+
+  /* ── Planet Orbits ── */
+  @keyframes orbit-cw  { from { transform: rotate(0deg);   } to { transform: rotate(360deg);  } }
+  @keyframes orbit-ccw { from { transform: rotate(0deg);   } to { transform: rotate(-360deg); } }
+
+  /* ── Twinkle Stars ── */
+  @keyframes twinkle1 { 0%,100%{opacity:.75} 50%{opacity:.15} }
+  @keyframes twinkle2 { 0%,100%{opacity:1}   50%{opacity:.2}  }
+  @keyframes twinkle3 { 0%,100%{opacity:.35} 50%{opacity:.05} }
+  @keyframes twinkle4 { 0%,100%{opacity:.45} 50%{opacity:.1}  }
+
+  /* ── Fade in up ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Float ── */
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
+    50%       { transform: translateY(-12px); }
   }
-  @keyframes orbit {
-    from { transform: rotate(0deg) translateX(40px) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
-  }
+
+  /* ── Glow pulse ── */
   @keyframes glow-pulse {
-    0%, 100% { box-shadow: 0 0 20px rgba(76, 201, 240, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(76, 201, 240, 0.6); }
-  }
-  @keyframes shimmer {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
-  }
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  .animate-float-slow {
-    animation: float 9s ease-in-out infinite;
-  }
-  .animate-glow-pulse {
-    animation: glow-pulse 3s ease-in-out infinite;
-  }
-  .animate-twinkle {
-    animation: twinkle 3s ease-in-out infinite;
+    0%, 100% { opacity: 0.6; }
+    50%       { opacity: 1; }
   }
 }

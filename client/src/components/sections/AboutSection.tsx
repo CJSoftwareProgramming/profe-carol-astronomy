@@ -1,120 +1,215 @@
-/* AboutSection — Profe Carol Astrophysics Academy
-   Design: Cosmic Academy — editorial split layout with planets banner */
-import { motion } from "framer-motion";
-import { Globe, Award, Microscope, BookOpen } from "lucide-react";
+/* AboutSection — Sophia Academy Brand
+   Font: Fredoka One (titles) + Nunito (body/labels)
+   Colors: #FFF8F0 text, #FFD23F highlight, #FB923C solar
+   Cards: glass-card with subject color borders */
 
-const PLANETS_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/planets-banner-Pfkgq9qvd5RKHT3s5VGcTb.webp";
+import { motion } from "framer-motion";
+
 const KIDS_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/kids-class-gowPdCrsioP3Lwiyn7JzEn.webp";
 
 const pillars = [
   {
-    icon: <Globe className="w-5 h-5" />,
+    emoji: "🌍",
     title: "Academia Internacional",
+    color: "#FB923C",
     desc: "Estudiantes de toda América Latina, España y EE.UU. aprenden juntos.",
   },
   {
-    icon: <Microscope className="w-5 h-5" />,
+    emoji: "🧪",
     title: "Ciencia Real",
+    color: "#34D399",
     desc: "Astrofísica, Astroquímica y Astromatemáticas con rigor científico.",
   },
   {
-    icon: <Award className="w-5 h-5" />,
+    emoji: "🎓",
     title: "Certificación",
+    color: "#FFD23F",
     desc: "Certificado oficial de participación al completar el programa académico.",
   },
   {
-    icon: <BookOpen className="w-5 h-5" />,
+    emoji: "📚",
     title: "Currículo Estructurado",
+    color: "#60A5FA",
     desc: "Programa progresivo diseñado por una estudiante de Astrofísica en UK.",
   },
 ];
 
 export default function AboutSection() {
   return (
-    <section className="relative bg-[#03071E] py-24 overflow-hidden">
-      {/* Subtle background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#4CC9F0]/5 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
-        {/* Planets banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-16 rounded-2xl overflow-hidden border border-[#4CC9F0]/10"
+    <section
+      id="sobre"
+      style={{
+        position: "relative",
+        zIndex: 2,
+        padding: "100px 0",
+      }}
+    >
+      <div className="container">
+        <div
+          style={{
+            display: "grid",
+            gap: "64px",
+            alignItems: "center",
+          }}
+          className="grid grid-cols-1 lg:grid-cols-2"
         >
-          <img
-            src={PLANETS_IMG}
-            alt="Sistema Solar — Profe Carol Academy"
-            className="w-full h-40 md:h-56 object-cover"
-          />
-        </motion.div>
-
-        {/* Two-column layout */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: image */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative"
+            transition={{ duration: 0.7 }}
+            style={{ position: "relative" }}
           >
-            <div className="relative rounded-2xl overflow-hidden border border-[#4CC9F0]/15 shadow-[0_0_60px_rgba(76,201,240,0.1)]">
+            <div style={{
+              borderRadius: "20px",
+              overflow: "hidden",
+              border: "1px solid rgba(251,146,60,0.15)",
+              boxShadow: "0 0 60px rgba(251,146,60,0.08)",
+            }}>
               <img
                 src={KIDS_IMG}
                 alt="Niños aprendiendo astronomía con la Profe Carol"
-                className="w-full h-[400px] object-cover"
+                style={{ width: "100%", height: "400px", objectFit: "cover", display: "block" }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#03071E]/60 to-transparent" />
+              <div style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(to top, rgba(2,4,8,0.5) 0%, transparent 60%)",
+              }} />
             </div>
-            {/* Floating stat card */}
-            <div className="absolute -bottom-6 -right-6 bg-[#0A1628] border border-[#4CC9F0]/30 rounded-xl p-4 shadow-[0_8px_30px_rgba(76,201,240,0.15)]">
-              <div className="font-['Outfit'] text-3xl font-black text-[#4CC9F0]">+200</div>
-              <div className="font-['Outfit'] text-xs text-[#8BA3C7] font-medium">Estudiantes activos</div>
+            {/* Floating stat */}
+            <div className="glass-card-warm" style={{
+              position: "absolute",
+              bottom: "-20px",
+              right: "-20px",
+              padding: "16px 20px",
+              minWidth: "140px",
+            }}>
+              <div style={{
+                fontFamily: "'Fredoka One', cursive",
+                fontSize: "32px",
+                color: "#FFD23F",
+                lineHeight: 1,
+              }}>+200</div>
+              <div style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontSize: "12px",
+                fontWeight: 700,
+                color: "rgba(255,248,240,0.55)",
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+              }}>Estudiantes activos</div>
             </div>
           </motion.div>
 
           {/* Right: content */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <p className="section-label mb-3">Sobre la Academia</p>
-            <h2 className="font-['Outfit'] text-4xl md:text-5xl font-black text-white leading-tight mb-6" style={{ fontWeight: 900 }}>
-              Una academia espacial
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4CC9F0] to-[#90E0EF]">
-                para mentes curiosas
+            <div style={{ marginBottom: "16px" }}>
+              <span style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontSize: "11px",
+                fontWeight: 800,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: "#FB923C",
+                background: "rgba(251,146,60,0.1)",
+                border: "1px solid rgba(251,146,60,0.25)",
+                borderRadius: "20px",
+                padding: "4px 14px",
+              }}>
+                🌍 Sobre la Academia
               </span>
+            </div>
+
+            <h2 style={{
+              fontFamily: "'Fredoka One', cursive",
+              fontSize: "clamp(28px, 4vw, 44px)",
+              fontWeight: 400,
+              color: "#FFF8F0",
+              lineHeight: 1.15,
+              marginBottom: "20px",
+            }}>
+              Una academia espacial para{" "}
+              <span style={{ color: "#FFD23F" }}>mentes curiosas</span>
             </h2>
-            <p className="font-['Crimson_Pro'] text-lg text-[#B8D4E8] leading-relaxed mb-6">
+
+            <p style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "16px",
+              fontWeight: 400,
+              color: "rgba(255,248,240,0.65)",
+              lineHeight: 1.75,
+              marginBottom: "16px",
+            }}>
               En Sophia Academy creemos que los niños pueden entender mucho más de lo que los adultos imaginan.
-              Somos una de las primeras academias en enseñar astronomía avanzada a niños pequeños y la primera en enseñar astrofísica a pequeñitos desde los 4 años, combinando experimentos, simulaciones, juegos y exploración científica para hacer de la ciencia una experiencia emocionante desde el primer día.
+              Somos una de las primeras academias en enseñar astronomía avanzada a niños pequeños y la primera
+              en enseñar astrofísica a pequeñitos desde los 4 años, combinando experimentos, simulaciones,
+              juegos y exploración científica para hacer de la ciencia una experiencia emocionante desde el primer día.
             </p>
-            <p className="font-['Crimson_Pro'] text-lg text-[#4CC9F0] leading-relaxed mb-10 italic">
-              Cada clase es una misión espacial. Cada niño, un explorador del cosmos.
+
+            <p style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "15px",
+              fontWeight: 700,
+              color: "#FB923C",
+              lineHeight: 1.6,
+              marginBottom: "32px",
+              fontStyle: "italic",
+            }}>
+              "Los niños no solo aprenden ciencia: piensan como científicos, exploran como astrónomos."
             </p>
 
             {/* Pillars grid */}
-            <div className="grid grid-cols-2 gap-4">
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
               {pillars.map((p, i) => (
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  key={p.title}
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="cosmic-card rounded-xl p-4"
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                  style={{
+                    background: "rgba(10,12,20,0.78)",
+                    backdropFilter: "blur(20px)",
+                    border: `1px solid ${p.color}22`,
+                    borderRadius: "14px",
+                    padding: "16px",
+                  }}
                 >
-                  <div className="w-9 h-9 rounded-lg bg-[#4CC9F0]/10 flex items-center justify-center text-[#4CC9F0] mb-3">
-                    {p.icon}
+                  <div style={{
+                    width: "38px", height: "38px",
+                    borderRadius: "10px",
+                    background: `${p.color}18`,
+                    border: `1px solid ${p.color}40`,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: "18px",
+                    marginBottom: "10px",
+                  }}>
+                    {p.emoji}
                   </div>
-                  <h4 className="font-['Outfit'] text-sm font-700 text-white mb-1" style={{ fontWeight: 700 }}>{p.title}</h4>
-                  <p className="font-['Crimson_Pro'] text-sm text-[#8BA3C7] leading-snug">{p.desc}</p>
+                  <h4 style={{
+                    fontFamily: "'Fredoka One', cursive",
+                    fontSize: "14px",
+                    color: p.color,
+                    marginBottom: "6px",
+                    lineHeight: 1.2,
+                  }}>
+                    {p.title}
+                  </h4>
+                  <p style={{
+                    fontFamily: "'Nunito', sans-serif",
+                    fontSize: "12px",
+                    color: "rgba(255,248,240,0.55)",
+                    lineHeight: 1.5,
+                  }}>
+                    {p.desc}
+                  </p>
                 </motion.div>
               ))}
             </div>

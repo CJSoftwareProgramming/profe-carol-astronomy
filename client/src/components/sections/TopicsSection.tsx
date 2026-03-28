@@ -1,99 +1,111 @@
-/* TopicsSection — Profe Carol Astrophysics Academy
-   Design: Cosmic Academy — animated topic cards with telescope background */
+/* TopicsSection — Sophia Academy Brand
+   Font: Fredoka One (titles) + Nunito (body)
+   Colors: #FB923C solar, #FFD23F stellar, transparent bg */
+
 import { motion } from "framer-motion";
 
-const TELESCOPE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/telescope-night-hoUkjW6xnKyPGeUHvc3NRT.webp";
-
 const topics = [
-  { name: "Agujeros Negros", emoji: "🕳️", category: "Astrofísica" },
-  { name: "Sistema Solar", emoji: "🪐", category: "Astronomía" },
-  { name: "Estrellas de Neutrones", emoji: "⭐", category: "Astrofísica" },
-  { name: "Galaxias", emoji: "🌌", category: "Astronomía" },
-  { name: "Exoplanetas", emoji: "🌍", category: "Astronomía" },
-  { name: "Auroras Boreales", emoji: "🌠", category: "Física Espacial" },
-  { name: "Agujeros de Gusano", emoji: "🔮", category: "Relatividad" },
-  { name: "Ecuación de Drake", emoji: "👽", category: "Astrobiología" },
-  { name: "Señal Wow!", emoji: "📡", category: "SETI" },
-  { name: "Robots Espaciales", emoji: "🤖", category: "Exploración" },
-  { name: "Supernovas", emoji: "💥", category: "Astroquímica" },
-  { name: "Tabla Periódica Cósmica", emoji: "⚗️", category: "Astroquímica" },
-  { name: "Cohetes Espaciales", emoji: "🚀", category: "Ingeniería" },
-  { name: "Vida Extraterrestre", emoji: "🛸", category: "Astrobiología" },
-  { name: "Luz y Gravedad (Einstein)", emoji: "💡", category: "Relatividad" },
-  { name: "Aritmética Astronómica", emoji: "🔢", category: "Astromatemáticas" },
+  { name: "Agujeros Negros", emoji: "🕳️", color: "#60A5FA" },
+  { name: "Sistema Solar", emoji: "🪐", color: "#FB923C" },
+  { name: "Estrellas de Neutrones", emoji: "⭐", color: "#FFD23F" },
+  { name: "Galaxias", emoji: "🌌", color: "#A78BFA" },
+  { name: "Exoplanetas", emoji: "🌍", color: "#34D399" },
+  { name: "Auroras Boreales", emoji: "🌠", color: "#60A5FA" },
+  { name: "Agujeros de Gusano", emoji: "🔮", color: "#F87171" },
+  { name: "Ecuación de Drake", emoji: "👽", color: "#34D399" },
+  { name: "Señal Wow!", emoji: "📡", color: "#A78BFA" },
+  { name: "Robots Espaciales", emoji: "🤖", color: "#FB923C" },
+  { name: "Supernovas", emoji: "💥", color: "#F87171" },
+  { name: "Tabla Periódica Cósmica", emoji: "⚗️", color: "#FFD23F" },
+  { name: "Cohetes Espaciales", emoji: "🚀", color: "#FB923C" },
+  { name: "Vida Extraterrestre", emoji: "🛸", color: "#34D399" },
+  { name: "Luz y Gravedad (Einstein)", emoji: "💡", color: "#FFD23F" },
+  { name: "Aritmética Astronómica", emoji: "🔢", color: "#60A5FA" },
 ];
-
-const categoryColors: Record<string, string> = {
-  "Astrofísica": "#4CC9F0",
-  "Astronomía": "#90E0EF",
-  "Física Espacial": "#F4A261",
-  "Relatividad": "#FFB347",
-  "Astrobiología": "#80B918",
-  "SETI": "#9B5DE5",
-  "Exploración": "#F15BB5",
-  "Astroquímica": "#FEE440",
-  "Ingeniería": "#00BBF9",
-  "Astromatemáticas": "#F4A261",
-};
 
 export default function TopicsSection() {
   return (
-    <section className="relative bg-[#050D1E] py-24 overflow-hidden">
-      {/* Background image with overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-15"
-        style={{ backgroundImage: `url(${TELESCOPE_IMG})` }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050D1E] via-transparent to-[#050D1E]" />
-
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
+    <section
+      style={{ position: "relative", zIndex: 2, padding: "100px 0" }}
+    >
+      <div className="container">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-14"
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: "center", marginBottom: "52px" }}
         >
-          <p className="section-label mb-3">Temas de Clase</p>
-          <h2 className="font-['Outfit'] text-4xl md:text-5xl font-black text-white leading-tight mb-5" style={{ fontWeight: 900 }}>
-            Explora el universo
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4CC9F0] to-[#90E0EF]">
-              tema por tema
+          <div style={{ marginBottom: "14px" }}>
+            <span style={{
+              fontFamily: "'Nunito', sans-serif",
+              fontSize: "11px",
+              fontWeight: 800,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: "#60A5FA",
+              background: "rgba(96,165,250,0.1)",
+              border: "1px solid rgba(96,165,250,0.25)",
+              borderRadius: "20px",
+              padding: "4px 14px",
+            }}>
+              🔭 Temas de Clase
             </span>
+          </div>
+          <h2 style={{
+            fontFamily: "'Fredoka One', cursive",
+            fontSize: "clamp(28px, 5vw, 48px)",
+            fontWeight: 400,
+            color: "#FFF8F0",
+            lineHeight: 1.2,
+            marginBottom: "12px",
+          }}>
+            Explora el universo{" "}
+            <span style={{ color: "#FFD23F" }}>tema por tema</span>
           </h2>
-          <p className="font-['Crimson_Pro'] text-xl text-[#8BA3C7] max-w-xl mx-auto">
+          <p style={{
+            fontFamily: "'Nunito', sans-serif",
+            fontSize: "16px",
+            color: "rgba(255,248,240,0.55)",
+            maxWidth: "480px",
+            margin: "0 auto",
+            lineHeight: 1.6,
+          }}>
             Cada semana los estudiantes pueden elegir entre más de 5 temas diferentes.
             Los temas se renuevan constantemente.
           </p>
         </motion.div>
 
-        {/* Topics grid */}
-        <div className="flex flex-wrap gap-3 justify-center mb-12">
+        {/* Topic chips */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center", marginBottom: "36px" }}>
           {topics.map((topic, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.85 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="group cursor-default"
+              transition={{ duration: 0.35, delay: i * 0.03 }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                background: `${topic.color}12`,
+                border: `1px solid ${topic.color}28`,
+                borderRadius: "50px",
+                padding: "8px 16px",
+                cursor: "default",
+              }}
             >
-              <div className="cosmic-card rounded-2xl px-4 py-3 flex items-center gap-2.5">
-                <span className="text-xl">{topic.emoji}</span>
-                <div>
-                  <p className="font-['Outfit'] text-sm font-600 text-white leading-tight" style={{ fontWeight: 600 }}>
-                    {topic.name}
-                  </p>
-                  <p
-                    className="font-['Outfit'] text-[10px] font-semibold uppercase tracking-wider leading-tight"
-                    style={{ color: categoryColors[topic.category] || "#4CC9F0" }}
-                  >
-                    {topic.category}
-                  </p>
-                </div>
-              </div>
+              <span style={{ fontSize: "18px" }}>{topic.emoji}</span>
+              <span style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontSize: "13px",
+                fontWeight: 700,
+                color: "#FFF8F0",
+              }}>
+                {topic.name}
+              </span>
             </motion.div>
           ))}
         </div>
@@ -104,7 +116,13 @@ export default function TopicsSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center font-['Outfit'] text-sm text-[#4CC9F0] font-medium"
+          style={{
+            textAlign: "center",
+            fontFamily: "'Nunito', sans-serif",
+            fontSize: "14px",
+            fontWeight: 700,
+            color: "#FFD23F",
+          }}
         >
           ✨ Nuevos temas se agregan cada semana. ¡El universo nunca se acaba!
         </motion.p>

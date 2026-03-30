@@ -42,7 +42,7 @@ export default function HeroSection() {
             <span
               style={{
                 fontFamily: "'Nunito', sans-serif",
-                fontSize: "11px",
+                fontSize: "13px",
                 fontWeight: 800,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
@@ -69,7 +69,7 @@ export default function HeroSection() {
             <h1
               style={{
                 fontFamily: "'Fredoka One', cursive",
-                fontSize: "clamp(44px, 7vw, 82px)",
+                fontSize: "clamp(52px, 8vw, 96px)",
                 fontWeight: 400,
                 color: "#FFF8F0",
                 lineHeight: 1.1,
@@ -82,7 +82,7 @@ export default function HeroSection() {
             <h1
               style={{
                 fontFamily: "'Fredoka One', cursive",
-                fontSize: "clamp(44px, 7vw, 82px)",
+                fontSize: "clamp(52px, 8vw, 96px)",
                 fontWeight: 400,
                 color: "#FFF8F0",
                 lineHeight: 1.1,
@@ -100,7 +100,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             style={{
               fontFamily: "'Nunito', sans-serif",
-              fontSize: "18px",
+              fontSize: "20px",
               fontWeight: 400,
               color: "rgba(255,248,240,0.65)",
               lineHeight: 1.7,
@@ -138,7 +138,7 @@ export default function HeroSection() {
               <span style={{ fontSize: "20px" }}>📱</span>
               <span style={{
                 fontFamily: "'Fredoka One', cursive",
-                fontSize: "22px",
+                fontSize: "26px",
                 color: "#25D366",
                 letterSpacing: "0.02em",
               }}>
@@ -194,7 +194,7 @@ export default function HeroSection() {
               >
                 <div style={{
                   fontFamily: "'Fredoka One', cursive",
-                  fontSize: "28px",
+                  fontSize: "34px",
                   color: "#FFD23F",
                   lineHeight: 1,
                   marginBottom: "4px",

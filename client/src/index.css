@@ -104,6 +104,7 @@
     font-family: 'Nunito', sans-serif;
     background-color: #020408;
     color: #FFF8F0;
+    font-size: 18px;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Fredoka One', cursive;
@@ -144,9 +145,9 @@
     background: linear-gradient(135deg, #FB923C, #FFD23F);
     border: none;
     border-radius: 28px;
-    padding: 14px 28px;
+    padding: 16px 34px;
     font-family: 'Fredoka One', cursive;
-    font-size: 16px;
+    font-size: 19px;
     color: #020408;
     box-shadow: 0 4px 20px rgba(251,146,60,0.45);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -164,9 +165,9 @@
     background: transparent;
     border: 2px solid rgba(251,146,60,0.5);
     border-radius: 28px;
-    padding: 12px 26px;
+    padding: 14px 32px;
     font-family: 'Fredoka One', cursive;
-    font-size: 16px;
+    font-size: 19px;
     color: #FB923C;
     transition: background 0.2s ease, border-color 0.2s ease;
     display: inline-flex;
@@ -185,8 +186,8 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 16px;
-    padding: 20px;
+    border-radius: 20px;
+    padding: 28px;
   }
 
   .glass-card-warm {
@@ -194,8 +195,8 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(251,146,60,0.14);
-    border-radius: 16px;
-    padding: 20px;
+    border-radius: 20px;
+    padding: 28px;
   }
 
   /* ── Subject Label Tags ── */
@@ -209,7 +210,7 @@
   /* ── Section Label ── */
   .section-label {
     font-family: 'Nunito', sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -224,7 +225,7 @@
   /* ── Section Title ── */
   .section-title {
     font-family: 'Fredoka One', cursive;
-    font-size: clamp(28px, 4vw, 42px);
+    font-size: clamp(36px, 5vw, 56px);
     font-weight: 400;
     color: #FFF8F0;
     line-height: 1.15;

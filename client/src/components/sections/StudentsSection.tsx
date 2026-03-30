@@ -5,10 +5,11 @@
 import { motion } from "framer-motion";
 
 const achievements = [
-  { name: "Sofía M.", age: 5, country: "🇨🇴 Colombia", achievement: "Presentó su proyecto sobre agujeros negros en la feria de ciencias de su colegio y obtuvo el primer lugar.", badge: "🏆 Científica Destacada", color: "#FFD23F" },
-  { name: "Mateo R.", age: 6, country: "🇲🇽 México", achievement: "Ha completado más de 20 clases en la academia, actualmente enseña astronomía básica a sus compañeros de escuela y tiene su propio canal científico.", badge: "🎓 Prodigio Astronómico", color: "#60A5FA" },
-  { name: "Diego C.", age: 4, country: "🇦🇷 Argentina", achievement: "Fue uno de los estudiantes más pequeños en presentar una exposición sobre el sistema solar y los tipos de estrellas en una feria de ciencias, la cual fue destacada en las noticias de su ciudad.", badge: "⭐ Prodigio Científico", color: "#FB923C" },
-  { name: "Lucas P.", age: 8, country: "🇪🇸 España", achievement: "Diseñó y presentó su propio modelo de robot espacial como proyecto escolar, recibiendo un reconocimiento por su creatividad e iniciativa en el campo de la ingeniería espacial.", badge: "🚀 Explorador Creativo", color: "#34D399" },
+  { name: "Thomas", age: 7, country: "🇬🇧 Reino Unido", achievement: "Presentó su proyecto sobre los tipos de estrellas en la feria de ciencias de su colegio y fue destacado por su profesora como el mejor trabajo científico del año.", badge: "🏆 Científico Destacado", color: "#FFD23F" },
+  { name: "Yeimerson", age: 9, country: "🇻🇪 Venezuela", achievement: "Ha completado más de 20 clases en la academia. Actualmente enseña astronomía básica a sus compañeros de escuela y tiene su propio canal científico en YouTube.", badge: "🎓 Prodigio Astronómico", color: "#60A5FA" },
+  { name: "Mateo Pérez", age: 8, country: "🇨🇴 Colombia", achievement: "Diseñó y presentó su propio modelo de robot espacial como proyecto escolar, recibiendo un reconocimiento por su creatividad e iniciativa en el campo de la ingeniería espacial.", badge: "🚀 Explorador Creativo", color: "#FB923C" },
+  { name: "Thiago Rubino", age: 6, country: "🇦🇷 Argentina", achievement: "Fue uno de los estudiantes más pequeños en presentar una exposición sobre el sistema solar en una feria de ciencias, la cual fue destacada en las noticias de su ciudad.", badge: "⭐ Prodigio Científico", color: "#34D399" },
+  { name: "David", age: 10, country: "🇲🇽 México", achievement: "Identificó correctamente más de 15 constelaciones del hemisferio norte y sur, y elaboró su propio mapa estelar que fue publicado en el boletín de su escuela.", badge: "🌟 Explorador Estelar", color: "#F472B6" },
 ];
 
 const stats = [
@@ -56,8 +57,8 @@ export default function StudentsSection() {
             lineHeight: 1.2,
             marginBottom: "12px",
           }}>
-            Nuestros exploradores{" "}
-            <span style={{ color: "#FB923C" }}>del universo</span>
+            Sophia Academy{" "}
+            <span style={{ color: "#FB923C" }}>en las noticias</span>
           </h2>
           <p style={{
             fontFamily: "'Nunito', sans-serif",
@@ -92,7 +93,7 @@ export default function StudentsSection() {
         {/* Achievement cards */}
         <div
           style={{ display: "grid", gap: "20px" }}
-          className="grid grid-cols-1 md:grid-cols-2"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
         >
           {achievements.map((a, i) => (
             <motion.div

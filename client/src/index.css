@@ -99,6 +99,9 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    font-size: 112%;
+  }
   body {
     @apply bg-background text-foreground;
     font-family: 'Nunito', sans-serif;
@@ -137,7 +140,7 @@
     .container { padding-left: 1.5rem; padding-right: 1.5rem; }
   }
   @media (min-width: 1024px) {
-    .container { padding-left: 2rem; padding-right: 2rem; max-width: 1280px; }
+    .container { padding-left: 2rem; padding-right: 2rem; max-width: 1400px; }
   }
 
   /* ── Sophia Brand Buttons ── */

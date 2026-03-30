@@ -1,155 +1,251 @@
-/* StudentsSection — Sophia Academy Brand
-   Font: Fredoka One (titles) + Nunito (body)
-   Colors: #FB923C solar, #FFD23F stellar, transparent bg */
+/* StudentsSection — Sophia Academy en las Noticias
+   Design: Sophia Academy brand — Fredoka One titles, Nunito body,
+   solar orange #FB923C, stellar yellow #FFD23F, deep space bg transparent */
 
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 
-const achievements = [
-  { name: "Thomas", age: 7, country: "🇬🇧 Reino Unido", achievement: "Presentó su proyecto sobre los tipos de estrellas en la feria de ciencias de su colegio y fue destacado por su profesora como el mejor trabajo científico del año.", badge: "🏆 Científico Destacado", color: "#FFD23F" },
-  { name: "Yeimerson", age: 9, country: "🇻🇪 Venezuela", achievement: "Ha completado más de 20 clases en la academia. Actualmente enseña astronomía básica a sus compañeros de escuela y tiene su propio canal científico en YouTube.", badge: "🎓 Prodigio Astronómico", color: "#60A5FA" },
-  { name: "Mateo Pérez", age: 8, country: "🇨🇴 Colombia", achievement: "Diseñó y presentó su propio modelo de robot espacial como proyecto escolar, recibiendo un reconocimiento por su creatividad e iniciativa en el campo de la ingeniería espacial.", badge: "🚀 Explorador Creativo", color: "#FB923C" },
-  { name: "Thiago Rubino", age: 6, country: "🇦🇷 Argentina", achievement: "Fue uno de los estudiantes más pequeños en presentar una exposición sobre el sistema solar en una feria de ciencias, la cual fue destacada en las noticias de su ciudad.", badge: "⭐ Prodigio Científico", color: "#34D399" },
-  { name: "David", age: 10, country: "🇲🇽 México", achievement: "Identificó correctamente más de 15 constelaciones del hemisferio norte y sur, y elaboró su propio mapa estelar que fue publicado en el boletín de su escuela.", badge: "🌟 Explorador Estelar", color: "#F472B6" },
-];
-
-const stats = [
-  { value: "+200", label: "Estudiantes activos", emoji: "👨‍🚀" },
-  { value: "+10", label: "Países representados", emoji: "🌍" },
-  { value: "+50", label: "Temas de clase", emoji: "🔭" },
-  { value: "100%", label: "Clases en vivo", emoji: "⭐" },
+const newsArticles = [
+  {
+    outlet: "La Nación",
+    country: "🇦🇷 Argentina",
+    date: "2 de octubre, 2025",
+    headline: "Tiene cuatro años, sorprendió a una estudiante de astrofísica con sus conocimientos sobre el espacio y se volvió viral",
+    excerpt: "\"Yo casi no tengo conversaciones así de profundas de astronomía. Las charlas que tú haces de astronomía son espectaculares\", expresó Carol Jiménez.",
+    url: "https://www.lanacion.com.ar/lifestyle/en-las-redes/tiene-cuatro-anos-sorprendio-a-una-estudiante-de-astrofisica-con-sus-conocimientos-sobre-el-espacio-nid30092025/",
+    color: "#FFD23F",
+    logo: "LA NACIÓN",
+  },
+  {
+    outlet: "24horas.cl — TVN",
+    country: "🇨🇱 Chile",
+    date: "5 de octubre, 2025",
+    headline: "\"Vi ese tema en la universidad\": niño chileno de 4 años la rompe en TikTok hablando de astronomía",
+    excerpt: "En un video con 6.4 millones de visualizaciones, Thomas logró captar la atención de Carol Jiménez, estudiante de astrofísica en la Universidad de Aberystwyth.",
+    url: "https://www.24horas.cl/tendencias/redes-sociales/nino-chileno-4-anos-rompe-tiktok-astronomia",
+    color: "#FB923C",
+    logo: "24HORAS TVN",
+  },
+  {
+    outlet: "BioBioChile",
+    country: "🇨🇱 Chile",
+    date: "9 de octubre, 2025",
+    headline: "Niño chileno fanático de la astronomía dejó sin palabras a estudiante de astrofísica de Reino Unido",
+    excerpt: "\"Guárdame esas clases para mí\", respondió Thomas. Carol: \"No te digo que yo soy tu fan\".",
+    url: "https://www.biobiochile.cl/noticias/sociedad/historia/2025/10/09/nino-chileno-fanatico-de-la-astronomia-dejo-sin-palabras-a-estudiante-de-astrofisica-de-reino-unido.shtml",
+    color: "#60A5FA",
+    logo: "BIOBIOCHILE",
+  },
+  {
+    outlet: "Infobae",
+    country: "🌎 Internacional",
+    date: "4 de octubre, 2025",
+    headline: "Tiene solo cuatro años y sorprendió al demostrar cuánto sabe del espacio",
+    excerpt: "Thomas, un pequeño de Chile, se volvió viral tras demostrar en TikTok su dominio sobre galaxias y agujeros negros, cautivando a millones.",
+    url: "https://www.infobae.com/virales/2025/10/04/tiene-solo-cuatro-anos-y-sorprendio-al-demostrar-cuanto-sabe-del-espacio/",
+    color: "#34D399",
+    logo: "INFOBAE",
+  },
+  {
+    outlet: "Radio Sudamericana",
+    country: "🌎 Internacional",
+    date: "2 de octubre, 2025",
+    headline: "Tiene solo 4 años y deja sin palabras a una estudiante de astrofísica",
+    excerpt: "En un vídeo que rápidamente se ha hecho viral, Thomas conversa con Carol Jiménez, estudiante de astrofísica en la Universidad de Aberystwyth.",
+    url: "https://www.radiosudamericana.com/m/sociedad/333923-Tiene-solo-4-anos-y-deja-sin-palabras-a-una-estudiante-de-astrofisica.htm",
+    color: "#F472B6",
+    logo: "RADIO SUDAMERICANA",
+  },
+  {
+    outlet: "Thiago Rubino — Biblioteca Nacional",
+    country: "🇵🇦 Panamá",
+    date: "2025",
+    headline: "\"Vivo en otro planeta\" de Thiago Rubino ya forma parte de la Biblioteca Nacional de Panamá",
+    excerpt: "Thiago Rubino García, explorador cósmico de 9 años, publicó su libro de astronomía para niños que ahora está disponible en la Biblioteca Nacional.",
+    url: "https://www.instagram.com/p/DVyo6cdEa_J/",
+    color: "#A78BFA",
+    logo: "BIBLIOTECA NACIONAL",
+  },
 ];
 
 export default function StudentsSection() {
   return (
     <section
-      style={{ position: "relative", zIndex: 2, padding: "100px 0" }}
+      id="noticias"
+      style={{
+        padding: "100px 0",
+        position: "relative",
+      }}
     >
-      <div className="container">
+      <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: "48px" }}
+          style={{ textAlign: "center", marginBottom: "64px" }}
         >
-          <div style={{ marginBottom: "14px" }}>
-            <span style={{
-              fontFamily: "'Nunito', sans-serif",
-              fontSize: "11px",
-              fontWeight: 800,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "#FFD23F",
-              background: "rgba(255,210,63,0.1)",
-              border: "1px solid rgba(255,210,63,0.25)",
-              borderRadius: "20px",
-              padding: "4px 14px",
-            }}>
-              🏆 Logros de Estudiantes
+          <div style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            background: "rgba(251,146,60,0.12)",
+            border: "1px solid rgba(251,146,60,0.3)",
+            borderRadius: "100px",
+            padding: "8px 20px",
+            marginBottom: "20px",
+          }}>
+            <span style={{ fontSize: "18px" }}>📰</span>
+            <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: "14px", color: "#FB923C", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+              Prensa Internacional
             </span>
           </div>
           <h2 style={{
             fontFamily: "'Fredoka One', cursive",
-            fontSize: "clamp(28px, 5vw, 48px)",
-            fontWeight: 400,
+            fontSize: "clamp(38px, 5vw, 60px)",
             color: "#FFF8F0",
-            lineHeight: 1.2,
-            marginBottom: "12px",
+            lineHeight: 1.15,
+            marginBottom: "16px",
           }}>
             Sophia Academy{" "}
             <span style={{ color: "#FB923C" }}>en las noticias</span>
           </h2>
           <p style={{
             fontFamily: "'Nunito', sans-serif",
-            fontSize: "16px",
-            color: "rgba(255,248,240,0.55)",
-            maxWidth: "480px",
+            fontSize: "clamp(17px, 2vw, 20px)",
+            color: "rgba(255,248,240,0.7)",
+            maxWidth: "600px",
             margin: "0 auto",
             lineHeight: 1.6,
           }}>
-            Cada semana, nuestros estudiantes logran cosas increíbles dentro y fuera del aula.
+            Medios de comunicación de toda América Latina y el mundo han cubierto el impacto de la Profe Carol y sus estudiantes.
           </p>
         </motion.div>
 
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          style={{ display: "grid", gap: "16px", marginBottom: "48px" }}
-          className="grid grid-cols-2 md:grid-cols-4"
-        >
-          {stats.map((s, i) => (
-            <div key={i} className="glass-card-warm" style={{ padding: "20px", textAlign: "center" }}>
-              <div style={{ fontSize: "28px", marginBottom: "8px" }}>{s.emoji}</div>
-              <div style={{ fontFamily: "'Fredoka One', cursive", fontSize: "32px", color: "#FB923C", lineHeight: 1 }}>{s.value}</div>
-              <div style={{ fontFamily: "'Nunito', sans-serif", fontSize: "12px", fontWeight: 600, color: "rgba(255,248,240,0.50)", marginTop: "4px" }}>{s.label}</div>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Achievement cards */}
-        <div
-          style={{ display: "grid", gap: "20px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-        >
-          {achievements.map((a, i) => (
-            <motion.div
+        {/* News cards grid */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
+          gap: "24px",
+        }}>
+          {newsArticles.map((article, i) => (
+            <motion.a
               key={i}
-              initial={{ opacity: 0, y: 25 }}
+              href={article.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="glass-card-warm"
-              style={{ padding: "24px", display: "flex", gap: "16px", alignItems: "flex-start" }}
+              whileHover={{ y: -6, scale: 1.02 }}
+              style={{
+                display: "block",
+                background: "rgba(255,255,255,0.04)",
+                backdropFilter: "blur(12px)",
+                border: `1px solid ${article.color}30`,
+                borderRadius: "20px",
+                padding: "28px",
+                textDecoration: "none",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                position: "relative",
+                overflow: "hidden",
+              }}
             >
+              {/* Top accent line */}
               <div style={{
-                width: "52px", height: "52px", borderRadius: "14px",
-                background: `${a.color}18`,
-                border: `1px solid ${a.color}35`,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontFamily: "'Fredoka One', cursive",
-                fontSize: "22px",
-                color: a.color,
-                flexShrink: 0,
-              }}>
-                {a.name.charAt(0)}
-              </div>
-              <div style={{ flex: 1 }}>
-                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
-                  <span style={{ fontFamily: "'Fredoka One', cursive", fontSize: "17px", color: "#FFF8F0" }}>{a.name}</span>
-                  <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: "11px", fontWeight: 700, color: "rgba(255,248,240,0.45)" }}>{a.age} años</span>
-                  <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: "11px", fontWeight: 700, color: "rgba(255,248,240,0.45)" }}>{a.country}</span>
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                height: "3px",
+                background: `linear-gradient(90deg, ${article.color}, transparent)`,
+                borderRadius: "20px 20px 0 0",
+              }} />
+
+              {/* Outlet badge + date */}
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px", flexWrap: "wrap", gap: "8px" }}>
+                <div style={{
+                  background: `${article.color}20`,
+                  border: `1px solid ${article.color}50`,
+                  borderRadius: "8px",
+                  padding: "4px 12px",
+                }}>
+                  <span style={{
+                    fontFamily: "'Fredoka One', cursive",
+                    fontSize: "13px",
+                    color: article.color,
+                    letterSpacing: "0.05em",
+                  }}>
+                    {article.logo}
+                  </span>
                 </div>
                 <span style={{
-                  display: "inline-block",
                   fontFamily: "'Nunito', sans-serif",
-                  fontSize: "11px",
-                  fontWeight: 700,
-                  color: a.color,
-                  background: `${a.color}15`,
-                  border: `1px solid ${a.color}30`,
-                  borderRadius: "20px",
-                  padding: "2px 10px",
-                  marginBottom: "10px",
+                  fontSize: "13px",
+                  color: "rgba(255,248,240,0.45)",
                 }}>
-                  {a.badge}
+                  {article.country} · {article.date}
                 </span>
-                <p style={{
-                  fontFamily: "'Nunito', sans-serif",
-                  fontSize: "14px",
-                  fontWeight: 400,
-                  color: "rgba(255,248,240,0.65)",
-                  lineHeight: 1.65,
-                }}>
-                  {a.achievement}
-                </p>
               </div>
-            </motion.div>
+
+              {/* Headline */}
+              <h3 style={{
+                fontFamily: "'Fredoka One', cursive",
+                fontSize: "clamp(17px, 2vw, 20px)",
+                color: "#FFF8F0",
+                lineHeight: 1.3,
+                marginBottom: "12px",
+              }}>
+                {article.headline}
+              </h3>
+
+              {/* Excerpt */}
+              <p style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontSize: "15px",
+                color: "rgba(255,248,240,0.65)",
+                lineHeight: 1.6,
+                marginBottom: "20px",
+              }}>
+                {article.excerpt}
+              </p>
+
+              {/* Read more link */}
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                color: article.color,
+                fontFamily: "'Nunito', sans-serif",
+                fontWeight: 700,
+                fontSize: "14px",
+              }}>
+                <span>Leer artículo completo</span>
+                <ExternalLink size={14} />
+              </div>
+            </motion.a>
           ))}
         </div>
+
+        {/* Bottom note */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          viewport={{ once: true }}
+          style={{
+            textAlign: "center",
+            fontFamily: "'Nunito', sans-serif",
+            fontSize: "15px",
+            color: "rgba(255,248,240,0.45)",
+            marginTop: "48px",
+          }}
+        >
+          📡 Cobertura en medios de Argentina, Chile, Panamá y más de 10 países.
+        </motion.p>
       </div>
     </section>
   );

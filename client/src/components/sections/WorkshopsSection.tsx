@@ -27,7 +27,7 @@ const activeWorkshops = [
     color: "#FFD23F",
     badge: "CUPOS ABIERTOS",
     badgeColor: "#34D399",
-    price: "Consultar precio",
+    price: "$30 USD",
     priceNote: "5 clases",
     schedule: "Viernes · 10:00 PM",
     scheduleNote: "Hora Reino Unido",

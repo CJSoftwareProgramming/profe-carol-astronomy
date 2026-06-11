@@ -81,7 +81,7 @@ export default function Footer() {
                 { label: "Programas", href: "#programas" },
                 { label: "Académico", href: "#academico" },
                 { label: "Paquetes de Clases", href: "#precios" },
-                { label: "Talleres Mensuales", href: "#talleres" },
+
                 { label: "Sobre la Profesora", href: "#profesora" },
                 { label: "Preguntas Frecuentes", href: "#faq" },
               ].map(link => (

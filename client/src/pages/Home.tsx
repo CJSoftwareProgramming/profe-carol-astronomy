@@ -14,7 +14,7 @@ import WhyAstronomySection from "@/components/sections/WhyAstronomySection";
 import ProgramsSection from "@/components/sections/ProgramsSection";
 import AcademicFeaturedSection from "@/components/sections/AcademicFeaturedSection";
 import PricingSection from "@/components/sections/PricingSection";
-import WorkshopsSection from "@/components/sections/WorkshopsSection";
+
 import StudentsSection from "@/components/sections/StudentsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import TeacherSection from "@/components/sections/TeacherSection";
@@ -37,7 +37,7 @@ export default function Home() {
         <ProgramsSection />
         <AcademicFeaturedSection />
         <PricingSection />
-        <WorkshopsSection />
+
         <StudentsSection />
         <TestimonialsSection />
         <TeacherSection />

@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Programas", href: "#programas" },
   { label: "Académico", href: "#academico" },
   { label: "Precios", href: "#precios" },
-  { label: "Talleres", href: "#talleres" },
+
   { label: "Profe Carol", href: "#profesora" },
   { label: "FAQ", href: "#faq" },
 ];

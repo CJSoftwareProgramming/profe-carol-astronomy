@@ -5,7 +5,7 @@
 
 import { motion } from "framer-motion";
 
-const KIDS_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/kids-class-gowPdCrsioP3Lwiyn7JzEn.webp";
+const KIDS_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/nasa-kids-education_20567184.webp";
 
 const pillars = [
   {

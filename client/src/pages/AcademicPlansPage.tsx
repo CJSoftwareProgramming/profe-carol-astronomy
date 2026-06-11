@@ -26,11 +26,9 @@ const academicPlans = [
     ],
     modulesNote: "Escoge 1 de los 3 módulos activos",
     features: [
-      "1 clase académica por semana",
-      "2 clases recreacionales incluidas",
+      "3 clases semanales + 1 de Sophia Math",
       "Acceso a la plataforma de Astrofísica",
       "Acceso a Sophia Math",
-
       "Tareas + quices + evaluación mensual",
     ],
     stripeUrl: "https://buy.stripe.com/5kQfZg5Ys2FS7Tf3ke4Rq0b",
@@ -51,11 +49,10 @@ const academicPlans = [
     ],
     modulesNote: "Escoge 2 de los 3 módulos activos",
     features: [
-      "2 clases académicas por semana",
-      "Clases recreacionales ilimitadas",
+      "2 recreacionales + 2 académicas por semana",
+      "Total: 4 clases mensuales + 1 de Sophia Math",
       "Acceso completo a la plataforma de Astrofísica",
       "Acceso completo a Sophia Math",
-
       "Tareas + quices + evaluación mensual",
       "Certificado al completar 4 módulos",
     ],
@@ -77,11 +74,11 @@ const academicPlans = [
     ],
     modulesNote: "Acceso completo a los 3 módulos activos",
     features: [
-      "3 clases académicas por semana",
-      "Clases recreacionales ilimitadas",
+      "Más de 3 módulos académicos",
+      "2 clases de Sophia Math por semana",
+      "Acceso a todos los temas recreacionales disponibles",
       "Acceso completo a la plataforma de Astrofísica",
-      "Acceso completo a Sophia Math",
-
+      "Tareas + quices + evaluación mensual",
       "Certificado al completar 4 módulos",
     ],
     stripeUrl: "https://buy.stripe.com/4gMdR8dqUdkw5L70824Rq0d",

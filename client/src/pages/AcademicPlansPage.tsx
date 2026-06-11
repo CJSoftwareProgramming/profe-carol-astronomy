@@ -6,83 +6,8 @@
    Bottom CTA: redirect to /#precios for recreational plans */
 
 import { motion } from "framer-motion";
-import { CheckCircle2, Star, ArrowLeft, Clock } from "lucide-react";
+import { CheckCircle2, Star, ArrowLeft } from "lucide-react";
 import { Link } from "wouter";
-import { useMemo } from "react";
-
-/* ─── Simple auto-detect timezone converter ─── */
-function convertUKTimeToLocal(ukTimeStr: string): string {
-  try {
-    const [time, period] = ukTimeStr.split(" ");
-    const [hours, minutes] = time.split(":").map(Number);
-    let h = hours;
-    if (period === "PM" && h !== 12) h += 12;
-    if (period === "AM" && h === 12) h = 0;
-    const now = new Date();
-    const londonDateStr = now.toLocaleDateString("en-CA", { timeZone: "Europe/London" });
-    const londonDate = new Date(`${londonDateStr}T${String(h).padStart(2,"0")}:${String(minutes).padStart(2,"0")}:00`);
-    // Get offset difference between London and local
-    const londonOffset = new Date(londonDate.toLocaleString("en-US", { timeZone: "Europe/London" })).getTime();
-    const localOffset = new Date(londonDate.toLocaleString("en-US", { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone })).getTime();
-    const diff = localOffset - londonOffset;
-    const localDate = new Date(londonDate.getTime() + diff);
-    return localDate.toLocaleTimeString("es-ES", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
-  } catch {
-    return ukTimeStr;
-  }
-}
-
-function LocalTimeDisplay({ sessions }: { sessions: { day: string; ukTime: string }[] }) {
-  const userTz = useMemo(() => {
-    try {
-      return Intl.DateTimeFormat().resolvedOptions().timeZone.split("/").pop()?.replace(/_/g, " ") || "local";
-    } catch { return "local"; }
-  }, []);
-
-  return (
-    <div style={{
-      marginTop: "14px",
-      background: "rgba(255,255,255,0.04)",
-      border: "1px solid rgba(255,255,255,0.10)",
-      borderRadius: "12px",
-      padding: "10px 14px",
-    }}>
-      <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "8px" }}>
-        <Clock size={12} style={{ color: "rgba(255,248,240,0.40)" }} />
-        <span style={{
-          fontFamily: "'Nunito', sans-serif",
-          fontSize: "11px",
-          fontWeight: 700,
-          color: "rgba(255,248,240,0.40)",
-          textTransform: "uppercase",
-          letterSpacing: "0.05em",
-        }}>🇬🇧 Hora UK → Tu horario ({userTz})</span>
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-        {sessions.map((s) => (
-          <div key={s.day + s.ukTime} style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <span style={{
-              fontFamily: "'Nunito', sans-serif",
-              fontSize: "12px",
-              fontWeight: 600,
-              color: "rgba(255,248,240,0.50)",
-            }}>{s.day} · {s.ukTime} UK</span>
-            <span style={{
-              fontFamily: "'Nunito', sans-serif",
-              fontSize: "13px",
-              fontWeight: 800,
-              color: "#FFD23F",
-            }}>→ {convertUKTimeToLocal(s.ukTime)}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 /* ─── Plan data ─── */
 const academicPlans = [
@@ -793,8 +718,7 @@ export default function AcademicPlansPage() {
                     </span>
                   </div>
 
-                  {/* Timezone converter */}
-                  <LocalTimeDisplay sessions={m.sessions} />
+
                 </div>
               </motion.div>
             ))}

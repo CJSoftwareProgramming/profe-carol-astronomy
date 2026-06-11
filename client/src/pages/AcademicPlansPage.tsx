@@ -18,6 +18,13 @@ const academicPlans = [
     period: "/ mes",
     color: "#FB923C",
     featured: false,
+    modulesLabel: "Incluye 1 módulo a escoger",
+    modules: [
+      { emoji: "⚛️", name: "Astrofísica Cuántica", color: "#A78BFA" },
+      { emoji: "🧬", name: "Astrobiología", color: "#34D399" },
+      { emoji: "🛸", name: "Ingeniería Espacial", color: "#FB923C" },
+    ],
+    modulesNote: "Escoge 1 de los 3 módulos activos",
     features: [
       "1 clase académica por semana",
       "2 clases recreacionales incluidas",
@@ -36,6 +43,13 @@ const academicPlans = [
     color: "#FFD23F",
     featured: true,
     badge: "Recomendado",
+    modulesLabel: "Incluye 2 módulos a escoger",
+    modules: [
+      { emoji: "⚛️", name: "Astrofísica Cuántica", color: "#A78BFA" },
+      { emoji: "🧬", name: "Astrobiología", color: "#34D399" },
+      { emoji: "🛸", name: "Ingeniería Espacial", color: "#FB923C" },
+    ],
+    modulesNote: "Escoge 2 de los 3 módulos activos",
     features: [
       "2 clases académicas por semana",
       "Clases recreacionales ilimitadas",
@@ -55,6 +69,13 @@ const academicPlans = [
     color: "#F87171",
     featured: false,
     badge: "Homeschool",
+    modulesLabel: "Incluye los 3 módulos",
+    modules: [
+      { emoji: "⚛️", name: "Astrofísica Cuántica", color: "#A78BFA" },
+      { emoji: "🧬", name: "Astrobiología", color: "#34D399" },
+      { emoji: "🛸", name: "Ingeniería Espacial", color: "#FB923C" },
+    ],
+    modulesNote: "Acceso completo a los 3 módulos activos",
     features: [
       "3 clases académicas por semana",
       "Clases recreacionales ilimitadas",
@@ -104,6 +125,12 @@ const activeModules = [
 ];
 
 /* ─── Plan card component ─── */
+interface ModuleChip {
+  emoji: string;
+  name: string;
+  color: string;
+}
+
 interface PlanItem {
   name: string;
   price: number;
@@ -112,6 +139,9 @@ interface PlanItem {
   color: string;
   featured: boolean;
   badge?: string;
+  modulesLabel: string;
+  modules: ModuleChip[];
+  modulesNote: string;
   features: string[];
   stripeUrl: string;
 }
@@ -215,6 +245,64 @@ function PlanCard({ plan, i }: { plan: PlanItem; i: number }) {
         marginBottom: "24px",
       }}>
         {plan.subtitle}
+      </div>
+
+      {/* Modules section */}
+      <div style={{
+        background: `${plan.color}0e`,
+        border: `1px solid ${plan.color}30`,
+        borderRadius: "14px",
+        padding: "14px 16px",
+        marginBottom: "22px",
+      }}>
+        <p style={{
+          fontFamily: "'Nunito', sans-serif",
+          fontSize: "12px",
+          fontWeight: 800,
+          color: plan.color,
+          textTransform: "uppercase",
+          letterSpacing: "0.07em",
+          marginBottom: "10px",
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+        }}>
+          🎓 {plan.modulesLabel}
+        </p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "8px" }}>
+          {plan.modules.map((m, idx) => {
+            // For Esencial show all 3 as selectable (greyed out 2), Completo show 2 active 1 greyed, Homeschool all active
+            const planIdx = plan.name === "Académico Esencial" ? 1 : plan.name === "Académico Completo" ? 2 : 3;
+            const isActive = idx < planIdx;
+            return (
+              <span key={m.name} style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontSize: "12px",
+                fontWeight: 700,
+                color: isActive ? m.color : "rgba(255,248,240,0.25)",
+                background: isActive ? `${m.color}18` : "rgba(255,255,255,0.04)",
+                border: `1px solid ${isActive ? m.color + "45" : "rgba(255,255,255,0.08)"}`,
+                borderRadius: "20px",
+                padding: "4px 10px",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "4px",
+              }}>
+                <span style={{ opacity: isActive ? 1 : 0.35 }}>{m.emoji}</span>
+                {m.name}
+              </span>
+            );
+          })}
+        </div>
+        <p style={{
+          fontFamily: "'Nunito', sans-serif",
+          fontSize: "11px",
+          fontWeight: 600,
+          color: "rgba(255,248,240,0.35)",
+          margin: 0,
+        }}>
+          {plan.modulesNote}
+        </p>
       </div>
 
       {/* Features */}

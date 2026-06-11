@@ -71,9 +71,36 @@ const academicPlans = [
 
 /* ─── Active modules ─── */
 const activeModules = [
-  { emoji: "⚛️", name: "Astrofísica Cuántica", day: "Jueves", color: "#A78BFA" },
-  { emoji: "🧬", name: "Astrobiología", day: "Viernes", color: "#34D399" },
-  { emoji: "🛸", name: "Ingeniería Espacial", day: "Sáb & Dom", color: "#FB923C" },
+  {
+    emoji: "⚛️",
+    name: "Astrofísica Cuántica",
+    day: "Jueves",
+    color: "#A78BFA",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/module-quantum-astrophysics-eym6LutxZRRz3uCF9fqmfi.webp",
+    description: "Explora la mecánica cuántica aplicada al universo: agujeros negros, materia oscura y la naturaleza de la realidad a escala subatómica.",
+    topics: ["Mecánica cuántica", "Agujeros negros", "Materia oscura", "Dualidad onda-partícula"],
+    detail: "2 meses · Quices + Actividades Semanales + Examen Final",
+  },
+  {
+    emoji: "🧬",
+    name: "Astrobiología",
+    day: "Viernes",
+    color: "#34D399",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/module-astrobiology-9bBqW7tAWVxvicWUZnMUW9.webp",
+    description: "Investiga la posibilidad de vida en el universo: exoplanetas habitables, extremófilos y las misiones de la NASA en busca de biosignatures.",
+    topics: ["Zonas habitables", "Extremófilos", "Misiones Mars & Europa", "Biosignatures"],
+    detail: "2 meses · Quices + Actividades Semanales + Examen Final",
+  },
+  {
+    emoji: "🛸",
+    name: "Ingeniería Espacial",
+    day: "Sáb & Dom",
+    color: "#FB923C",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663419151816/jw6BiZh2wKepMm7AvD23MW/module-space-engineering-e3XD7L7RXmDQkTqrbmVMQw.webp",
+    description: "Aprende cómo se diseñan cohetes, satélites y rovers. Desde la física del lanzamiento hasta los sistemas de soporte de vida en el espacio.",
+    topics: ["Física de cohetes", "Diseño de satélites", "Rovers & exploración", "Soporte de vida"],
+    detail: "2 meses · Quices + Actividades Semanales + Examen Final",
+  },
 ];
 
 /* ─── Plan card component ─── */
@@ -406,58 +433,195 @@ export default function AcademicPlansPage() {
             Módulos de <strong style={{ color: "#FFF8F0" }}>2 meses</strong> con quices, actividades semanales, laboratorios y examen final. Incluye acceso a la plataforma de Astrofísica y Sophia Math.
           </motion.p>
 
-          {/* Active modules pills */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
+          {/* Active modules label */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.22 }}
+            transition={{ duration: 0.4, delay: 0.22 }}
             style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "10px",
-              justifyContent: "center",
-              marginBottom: "16px",
-            }}
-          >
-            <span style={{
               fontFamily: "'Nunito', sans-serif",
               fontSize: "13px",
               fontWeight: 700,
-              color: "rgba(255,248,240,0.40)",
-              alignSelf: "center",
-            }}>
-              Módulos activos:
-            </span>
-            {activeModules.map((m) => (
-              <div key={m.name} style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "7px",
-                background: `${m.color}12`,
-                border: `1px solid ${m.color}35`,
-                borderRadius: "50px",
-                padding: "6px 14px",
-              }}>
-                <span style={{ fontSize: "15px" }}>{m.emoji}</span>
-                <span style={{
-                  fontFamily: "'Nunito', sans-serif",
-                  fontSize: "13px",
-                  fontWeight: 700,
-                  color: m.color,
+              color: "rgba(255,248,240,0.35)",
+              letterSpacing: "0.06em",
+              textTransform: "uppercase",
+            }}
+          >
+            ↓ Módulos activos esta semana
+          </motion.p>
+        </div>
+
+        {/* ── MODULE HERO CARDS ── */}
+        <div style={{ padding: "0 24px 72px" }}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "24px",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}>
+            {activeModules.map((m, i) => (
+              <motion.div
+                key={m.name}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.12 }}
+                style={{
+                  position: "relative",
+                  borderRadius: "24px",
+                  overflow: "hidden",
+                  minHeight: "420px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  cursor: "default",
+                  boxShadow: `0 20px 60px ${m.color}22`,
+                  border: `1px solid ${m.color}30`,
+                }}
+                whileHover={{ y: -8, boxShadow: `0 30px 80px ${m.color}38` }}
+              >
+                {/* Background image */}
+                <div style={{
+                  position: "absolute",
+                  inset: 0,
+                  backgroundImage: `url(${m.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  transition: "transform 0.5s ease",
+                }} />
+
+                {/* Dark gradient overlay for text readability */}
+                <div style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: `linear-gradient(to top, rgba(2,4,8,0.97) 0%, rgba(2,4,8,0.75) 40%, rgba(2,4,8,0.25) 70%, rgba(2,4,8,0.10) 100%)`,
+                }} />
+
+                {/* Color tint overlay */}
+                <div style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: `linear-gradient(135deg, ${m.color}18 0%, transparent 60%)`,
+                }} />
+
+                {/* NEW badge top-right */}
+                <div style={{
+                  position: "absolute",
+                  top: "18px",
+                  right: "18px",
+                  background: `${m.color}22`,
+                  border: `1px solid ${m.color}60`,
+                  backdropFilter: "blur(8px)",
+                  WebkitBackdropFilter: "blur(8px)",
+                  borderRadius: "20px",
+                  padding: "4px 14px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
                 }}>
-                  {m.name}
-                </span>
-                <span style={{
-                  fontFamily: "'Nunito', sans-serif",
-                  fontSize: "11px",
-                  fontWeight: 600,
-                  color: "rgba(255,248,240,0.35)",
-                }}>
-                  {m.day}
-                </span>
-              </div>
+                  <span style={{
+                    fontFamily: "'Nunito', sans-serif",
+                    fontSize: "11px",
+                    fontWeight: 800,
+                    color: m.color,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                  }}>🆕 NUEVO</span>
+                </div>
+
+                {/* Content */}
+                <div style={{ position: "relative", padding: "28px" }}>
+                  {/* Schedule pill */}
+                  <div style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    background: `${m.color}22`,
+                    border: `1px solid ${m.color}50`,
+                    backdropFilter: "blur(8px)",
+                    WebkitBackdropFilter: "blur(8px)",
+                    borderRadius: "50px",
+                    padding: "5px 14px",
+                    marginBottom: "14px",
+                  }}>
+                    <span style={{ fontSize: "13px" }}>📅</span>
+                    <span style={{
+                      fontFamily: "'Nunito', sans-serif",
+                      fontSize: "13px",
+                      fontWeight: 800,
+                      color: m.color,
+                    }}>{m.day}</span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 style={{
+                    fontFamily: "'Fredoka One', cursive",
+                    fontSize: "clamp(24px, 3vw, 30px)",
+                    color: "#FFF8F0",
+                    lineHeight: 1.15,
+                    marginBottom: "10px",
+                  }}>
+                    {m.emoji} {m.name}
+                  </h3>
+
+                  {/* Description */}
+                  <p style={{
+                    fontFamily: "'Nunito', sans-serif",
+                    fontSize: "14px",
+                    fontWeight: 400,
+                    color: "rgba(255,248,240,0.68)",
+                    lineHeight: 1.6,
+                    marginBottom: "16px",
+                  }}>
+                    {m.description}
+                  </p>
+
+                  {/* Topic chips */}
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "18px" }}>
+                    {m.topics.map((t) => (
+                      <span key={t} style={{
+                        fontFamily: "'Nunito', sans-serif",
+                        fontSize: "11px",
+                        fontWeight: 700,
+                        color: "rgba(255,248,240,0.55)",
+                        background: "rgba(255,255,255,0.07)",
+                        border: "1px solid rgba(255,255,255,0.12)",
+                        borderRadius: "20px",
+                        padding: "3px 10px",
+                        backdropFilter: "blur(4px)",
+                        WebkitBackdropFilter: "blur(4px)",
+                      }}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Duration bar */}
+                  <div style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "7px",
+                    padding: "9px 14px",
+                    background: `${m.color}14`,
+                    border: `1px solid ${m.color}28`,
+                    backdropFilter: "blur(8px)",
+                    WebkitBackdropFilter: "blur(8px)",
+                    borderRadius: "12px",
+                  }}>
+                    <span style={{ fontSize: "14px" }}>🏆</span>
+                    <span style={{
+                      fontFamily: "'Nunito', sans-serif",
+                      fontSize: "12px",
+                      fontWeight: 800,
+                      color: m.color,
+                    }}>
+                      {m.detail}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* ── PLAN CARDS ── */}

@@ -8,40 +8,25 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, Star, ArrowLeft, Clock } from "lucide-react";
 import { Link } from "wouter";
-import { useState } from "react";
+import { useMemo } from "react";
 
-/* ─── Timezone converter ─── */
-const TIMEZONES = [
-  { flag: "🇬🇧", label: "Reino Unido", tz: "Europe/London" },
-  { flag: "🇪🇸", label: "España", tz: "Europe/Madrid" },
-  { flag: "🇨🇴", label: "Colombia", tz: "America/Bogota" },
-  { flag: "🇻🇪", label: "Venezuela", tz: "America/Caracas" },
-  { flag: "🇲🇽", label: "México", tz: "America/Mexico_City" },
-  { flag: "🇦🇷", label: "Argentina", tz: "America/Argentina/Buenos_Aires" },
-  { flag: "🇨🇱", label: "Chile", tz: "America/Santiago" },
-  { flag: "🇵🇪", label: "Perú", tz: "America/Lima" },
-  { flag: "🇪🇨", label: "Ecuador", tz: "America/Guayaquil" },
-  { flag: "🇧🇴", label: "Bolivia", tz: "America/La_Paz" },
-  { flag: "🇵🇦", label: "Panamá", tz: "America/Panama" },
-  { flag: "🇬🇹", label: "Guatemala", tz: "America/Guatemala" },
-  { flag: "🇺🇸", label: "EE.UU. (ET)", tz: "America/New_York" },
-  { flag: "🇦🇺", label: "Australia (AEDT)", tz: "Australia/Sydney" },
-];
-
-function convertUKTime(ukTimeStr: string, targetTz: string): string {
+/* ─── Simple auto-detect timezone converter ─── */
+function convertUKTimeToLocal(ukTimeStr: string): string {
   try {
-    // Parse UK time - use a fixed reference date
     const [time, period] = ukTimeStr.split(" ");
     const [hours, minutes] = time.split(":").map(Number);
     let h = hours;
     if (period === "PM" && h !== 12) h += 12;
     if (period === "AM" && h === 12) h = 0;
-    // Create date in London timezone
     const now = new Date();
-    const londonDate = new Date(now.toLocaleDateString("en-CA", { timeZone: "Europe/London" }) + `T${String(h).padStart(2,"0")}:${String(minutes).padStart(2,"0")}:00`);
-    // Convert to target timezone
-    return londonDate.toLocaleTimeString("es-ES", {
-      timeZone: targetTz,
+    const londonDateStr = now.toLocaleDateString("en-CA", { timeZone: "Europe/London" });
+    const londonDate = new Date(`${londonDateStr}T${String(h).padStart(2,"0")}:${String(minutes).padStart(2,"0")}:00`);
+    // Get offset difference between London and local
+    const londonOffset = new Date(londonDate.toLocaleString("en-US", { timeZone: "Europe/London" })).getTime();
+    const localOffset = new Date(londonDate.toLocaleString("en-US", { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone })).getTime();
+    const diff = localOffset - londonOffset;
+    const localDate = new Date(londonDate.getTime() + diff);
+    return localDate.toLocaleTimeString("es-ES", {
       hour: "2-digit",
       minute: "2-digit",
       hour12: true,
@@ -51,108 +36,33 @@ function convertUKTime(ukTimeStr: string, targetTz: string): string {
   }
 }
 
-function TimezoneConverter({ sessions }: { sessions: { day: string; ukTime: string }[] }) {
-  const [selectedTz, setSelectedTz] = useState(TIMEZONES[0]);
-  const [open, setOpen] = useState(false);
+function LocalTimeDisplay({ sessions }: { sessions: { day: string; ukTime: string }[] }) {
+  const userTz = useMemo(() => {
+    try {
+      return Intl.DateTimeFormat().resolvedOptions().timeZone.split("/").pop()?.replace(/_/g, " ") || "local";
+    } catch { return "local"; }
+  }, []);
 
   return (
     <div style={{
       marginTop: "14px",
       background: "rgba(255,255,255,0.04)",
       border: "1px solid rgba(255,255,255,0.10)",
-      borderRadius: "14px",
-      overflow: "hidden",
+      borderRadius: "12px",
+      padding: "10px 14px",
     }}>
-      {/* Header with selector */}
-      <div style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "10px 14px",
-        borderBottom: "1px solid rgba(255,255,255,0.07)",
-        flexWrap: "wrap",
-        gap: "8px",
-      }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-          <Clock size={13} style={{ color: "rgba(255,248,240,0.45)" }} />
-          <span style={{
-            fontFamily: "'Nunito', sans-serif",
-            fontSize: "11px",
-            fontWeight: 700,
-            color: "rgba(255,248,240,0.45)",
-            textTransform: "uppercase",
-            letterSpacing: "0.06em",
-          }}>Ver en mi horario</span>
-        </div>
-        {/* Country selector */}
-        <div style={{ position: "relative" }}>
-          <button
-            onClick={() => setOpen(!open)}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "5px",
-              background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.15)",
-              borderRadius: "8px",
-              padding: "4px 10px",
-              cursor: "pointer",
-              color: "#FFF8F0",
-              fontFamily: "'Nunito', sans-serif",
-              fontSize: "12px",
-              fontWeight: 700,
-            }}
-          >
-            <span>{selectedTz.flag}</span>
-            <span>{selectedTz.label}</span>
-            <span style={{ opacity: 0.5, fontSize: "10px" }}>▼</span>
-          </button>
-          {open && (
-            <div style={{
-              position: "absolute",
-              top: "calc(100% + 4px)",
-              right: 0,
-              background: "#0e1220",
-              border: "1px solid rgba(255,255,255,0.15)",
-              borderRadius: "12px",
-              padding: "6px",
-              zIndex: 100,
-              minWidth: "170px",
-              maxHeight: "220px",
-              overflowY: "auto",
-              boxShadow: "0 12px 40px rgba(0,0,0,0.6)",
-            }}>
-              {TIMEZONES.map((tz) => (
-                <button
-                  key={tz.tz}
-                  onClick={() => { setSelectedTz(tz); setOpen(false); }}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    width: "100%",
-                    padding: "7px 10px",
-                    background: selectedTz.tz === tz.tz ? "rgba(255,210,63,0.12)" : "transparent",
-                    border: "none",
-                    borderRadius: "8px",
-                    cursor: "pointer",
-                    color: selectedTz.tz === tz.tz ? "#FFD23F" : "rgba(255,248,240,0.75)",
-                    fontFamily: "'Nunito', sans-serif",
-                    fontSize: "13px",
-                    fontWeight: 600,
-                    textAlign: "left",
-                  }}
-                >
-                  <span>{tz.flag}</span>
-                  <span>{tz.label}</span>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
+      <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "8px" }}>
+        <Clock size={12} style={{ color: "rgba(255,248,240,0.40)" }} />
+        <span style={{
+          fontFamily: "'Nunito', sans-serif",
+          fontSize: "11px",
+          fontWeight: 700,
+          color: "rgba(255,248,240,0.40)",
+          textTransform: "uppercase",
+          letterSpacing: "0.05em",
+        }}>🇬🇧 Hora UK → Tu horario ({userTz})</span>
       </div>
-      {/* Converted times */}
-      <div style={{ padding: "10px 14px", display: "flex", flexDirection: "column", gap: "5px" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
         {sessions.map((s) => (
           <div key={s.day + s.ukTime} style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <span style={{
@@ -160,13 +70,13 @@ function TimezoneConverter({ sessions }: { sessions: { day: string; ukTime: stri
               fontSize: "12px",
               fontWeight: 600,
               color: "rgba(255,248,240,0.50)",
-            }}>{s.day}</span>
+            }}>{s.day} · {s.ukTime} UK</span>
             <span style={{
               fontFamily: "'Nunito', sans-serif",
               fontSize: "13px",
               fontWeight: 800,
-              color: "#FFF8F0",
-            }}>{convertUKTime(s.ukTime, selectedTz.tz)}</span>
+              color: "#FFD23F",
+            }}>→ {convertUKTimeToLocal(s.ukTime)}</span>
           </div>
         ))}
       </div>
@@ -884,7 +794,7 @@ export default function AcademicPlansPage() {
                   </div>
 
                   {/* Timezone converter */}
-                  <TimezoneConverter sessions={m.sessions} />
+                  <LocalTimeDisplay sessions={m.sessions} />
                 </div>
               </motion.div>
             ))}

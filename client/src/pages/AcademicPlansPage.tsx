@@ -30,7 +30,7 @@ const academicPlans = [
       "2 clases recreacionales incluidas",
       "Acceso a la plataforma de Astrofísica",
       "Acceso a Sophia Math",
-      "50% descuento en talleres",
+
       "Tareas + quices + evaluación mensual",
     ],
     stripeUrl: "https://buy.stripe.com/5kQfZg5Ys2FS7Tf3ke4Rq0b",
@@ -55,9 +55,9 @@ const academicPlans = [
       "Clases recreacionales ilimitadas",
       "Acceso completo a la plataforma de Astrofísica",
       "Acceso completo a Sophia Math",
-      "1 taller gratis al mes",
+
       "Tareas + quices + evaluación mensual",
-      "Certificado al completar el módulo",
+      "Certificado al completar 4 módulos",
     ],
     stripeUrl: "https://buy.stripe.com/cNidR80E894g8XjcUO4Rq0c",
   },
@@ -82,7 +82,7 @@ const academicPlans = [
       "Acceso completo a la plataforma de Astrofísica",
       "Acceso completo a Sophia Math",
 
-      "Certificado oficial al completar el programa",
+      "Certificado al completar 4 módulos",
     ],
     stripeUrl: "https://buy.stripe.com/4gMdR8dqUdkw5L70824Rq0d",
   },

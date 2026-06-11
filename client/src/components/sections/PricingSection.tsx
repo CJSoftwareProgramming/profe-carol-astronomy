@@ -58,7 +58,7 @@ const academicPlans = [
       "2 clases recreacionales incluidas",
       "Acceso a la plataforma de Astrofísica",
       "Acceso a Sophia Math",
-      "50% descuento en talleres",
+
       "Tareas + quices + evaluación mensual",
     ],
     featured: false,
@@ -75,9 +75,9 @@ const academicPlans = [
       "Clases recreacionales ilimitadas",
       "Acceso completo a la plataforma de Astrofísica",
       "Acceso completo a Sophia Math",
-      "1 taller gratis al mes",
+
       "Tareas + quices + evaluación mensual",
-      "Certificado al completar el módulo",
+      "Certificado al completar 4 módulos",
     ],
     featured: true,
     badge: "Recomendado",
@@ -95,7 +95,7 @@ const academicPlans = [
       "Acceso completo a la plataforma de Astrofísica",
       "Acceso completo a Sophia Math",
 
-      "Certificado oficial al completar el programa",
+      "Certificado al completar 4 módulos",
     ],
     featured: false,
     color: "#F87171",
@@ -471,7 +471,7 @@ export default function PricingSection() {
               fontWeight: 700,
               color: "rgba(255,248,240,0.70)",
             }}>
-              Certificado oficial al completar el programa completo
+              Certificado al completar 4 módulos
             </span>
           </div>
         </motion.div>

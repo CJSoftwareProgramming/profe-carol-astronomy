@@ -2,42 +2,48 @@
    Layout: Two clearly separated blocks — Recreational (top) + Academic (bottom, highlighted)
    Font: Fredoka One (prices) + Nunito (body/labels)
    Colors: #FFD23F stellar yellow, #FB923C solar orange
-   Cards: glass-card with color borders, transparent bg */
+   Cards: glass-card with color borders, transparent bg
+   Recreational: $28 (entry, 1 clase/semana) + $49 (popular, 2 clases + Sophia Math)
+   Academic: $60 / $80 / $100 — platform + Sophia Math, NO telescopes */
 
 import { motion } from "framer-motion";
 import { CheckCircle2, Star } from "lucide-react";
 
 const recreationalPlans = [
   {
-    name: "Básico Recreacional",
+    name: "Básico",
     price: 28,
     perClass: "≈ $7 / clase",
     period: "/ mes",
-    features: ["1 clase recreacional por semana", "Acceso a todos los temas", "Horarios Jue–Dom", "Máx. 15 estudiantes"],
+    features: [
+      "1 clase recreacional por semana",
+      "Acceso a todos los temas espaciales",
+      "Horarios Jue–Dom",
+      "Máx. 15 estudiantes por clase",
+      "Clases 100% en vivo",
+    ],
     featured: false,
     color: "#60A5FA",
     stripeUrl: "https://buy.stripe.com/5kQaEWbiM4O05L70824Rq03",
+    entryBadge: true,
   },
   {
     name: "Explorador",
     price: 49,
     perClass: "≈ $6 / clase",
     period: "/ mes",
-    features: ["2 clases recreacionales por semana", "Acceso a todos los temas", "Horarios Jue–Dom", "Máx. 15 estudiantes"],
+    features: [
+      "2 clases recreacionales por semana",
+      "Acceso a todos los temas espaciales",
+      "Horarios Jue–Dom",
+      "Máx. 15 estudiantes por clase",
+      "Sophia Math — Método Ábaco Soroban",
+      "Clases de Astromatemáticas incluidas",
+    ],
     featured: true,
     badge: "Más Popular",
     color: "#FB923C",
     stripeUrl: "https://buy.stripe.com/8x2cN4euYdkwflH2ga4Rq02",
-  },
-  {
-    name: "Avanzado",
-    price: 59,
-    perClass: "≈ $5 / clase",
-    period: "/ mes",
-    features: ["3 clases recreacionales por semana", "Acceso a todos los temas", "Horarios Jue–Dom", "Máx. 15 estudiantes"],
-    featured: false,
-    color: "#34D399",
-    stripeUrl: "https://buy.stripe.com/aFa6oG3QkeoA8XjaMG4Rq04",
   },
 ];
 
@@ -50,9 +56,10 @@ const academicPlans = [
     features: [
       "1 clase académica por semana",
       "2 clases recreacionales incluidas",
+      "Acceso a la plataforma de Astrofísica",
+      "Acceso a Sophia Math",
       "50% descuento en talleres",
-      "1 laboratorio al mes",
-      "Tareas + quices + evaluación",
+      "Tareas + quices + evaluación mensual",
     ],
     featured: false,
     color: "#FB923C",
@@ -66,15 +73,15 @@ const academicPlans = [
     features: [
       "2 clases académicas por semana",
       "Clases recreacionales ilimitadas",
+      "Acceso completo a la plataforma de Astrofísica",
+      "Acceso completo a Sophia Math",
       "1 taller gratis al mes",
-      "2 laboratorios al mes",
-      "Tareas + quices + evaluación",
-      "Certificado al completar módulo",
+      "Tareas + quices + evaluación mensual",
+      "Certificado al completar el módulo",
     ],
     featured: true,
     badge: "Recomendado",
     color: "#FFD23F",
-    bonus: "🔭 Telescopio Celestron de viaje tras 2 meses consecutivos",
     stripeUrl: "https://buy.stripe.com/cNidR80E894g8XjcUO4Rq0c",
   },
   {
@@ -85,20 +92,35 @@ const academicPlans = [
     features: [
       "3 clases académicas por semana",
       "Clases recreacionales ilimitadas",
+      "Acceso completo a la plataforma de Astrofísica",
+      "Acceso completo a Sophia Math",
       "Talleres ilimitados",
-      "3 laboratorios al mes",
       "1 clase personalizada mensual",
       "Reportes académicos mensuales",
+      "Certificado oficial al completar el programa",
     ],
     featured: false,
     color: "#F87171",
     badge: "Homeschool",
-    bonus: "🔭 Telescopio Celestron de viaje tras 2 meses consecutivos",
     stripeUrl: "https://buy.stripe.com/4gMdR8dqUdkw5L70824Rq0d",
   },
 ];
 
-function PlanCard({ plan, i }: { plan: typeof recreationalPlans[0] & { bonus?: string; badge?: string }, i: number }) {
+interface PlanItem {
+  name: string;
+  price: number;
+  perClass: string;
+  period: string;
+  features: string[];
+  featured: boolean;
+  color: string;
+  stripeUrl: string;
+  badge?: string;
+  bonus?: string;
+  entryBadge?: boolean;
+}
+
+function PlanCard({ plan, i }: { plan: PlanItem, i: number }) {
   return (
     <motion.div
       key={plan.name}
@@ -126,6 +148,28 @@ function PlanCard({ plan, i }: { plan: typeof recreationalPlans[0] & { bonus?: s
           background: `linear-gradient(90deg, ${plan.color}, ${plan.color}88)`,
           borderRadius: "20px 20px 0 0",
         }} />
+      )}
+
+      {/* Entry badge */}
+      {plan.entryBadge && (
+        <div style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "5px",
+          fontFamily: "'Nunito', sans-serif",
+          fontSize: "11px",
+          fontWeight: 800,
+          letterSpacing: "0.06em",
+          textTransform: "uppercase",
+          color: plan.color,
+          background: `${plan.color}15`,
+          border: `1px solid ${plan.color}30`,
+          borderRadius: "20px",
+          padding: "3px 10px",
+          marginBottom: "14px",
+        }}>
+          🚀 Entrada desde $28
+        </div>
       )}
 
       {plan.badge && (
@@ -322,14 +366,14 @@ export default function PricingSection() {
             lineHeight: 1.15,
             marginBottom: "10px",
           }}>
-            Explora el universo{" "}
-            <span style={{ color: "#FB923C" }}>con diversión</span>
+            Empieza a explorar el universo{" "}
+            <span style={{ color: "#FB923C" }}>desde $28 / mes</span>
           </h2>
           <p style={{
             fontFamily: "'Nunito', sans-serif",
             fontSize: "15px",
             color: "rgba(255,248,240,0.50)",
-            maxWidth: "460px",
+            maxWidth: "500px",
             margin: "0 auto",
             lineHeight: 1.6,
           }}>
@@ -339,9 +383,11 @@ export default function PricingSection() {
 
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
           gap: "24px",
           marginBottom: "80px",
+          maxWidth: "760px",
+          margin: "0 auto 80px",
         }}>
           {recreationalPlans.map((plan, i) => (
             <PlanCard key={plan.name} plan={plan} i={i} />
@@ -408,7 +454,7 @@ export default function PricingSection() {
             margin: "0 auto 20px",
             lineHeight: 1.6,
           }}>
-            Suscripción mensual con currículo progresivo. Módulos de 6 semanas con laboratorio y examen final.
+            Suscripción mensual con currículo progresivo. Módulos de 2 meses con quices, actividades semanales y examen final.
           </p>
           {/* Academic info pill */}
           <div style={{

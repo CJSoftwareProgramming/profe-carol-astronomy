@@ -1,12 +1,14 @@
 /* HeroSection — Sophia Academy Brand
    Font: Fredoka One (h1, stats) + Nunito (body, labels)
    Colors: #FFF8F0 titles, #FFD23F highlight, #FB923C solar accent
-   Background: transparent — SolarSystemBackground is global */
+   Background: Real astronomy photo overlay + transparent SaturnBackground global */
 
 import { motion } from "framer-motion";
 
 const WHATSAPP_NUMBER = "+44 7462 994908";
 const WHATSAPP_LINK = "https://wa.me/447462994908";
+
+const HERO_IMAGE = "/manus-storage/hero-kids-astronomy_1aaa833b.jpg";
 
 const stats = [
   { value: "4–12", label: "años de edad" },
@@ -28,9 +30,31 @@ export default function HeroSection() {
         justifyContent: "center",
         paddingTop: "88px",
         paddingBottom: "60px",
+        overflow: "hidden",
       }}
     >
-      <div className="container">
+      {/* Real photo background overlay */}
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        backgroundImage: `url(${HERO_IMAGE})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center 30%",
+        backgroundRepeat: "no-repeat",
+        opacity: 0.18,
+        zIndex: 0,
+        pointerEvents: "none",
+      }} />
+      {/* Dark gradient overlay so text stays readable */}
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        background: "linear-gradient(to bottom, rgba(2,4,8,0.55) 0%, rgba(2,4,8,0.30) 40%, rgba(2,4,8,0.70) 100%)",
+        zIndex: 1,
+        pointerEvents: "none",
+      }} />
+
+      <div className="container" style={{ position: "relative", zIndex: 2 }}>
         <div style={{ maxWidth: "780px", margin: "0 auto", textAlign: "center" }}>
           {/* Badge */}
           <motion.div
@@ -102,7 +126,7 @@ export default function HeroSection() {
               fontFamily: "'Nunito', sans-serif",
               fontSize: "20px",
               fontWeight: 400,
-              color: "rgba(255,248,240,0.65)",
+              color: "rgba(255,248,240,0.75)",
               lineHeight: 1.7,
               maxWidth: "580px",
               margin: "0 auto 32px",
@@ -112,6 +136,41 @@ export default function HeroSection() {
             espaciales. Una academia inspirada en la NASA para los científicos
             y astronautas del futuro.
           </motion.p>
+
+          {/* Entry price highlight */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            style={{ marginBottom: "28px" }}
+          >
+            <div style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
+              background: "rgba(251,146,60,0.12)",
+              border: "1px solid rgba(251,146,60,0.35)",
+              borderRadius: "50px",
+              padding: "10px 24px",
+            }}>
+              <span style={{ fontSize: "20px" }}>⭐</span>
+              <span style={{
+                fontFamily: "'Fredoka One', cursive",
+                fontSize: "22px",
+                color: "#FB923C",
+              }}>
+                Desde $28 USD / mes
+              </span>
+              <span style={{
+                fontFamily: "'Nunito', sans-serif",
+                fontSize: "13px",
+                fontWeight: 700,
+                color: "rgba(255,248,240,0.55)",
+              }}>
+                · cancela cuando quieras
+              </span>
+            </div>
+          </motion.div>
 
           {/* WhatsApp number */}
           <motion.div
@@ -224,8 +283,9 @@ export default function HeroSection() {
         left: 0,
         right: 0,
         height: "100px",
-        background: "linear-gradient(to bottom, transparent, rgba(2,4,8,0.5))",
+        background: "linear-gradient(to bottom, transparent, rgba(2,4,8,0.7))",
         pointerEvents: "none",
+        zIndex: 2,
       }} />
     </section>
   );

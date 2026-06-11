@@ -94,9 +94,7 @@ const academicPlans = [
       "Clases recreacionales ilimitadas",
       "Acceso completo a la plataforma de Astrofísica",
       "Acceso completo a Sophia Math",
-      "Talleres ilimitados",
-      "1 clase personalizada mensual",
-      "Reportes académicos mensuales",
+
       "Certificado oficial al completar el programa",
     ],
     featured: false,
